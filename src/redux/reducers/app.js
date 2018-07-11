@@ -4,8 +4,7 @@ const app = (state = {
     switch (action.type) {
         case 'SET_DRAWER':
             console.log("SET_DRAWER works")
-            let newState = {shouldShowDrawer: action.val}
-            return newState;
+            return Object.assign({}, state, {shouldShowDrawer: action.val});
         default:
             return state;
     }
