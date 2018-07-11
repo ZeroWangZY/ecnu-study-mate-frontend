@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import TopBar from './common/TopBar';
-import Dnd from './common/dnd';
 import LeftMenu from './common/LeftMenu';
+import {Route, Switch} from 'react-router-dom';
+import Homework from './components/homework/Homework';
+import Schedule from './components/schedule/Schedule';
 
 class App extends Component {
   render () {
     return (
       <div className="App">
         <TopBar />
-        <Dnd />
+        <Switch>
+          <Route exact path="/" component={Schedule} />
+          <Route path="/homework" component={Homework} />
+        </Switch>
         <LeftMenu />
       </div>
     );

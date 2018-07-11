@@ -24,10 +24,6 @@ const styles = {
 };
 
 class TopBar extends Component {
-  clck = () => {
-    console.log("asfa");
-  }
-
   render () {
     const { classes } = this.props;
     return (
@@ -38,9 +34,9 @@ class TopBar extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              日程
+              学涯通
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">登录</Button>
           </Toolbar>
         </AppBar>
       </div>
