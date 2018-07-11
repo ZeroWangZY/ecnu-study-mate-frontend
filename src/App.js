@@ -4,6 +4,7 @@ import LeftMenu from './common/LeftMenu';
 import {Route, Switch} from 'react-router-dom';
 import Homework from './components/homework/Homework';
 import Schedule from './components/schedule/Schedule';
+import Message from './components/message/Message';
 
 class App extends Component {
   render () {
@@ -13,6 +14,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Schedule} />
           <Route path="/homework" component={Homework} />
+          <Route path="/message" component={Message} />
         </Switch>
         <LeftMenu />
       </div>

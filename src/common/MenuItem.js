@@ -58,11 +58,13 @@ export const otherMailFolderListItems = (
       </ListItemIcon>
       <ListItemText primary="成绩分析" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <MailIcon />
-      </ListItemIcon>
-      <ListItemText primary="消息" />
-    </ListItem>
+    <Link to="/message">
+      <ListItem button>
+        <ListItemIcon>
+          <MailIcon />
+        </ListItemIcon>
+        <ListItemText primary="消息" />
+      </ListItem>
+    </Link>
   </div>
 );
