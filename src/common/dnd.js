@@ -3,18 +3,12 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import BigCalendar from 'react-big-calendar'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
+import { connect } from 'react-redux'
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import './big-calendar.css'
+import { refreshSchedule } from '../redux/actions';
 const events =  [
-
-    {
-      id: 15,
-      title: 'Today',
-      allDay: true,
-      start: new Date(new Date().setHours(new Date().getHours() - 10)),
-      end: new Date(new Date().setHours(new Date().getHours() + 6)),
-    },
     {
       id: 14,
       title: 'Today',
@@ -22,16 +16,19 @@ const events =  [
       start: new Date(new Date().setHours(new Date().getHours() - 3)),
       end: new Date(new Date().setHours(new Date().getHours() + 3)),
     },
+    {
+      id: 15,
+      title: 'adas',
+      start: new Date('2018-09-19 12:00:00'),
+      end: new Date('2018-09-19 15:00:00'),
+    },
   ]
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 class Dnd extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      events: events,
-    }
-
+    this.state = [],
     this.moveEvent = this.moveEvent.bind(this)
   }
 
@@ -71,7 +68,12 @@ class Dnd extends React.Component {
     return (
       <DragAndDropCalendar
         selectable
-        events={this.state.events}
+        events={this.props.schedule.all.map((item,index) => ({
+          id: index,
+          title: item.title,
+          start: new Date(item.startTime),
+          end: new Date(item.endTime)
+        }))}
         onEventDrop={this.moveEvent}
         resizable
         onEventResize={this.resizeEvent}
@@ -82,4 +84,15 @@ class Dnd extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(Dnd)
+const mapStateToProps = state => ({
+  schedule: state.schedule
+})
+
+const mapDispatchToProps = dispatch => ({
+  refresh: (data) => dispatch(refreshSchedule(data))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DragDropContext(HTML5Backend)(Dnd))

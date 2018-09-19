@@ -6,3 +6,8 @@ export const setDrawer = shouldShowDrawer => ({
 export const setLogin = (id, password) => ({
   type: 'LOGIN'
 })
+
+export const refreshSchedule = (data) => ({
+  type: 'REFRESH_SCHEDULE',
+  data: data
+})

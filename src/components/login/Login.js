@@ -4,10 +4,9 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import { setLogin } from '../../redux/actions';
+import { setLogin, refreshSchedule } from '../../redux/actions';
 import { connect } from 'react-redux'
 import { loginAPI, getMonthScheduleAPI } from '../../api/api';
 
@@ -21,7 +20,9 @@ class Login extends React.Component {
 
         loginAPI(10165101228, 123).then(res => {
             this.props.login(this.state.id, this.state.password)
-            getMonthScheduleAPI();
+            getMonthScheduleAPI().then(res => {
+                this.props.refresh(res.data.list);
+            });
         })
 
     }
@@ -79,11 +80,13 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    app: state.app
+    app: state.app,
+    schedule: state.schedule
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: (id, password) => dispatch(setLogin(id, password))
+    login: (id, password) => dispatch(setLogin(id, password)),
+    refresh: (data) => dispatch(refreshSchedule(data))
 })
 
 export default connect(
