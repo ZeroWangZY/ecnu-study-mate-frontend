@@ -18,7 +18,8 @@ class Login extends React.Component {
 
     handleLogin = () => {
 
-        loginAPI(10165101228, 123).then(res => {
+        // loginAPI(10165101228, 123).then(res => {
+        loginAPI(this.state.id, this.state.password).then(res => {
             this.props.login(this.state.id, this.state.password)
             getMonthScheduleAPI().then(res => {
                 this.props.refresh(res.data.list);
