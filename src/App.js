@@ -1,15 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TopBar from './common/TopBar';
 import LeftMenu from './common/LeftMenu';
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Homework from './components/homework/Homework';
 import Schedule from './components/schedule/Schedule';
 import Message from './components/message/Message';
+import Login from './components/login/Login';
+
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <div className="App">
+        <Login />
         <TopBar />
         <Switch>
           <Route exact path="/" component={Schedule} />

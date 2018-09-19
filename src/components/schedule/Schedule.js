@@ -3,7 +3,6 @@ import Dnd from '../../common/dnd';
 import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   button: {

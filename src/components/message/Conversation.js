@@ -3,7 +3,6 @@ import ConversationItem from './ConversationItem';
 
 class Conversation extends Component {
   render () {
-    const {classes} = this.props;
     return (
       <div className="conversation-container" style={{textAlign: 'center'}}>
         <ConversationItem/>
