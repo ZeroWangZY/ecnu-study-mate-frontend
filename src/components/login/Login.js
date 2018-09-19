@@ -9,6 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { setLogin } from '../../redux/actions';
 import { connect } from 'react-redux'
+import { loginAPI } from '../../api/api';
 
 class Login extends React.Component {
     state = {
@@ -17,7 +18,11 @@ class Login extends React.Component {
     };
 
     handleLogin = () => {
-        this.props.login(this.state.id, this.state.password)
+
+        loginAPI(10165101228, 123).then(res => {
+            this.props.login(this.state.id, this.state.password)
+        })
+
     }
 
     handleChange = name => event => {
@@ -43,6 +48,7 @@ class Login extends React.Component {
 
                         </DialogContentText>
                         <TextField
+                            required
                             autoFocus
                             margin="dense"
                             id="id"
@@ -53,6 +59,7 @@ class Login extends React.Component {
                             fullWidth
                         />
                         <TextField
+                            required
                             autoFocus
                             margin="dense"
                             id="password"
