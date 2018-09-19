@@ -9,7 +9,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { setLogin } from '../../redux/actions';
 import { connect } from 'react-redux'
-import { loginAPI } from '../../api/api';
+import { loginAPI, getMonthScheduleAPI } from '../../api/api';
 
 class Login extends React.Component {
     state = {
@@ -21,6 +21,7 @@ class Login extends React.Component {
 
         loginAPI(10165101228, 123).then(res => {
             this.props.login(this.state.id, this.state.password)
+            getMonthScheduleAPI();
         })
 
     }
@@ -44,9 +45,6 @@ class Login extends React.Component {
                 >
                     <DialogTitle id="form-dialog-title">请先登录</DialogTitle>
                     <DialogContent>
-                        <DialogContentText>
-
-                        </DialogContentText>
                         <TextField
                             required
                             autoFocus
@@ -60,7 +58,6 @@ class Login extends React.Component {
                         />
                         <TextField
                             required
-                            autoFocus
                             margin="dense"
                             id="password"
                             label="密码"
