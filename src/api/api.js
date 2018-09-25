@@ -1,9 +1,10 @@
 let access_token = '';
 let studentId;
+const urlPrefix = '/api'
 
 export const loginAPI = (id, password) => {
     studentId = id + ''
-    return fetch('/oauth/token?username=' + id + '&password=' + password + '&grant_type=password', {
+    return fetch(urlPrefix + '/oauth/token?username=' + id + '&password=' + password + '&grant_type=password', {
         method: 'POST',
         headers: {
             'Authorization': 'Basic cGRmOjEyMzQ1Ng=='
@@ -17,7 +18,7 @@ export const loginAPI = (id, password) => {
 }
 
 const post = (url, data) => {
-    return fetch(url, {
+    return fetch(urlPrefix + url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

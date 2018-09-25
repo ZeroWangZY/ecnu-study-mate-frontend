@@ -8,21 +8,7 @@ import { connect } from 'react-redux'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import './big-calendar.css'
 import { refreshSchedule } from '../redux/actions';
-const events =  [
-    {
-      id: 14,
-      title: 'Today',
-      desc: 'afadfda',
-      start: new Date(new Date().setHours(new Date().getHours() - 3)),
-      end: new Date(new Date().setHours(new Date().getHours() + 3)),
-    },
-    {
-      id: 15,
-      title: 'adas',
-      start: new Date('2018-09-19 12:00:00'),
-      end: new Date('2018-09-19 15:00:00'),
-    },
-  ]
+
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 class Dnd extends React.Component {
@@ -69,16 +55,22 @@ class Dnd extends React.Component {
       <DragAndDropCalendar
         selectable
         events={this.props.schedule.all.map((item,index) => ({
-          id: index,
+          id: item.id,
           title: item.title,
           start: new Date(item.startTime),
-          end: new Date(item.endTime)
+          end: new Date(item.endTime),
+          resource: item
         }))}
-        onEventDrop={this.moveEvent}
-        resizable
-        onEventResize={this.resizeEvent}
+        // onEventDrop={this.moveEvent}
+        // resizable
+        // onEventResize={this.resizeEvent}
         defaultView="week"
         defaultDate={new Date()}
+        onSelectEvent={(event, e) => {
+          this.props.openEditDialog(event);
+          console.log(event);
+        }}
+        tooltipAccessor={(event) => event.resource.content}
       />
     )
   }

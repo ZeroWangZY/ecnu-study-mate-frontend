@@ -11,3 +11,8 @@ export const refreshSchedule = (data) => ({
   type: 'REFRESH_SCHEDULE',
   data: data
 })
+
+const refreshScheduleState = (data) => ({
+  type: 'REFRESH_SCHEDULE_STATE',
+  data: data
+}) 
