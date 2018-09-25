@@ -36,7 +36,7 @@ export const getMonthScheduleAPI = () => {
     let data = {
         'date': time.getFullYear() + '-' + month + '-' + day
     }
-    return post('/schedule/getMonthSchedule', data);
+    return post('/schedule/getMonthSchedule', data).then(res => res.data.list);
 }
 
 export const addScheduleAPI = (title, desc, start, end) => {

@@ -1,18 +1,30 @@
+import { getMonthScheduleAPI, loginAPI } from '../../api/api'
+
 export const setDrawer = shouldShowDrawer => ({
   type: 'SET_DRAWER',
   val: shouldShowDrawer
 })
 
-export const setLogin = (id, password) => ({
+const setLogin = () => ({
   type: 'LOGIN'
 })
 
-export const refreshSchedule = (data) => ({
-  type: 'REFRESH_SCHEDULE',
+export const login = (id, password) => dispatch => {
+  loginAPI(id, password).then(res => {
+    dispatch(refresh());
+    dispatch(setLogin());
+  })
+}
+
+export const refresh = (dispatch) => {
+  return dispatch => {
+    getMonthScheduleAPI().then(data => {
+      dispatch(setSchedule(data));
+    });
+  }
+}
+
+const setSchedule = (data) => ({
+  type: 'SET_SCHEDULE',
   data: data
 })
-
-const refreshScheduleState = (data) => ({
-  type: 'REFRESH_SCHEDULE_STATE',
-  data: data
-}) 

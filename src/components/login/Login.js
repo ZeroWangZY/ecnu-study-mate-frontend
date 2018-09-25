@@ -6,9 +6,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import { setLogin, refreshSchedule } from '../../redux/actions';
+import { login } from '../../redux/actions';
 import { connect } from 'react-redux'
-import { loginAPI, getMonthScheduleAPI } from '../../api/api';
 
 class Login extends React.Component {
     state = {
@@ -17,15 +16,13 @@ class Login extends React.Component {
     };
 
     handleLogin = () => {
-
         // loginAPI(10165101228, 123).then(res => {
-        loginAPI(this.state.id, this.state.password).then(res => {
-            this.props.login(this.state.id, this.state.password)
-            getMonthScheduleAPI().then(res => {
-                this.props.refresh(res.data.list);
-            });
-        })
-
+        //     // loginAPI(this.state.id, this.state.password).then(res => {
+        //     this.props.login(this.state.id, this.state.password);
+        //     this.props.refresh();
+        // })
+        // this.props.login(10165101228, 123);
+        this.props.login(this.state.id, this.state.password);
     }
 
     handleChange = name => event => {
@@ -72,7 +69,7 @@ class Login extends React.Component {
                     <DialogActions>
                         <Button onClick={this.handleLogin} color="primary">
                             登录
-            </Button>
+                        </Button>
                     </DialogActions>
                 </Dialog>
             </div>
@@ -82,12 +79,10 @@ class Login extends React.Component {
 
 const mapStateToProps = state => ({
     app: state.app,
-    schedule: state.schedule
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: (id, password) => dispatch(setLogin(id, password)),
-    refresh: (data) => dispatch(refreshSchedule(data))
+    login: (id, password) => dispatch(login(id, password)),
 })
 
 export default connect(

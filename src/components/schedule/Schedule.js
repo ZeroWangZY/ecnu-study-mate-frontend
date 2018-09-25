@@ -64,17 +64,17 @@ class Schedule extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.initState();
   };
 
   handleAddSchedule = () => {
     addScheduleAPI(this.state.title, this.state.desc, this.state.start, this.state.end).then(res => {
-      
+
     })
   }
 
   handleDeleteSchedule = () => {
-    
+
   }
 
   handleEditingSchedule = () => {
@@ -124,7 +124,7 @@ class Schedule extends Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-            {"新建安排"}
+            {this.state.editing ? '编辑安排' : '新增安排'}
           </DialogTitle>
           <DialogContent>
             <form className={classes.container} noValidate>
