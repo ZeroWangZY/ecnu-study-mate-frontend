@@ -8,8 +8,8 @@ export const loginAPI = (id, password) => {
         headers: {
             'Authorization': 'Basic cGRmOjEyMzQ1Ng=='
         }
-    }).then(res => {
-        if(res.status === 200){
+    }).then(res => {        
+        if(res.status >= 200 && res.status < 300){
             return res.json();
         } else {
             return res.json().then(Promise.reject.bind(Promise));
