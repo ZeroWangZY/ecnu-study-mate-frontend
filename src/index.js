@@ -16,7 +16,7 @@ const localStore = localForage.createInstance({
 });
 
 localStore.getItem('app').then(data => {
-  if (data !== null) {
+  if (data !== null && data.isLoginned) {
     getDispatch()(setApp(data));
   }
 })
