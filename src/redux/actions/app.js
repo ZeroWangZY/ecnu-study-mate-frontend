@@ -50,6 +50,8 @@ export const setApp = data => dispatch => {
       accessToken: json.access_token,
       refreshToken: json.refresh_token
     });
+    return json;
+  }).then(json => {
     dispatch(refreshSchedule())
   })
     .catch(json => {
