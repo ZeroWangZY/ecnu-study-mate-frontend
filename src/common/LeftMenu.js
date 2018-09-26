@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import {mailFolderListItems, otherMailFolderListItems} from './MenuItem';
 import {connect} from 'react-redux';
-import {setDrawer} from '../redux/actions';
+import {setDrawer} from '../redux/actions/app';
 
 const styles = {
   list: {

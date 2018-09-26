@@ -2,7 +2,8 @@ const initialState = {
     shouldShowDrawer: false,
     isLoginned: false,
     studentId: null,
-    accessToken: null
+    accessToken: null,
+    snackbarText: ''
 }
 
 const app = (state = initialState, action) => {
@@ -14,6 +15,10 @@ const app = (state = initialState, action) => {
                 isLoginned: true,
                 studentId: action.studentId,
                 accessToken: action.accessToken
+            });
+        case 'SET_SNACK_TEXT':
+            return Object.assign({}, state, {
+                snackbarText: action.text
             });
         default:
             return state;

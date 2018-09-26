@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { connect } from 'react-redux'
-import { setDrawer } from '../redux/actions'
+import { setDrawer } from '../redux/actions/app'
 
 const styles = {
   root: {

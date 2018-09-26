@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import { login } from '../../redux/actions';
+import { login } from '../../redux/actions/app';
 import { connect } from 'react-redux'
 
 class Login extends React.Component {

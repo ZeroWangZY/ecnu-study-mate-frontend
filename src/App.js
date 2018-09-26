@@ -6,12 +6,14 @@ import Homework from './components/homework/Homework';
 import Schedule from './components/schedule/Schedule';
 import Message from './components/message/Message';
 import Login from './components/login/Login';
+import Snackbar from './common/Snackbar';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <Snackbar />
         <Login />
         <TopBar />
         <Switch>

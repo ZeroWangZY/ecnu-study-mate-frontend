@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux'
-import { addSchedule, updateSchedule, deleteSchedule } from '../../redux/actions';
+import { addSchedule, updateSchedule, deleteSchedule } from '../../redux/actions/schedule';
 
 const styles = theme => ({
   button: {

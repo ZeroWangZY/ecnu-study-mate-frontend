@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import './big-calendar.css'
-import { refresh } from '../redux/actions';
+import { refreshSchedule } from '../redux/actions/schedule';
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
@@ -80,7 +80,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  refresh: () => dispatch(refresh())
+  refresh: () => dispatch(refreshSchedule())
 })
 
 export default connect(
