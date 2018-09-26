@@ -19,6 +19,9 @@ export const login = (id, password) => dispatch => {
       dispatch(refreshSchedule());
       dispatch(setSnackText('登录成功'));
     })
+    .catch(json => {
+      dispatch(setSnackText('登录失败：' + json.error_description));            
+    })
 }
 
 const loginAction = (accessToken, studentId) => ({
