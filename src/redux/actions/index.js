@@ -5,18 +5,16 @@ export const setDrawer = shouldShowDrawer => ({
   val: shouldShowDrawer
 })
 
-const setLogin = () => ({
-  type: 'LOGIN'
-})
-
 export const login = (id, password) => dispatch => {
-  loginAPI(id, password).then(res => {
+  loginAPI(id, password)
+  .then(res => res.json())
+  .then(res => {
+    dispatch(loginAction(res.access_token, id));
     dispatch(refresh());
-    dispatch(setLogin());
   })
 }
 
-export const refresh = (dispatch) => {
+export const refresh = () => {
   return dispatch => {
     getMonthScheduleAPI().then(data => {
       dispatch(setSchedule(data));
@@ -27,4 +25,10 @@ export const refresh = (dispatch) => {
 const setSchedule = (data) => ({
   type: 'SET_SCHEDULE',
   data: data
+})
+
+const loginAction =  (accessToken, studentId) => ({
+  type: 'LOGIN',
+  accessToken: accessToken,
+  studentId: studentId
 })

@@ -14,7 +14,6 @@ const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 class Dnd extends React.Component {
   constructor(props) {
     super(props)
-    this.state = [],
     this.moveEvent = this.moveEvent.bind(this)
   }
 

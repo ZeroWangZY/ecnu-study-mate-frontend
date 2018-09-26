@@ -1,20 +1,14 @@
-let access_token = '';
-let studentId;
+import { getStudentId, getAccessToken } from "../redux/store";
+
 const urlPrefix = '/api'
 
 export const loginAPI = (id, password) => {
-    studentId = id + ''
     return fetch(urlPrefix + '/oauth/token?username=' + id + '&password=' + password + '&grant_type=password', {
         method: 'POST',
         headers: {
             'Authorization': 'Basic cGRmOjEyMzQ1Ng=='
         }
-    }).then(res => res.json())
-        .then(res => {
-            access_token = res.access_token;
-            return res;
-        })
-        .catch(error => console.error('Error:', error));
+    })
 }
 
 const post = (url, data) => {
@@ -23,7 +17,7 @@ const post = (url, data) => {
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + access_token
+            'Authorization': 'Bearer ' + getAccessToken()
         }
     }).then(res => res.json())
 }
@@ -40,10 +34,9 @@ export const getMonthScheduleAPI = () => {
 }
 
 export const addScheduleAPI = (title, desc, start, end) => {
-    
     return post('/schedule/baseSqlHandle', {
         insert: [{
-            'studentId': studentId,
+            'studentId': getStudentId(),
             'startTime': start.replace('T', ':'),
             'endTime': end.replace('T', ':'),
             'scheduleType': 'calendar',
