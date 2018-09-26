@@ -1,4 +1,4 @@
-import { getMonthScheduleAPI, loginAPI, addScheduleAPI } from '../../api/api'
+import { getMonthScheduleAPI, loginAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI } from '../../api/api'
 
 export const setDrawer = shouldShowDrawer => ({
   type: 'SET_DRAWER',
@@ -7,11 +7,11 @@ export const setDrawer = shouldShowDrawer => ({
 
 export const login = (id, password) => dispatch => {
   loginAPI(id, password)
-  .then(res => res.json())
-  .then(res => {
-    dispatch(loginAction(res.access_token, id));
-    dispatch(refresh());
-  })
+    .then(res => res.json())
+    .then(res => {
+      dispatch(loginAction(res.access_token, id));
+      dispatch(refresh());
+    })
 }
 
 export const refresh = () => {
@@ -25,9 +25,27 @@ export const refresh = () => {
 export const addSchedule = (title, desc, start, end) => {
   return dispatch => {
     addScheduleAPI(title, desc, start, end)
-    .then(res => {
-      dispatch(refresh());
-    })
+      .then(res => {
+        dispatch(refresh());
+      })
+  }
+}
+
+export const updateSchedule = (id, title, desc, start, end) => {
+  return dispatch => {
+    updateScheduleAPI(id, title, desc, start, end)
+      .then(res => {
+        dispatch(refresh());
+      })
+  }
+}
+
+export const deleteSchedule = (id) => {
+  return dispatch => {
+    deleteScheduleAPI(id)
+      .then(res => {
+        dispatch(refresh());
+      })
   }
 }
 
@@ -36,7 +54,7 @@ const setSchedule = (data) => ({
   data: data
 })
 
-const loginAction =  (accessToken, studentId) => ({
+const loginAction = (accessToken, studentId) => ({
   type: 'LOGIN',
   accessToken: accessToken,
   studentId: studentId

@@ -65,3 +65,13 @@ export const updateScheduleAPI = (id, title, desc, start, end) => {
         delete: []
     });
 }
+
+export const deleteScheduleAPI = (id) => {
+    return post('/schedule/baseSqlHandle', {
+        insert: [],
+        update: [],
+        delete: [{
+            'id': id
+        }]
+    });
+}

@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux'
-import { addSchedule } from '../../redux/actions';
+import { addSchedule, updateSchedule, deleteSchedule } from '../../redux/actions';
 
 const styles = theme => ({
   button: {
@@ -74,11 +74,13 @@ class Schedule extends Component {
   }
 
   handleDeleteSchedule = () => {
-
+    this.props.deleteSchedule(this.state.currentEvent.id);
+    this.handleClose();
   }
 
-  handleEditingSchedule = () => {
-
+  handleEditSchedule = () => {
+    this.props.updateSchedule(this.state.currentEvent.id, this.state.title, this.state.desc, this.state.start, this.state.end);
+    this.handleClose();
   }
 
   openEditDialog = (event) => {
@@ -182,10 +184,10 @@ class Schedule extends Component {
           <DialogActions>
             {this.state.editing ?
               <div>
-                <Button onClick={this.handleDeletingSchedule} color="secondary">
+                <Button onClick={this.handleDeleteSchedule} color="secondary">
                   删除
                   </Button>
-                <Button onClick={this.handleEditingSchedule} color="primary">
+                <Button onClick={this.handleEditSchedule} color="primary">
                   完成
                   </Button>
               </div> :
@@ -203,6 +205,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addSchedule: (title, desc, start, end) => dispatch(addSchedule(title, desc, start, end)),
+  updateSchedule: (id, title, desc, start, end) => dispatch(updateSchedule(id, title, desc, start, end)),
+  deleteSchedule: id => dispatch(deleteSchedule(id))
 })
 
 export default connect(

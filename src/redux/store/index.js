@@ -13,6 +13,6 @@ const unsubscribe = store.subscribe(() => {
 })
 
 const getAccessToken = () => store.getState().app.accessToken
-const getStudentId = () => store.getState().app.studetnId
+const getStudentId = () => store.getState().app.studentId
 
 export { store, getAccessToken, getStudentId }
