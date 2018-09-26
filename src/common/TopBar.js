@@ -7,7 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { connect } from 'react-redux'
-import { setDrawer } from '../redux/actions/app'
+import { setDrawer, logoutAction } from '../redux/actions/app'
+import { Button } from '@material-ui/core';
 
 const styles = {
   root: {
@@ -23,7 +24,7 @@ const styles = {
 };
 
 class TopBar extends Component {
-  render () {
+  render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
@@ -35,6 +36,13 @@ class TopBar extends Component {
             <Typography variant="title" color="inherit" className={classes.flex}>
               学涯通
             </Typography>
+            {
+              this.props.app.isLoginned ? 
+              <Button style={{color: '#FFFFFF'}} onClick={this.props.logout}>
+              注销
+              </Button> :
+              null
+            }
           </Toolbar>
         </AppBar>
       </div>
@@ -51,7 +59,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  showDrawer: () => dispatch(setDrawer(true))
+  showDrawer: () => dispatch(setDrawer(true)),
+  logout: () => dispatch(logoutAction)
 })
 
 export default connect(
