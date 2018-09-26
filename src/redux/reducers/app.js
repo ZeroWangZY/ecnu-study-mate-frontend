@@ -34,6 +34,8 @@ const app = (state = initialState, action) => {
             return Object.assign({}, state, {
                 snackbarText: action.text
             });
+        case 'SET_APP':
+            return Object.assign({}, state, action.data);
         default:
             return state;
     }

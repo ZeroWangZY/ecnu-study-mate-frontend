@@ -1,15 +1,22 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
+import localForage from 'localforage';
 
-const store = createStore(
+let store = createStore(
     rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     applyMiddleware(thunk)
 );
 
-const unsubscribe = store.subscribe(() => {
-    // TODO: 自动保存本地
+const localStore = localForage.createInstance({
+    name: "xyt"
+});
+
+store.subscribe(() => {
+    localStore.setItem('app', store.getState().app).catch(err => {
+        console.log(err);
+    })
 })
 
 const getAccessToken = () => store.getState().app.accessToken

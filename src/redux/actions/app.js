@@ -32,11 +32,19 @@ export const updateTokenAction = () => (dispatch, getState) => {
         refreshToken: json.refresh_token
       });
     })
-    .catch(json => {
-      dispatch(setSnackText('登录过期，请重新登录'));
-      dispatch({type: 'LOGOUT'});
-    })
+      .catch(json => {
+        dispatch(setSnackText('登录过期，请重新登录'));
+        dispatch({ type: 'LOGOUT' });
+      })
   }
+}
+
+export const setApp = data => dispatch => {
+  dispatch({
+    type: 'SET_APP',
+    data: data
+  });
+  dispatch(refreshSchedule());
 }
 
 const loginAction = (accessToken, refreshToken, studentId) => ({

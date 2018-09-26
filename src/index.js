@@ -8,13 +8,23 @@ import moment from 'moment';
 import { Provider } from 'react-redux';
 import { store, getDispatch } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
-import { updateTokenAction } from './redux/actions/app';
+import { updateTokenAction, setApp } from './redux/actions/app';
+import localForage from "localforage";
+
+const localStore = localForage.createInstance({
+  name: "xyt"
+});
+
+localStore.getItem('app').then(data => {
+  if (data !== null) {
+    getDispatch()(setApp(data));
+  }
+})
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
-let dispatch = getDispatch();
 
 setInterval(() => {
-  dispatch(updateTokenAction())
+  getDispatch()(updateTokenAction())
 }, 100000)
 
 ReactDOM.render(
