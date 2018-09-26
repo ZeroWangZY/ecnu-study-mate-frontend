@@ -6,12 +6,18 @@ export const setDrawer = shouldShowDrawer => ({
   val: shouldShowDrawer
 })
 
+export const setSnackText = text => ({
+  type: 'SET_SNACK_TEXT',
+  text: text
+})
+
 export const login = (id, password) => dispatch => {
   loginAPI(id, password)
     .then(res => res.json())
     .then(res => {
       dispatch(loginAction(res.access_token, id));
       dispatch(refreshSchedule());
+      dispatch(setSnackText('登录成功'));
     })
 }
 

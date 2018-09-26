@@ -1,4 +1,5 @@
 import { getMonthScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI } from '../../api/api'
+import { setSnackText } from './app';
 
 export const refreshSchedule = () => {
   return dispatch => {
@@ -13,6 +14,7 @@ export const addSchedule = (title, desc, start, end) => {
     addScheduleAPI(title, desc, start, end)
       .then(res => {
         dispatch(refreshSchedule());
+        dispatch(setSnackText('添加成功'));
       })
   }
 }
@@ -22,6 +24,7 @@ export const updateSchedule = (id, title, desc, start, end) => {
     updateScheduleAPI(id, title, desc, start, end)
       .then(res => {
         dispatch(refreshSchedule());
+        dispatch(setSnackText('更新成功'));
       })
   }
 }
@@ -31,6 +34,7 @@ export const deleteSchedule = (id) => {
     deleteScheduleAPI(id)
       .then(res => {
         dispatch(refreshSchedule());
+        dispatch(setSnackText('删除成功'));
       })
   }
 }
