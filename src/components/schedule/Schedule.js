@@ -9,7 +9,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
-import { addScheduleAPI } from '../../api/api';
+import { connect } from 'react-redux'
+import { addSchedule } from '../../redux/actions';
 
 const styles = theme => ({
   button: {
@@ -68,9 +69,8 @@ class Schedule extends Component {
   };
 
   handleAddSchedule = () => {
-    addScheduleAPI(this.state.title, this.state.desc, this.state.start, this.state.end).then(res => {
-
-    })
+    this.props.addSchedule(this.state.title, this.state.desc, this.state.start, this.state.end);
+    this.handleClose();
   }
 
   handleDeleteSchedule = () => {
@@ -198,5 +198,14 @@ class Schedule extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+})
 
-export default withStyles(styles)(Schedule);
+const mapDispatchToProps = dispatch => ({
+  addSchedule: (title, desc, start, end) => dispatch(addSchedule(title, desc, start, end)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(Schedule));

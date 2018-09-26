@@ -48,3 +48,20 @@ export const addScheduleAPI = (title, desc, start, end) => {
         delete: []
     });
 }
+
+export const updateScheduleAPI = (id, title, desc, start, end) => {
+    return post('/schedule/baseSqlHandle', {
+        insert: [],
+        update: [{
+            'id': id,
+            'studentId': getStudentId(),
+            'startTime': start.replace('T', ':'),
+            'endTime': end.replace('T', ':'),
+            'scheduleType': 'calendar',
+            'title': title,
+            'content': desc,
+            'scheduleTag': 'study'
+        }],
+        delete: []
+    });
+}

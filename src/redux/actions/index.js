@@ -1,4 +1,4 @@
-import { getMonthScheduleAPI, loginAPI } from '../../api/api'
+import { getMonthScheduleAPI, loginAPI, addScheduleAPI } from '../../api/api'
 
 export const setDrawer = shouldShowDrawer => ({
   type: 'SET_DRAWER',
@@ -22,6 +22,15 @@ export const refresh = () => {
   }
 }
 
+export const addSchedule = (title, desc, start, end) => {
+  return dispatch => {
+    addScheduleAPI(title, desc, start, end)
+    .then(res => {
+      dispatch(refresh());
+    })
+  }
+}
+
 const setSchedule = (data) => ({
   type: 'SET_SCHEDULE',
   data: data
@@ -32,3 +41,4 @@ const loginAction =  (accessToken, studentId) => ({
   accessToken: accessToken,
   studentId: studentId
 })
+
