@@ -3,7 +3,8 @@ const initialState = {
     isLoginned: false,
     studentId: null,
     accessToken: null,
-    snackbarText: ''
+    refreshToken: null,
+    snackbarText: '',
 }
 
 const app = (state = initialState, action) => {
@@ -14,7 +15,20 @@ const app = (state = initialState, action) => {
             return Object.assign({}, state, {
                 isLoginned: true,
                 studentId: action.studentId,
-                accessToken: action.accessToken
+                accessToken: action.accessToken,
+                refreshToken: action.refreshToken
+            });
+        case 'LOGOUT':
+            return Object.assign({}, state, {
+                isLoginned: false,
+                studentId: null,
+                accessToken: null,
+                refreshToken: null
+            });
+        case 'SET_TOKEN':
+            return Object.assign({}, state, {
+                accessToken: action.accessToken,
+                refreshToken: action.refreshToken
             });
         case 'SET_SNACK_TEXT':
             return Object.assign({}, state, {

@@ -14,5 +14,7 @@ const unsubscribe = store.subscribe(() => {
 
 const getAccessToken = () => store.getState().app.accessToken
 const getStudentId = () => store.getState().app.studentId
+const getRefreshToken = () => store.getState().app.refreshToken
+const getDispatch = () => store.dispatch
 
-export { store, getAccessToken, getStudentId }
+export { store, getAccessToken, getStudentId, getRefreshToken, getDispatch }

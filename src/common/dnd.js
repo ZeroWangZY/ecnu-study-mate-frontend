@@ -67,7 +67,6 @@ class Dnd extends React.Component {
         defaultDate={new Date()}
         onSelectEvent={(event, e) => {
           this.props.openEditDialog(event);
-          console.log(event);
         }}
         tooltipAccessor={(event) => event.resource.content}
       />
