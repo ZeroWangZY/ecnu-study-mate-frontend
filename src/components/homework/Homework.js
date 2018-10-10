@@ -1,22 +1,45 @@
 import React, {Component} from 'react';
 import HomeworkItem from './HomeworkItem';
+import { withStyles } from '@material-ui/core/styles';
 
-class Homework extends Component {
+import {connect} from "react-redux";
+import {refreshHomework} from "../../redux/actions/homework";
+import {refreshSchedule} from "../../redux/actions/schedule";
+import {getStudentId} from "../../redux/store";
+
+class Homework extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
   render () {
+      this.props.refresh2();
+   //     const {homeList}=this.state;
     return (
       <div className="homework-container" style={{textAlign: 'center'}}>
-        <HomeworkItem isDone={false}/>
-        <HomeworkItem isDone={false}/>
-        <HomeworkItem isDone={true}/>
-        <HomeworkItem isDone={true}/>
-
-        <HomeworkItem isDone={true}/>
-
-        <HomeworkItem isDone={true}/>
-
+          {
+             this.props.homeList.map((item,i) =>{
+                 return (
+                     <HomeworkItem key={i} item={item}/>
+                 )
+             })
+          }
       </div>
     );
+
   }
 }
 
-export default Homework;
+const mapStateToProps = state => ({
+    homeList:state.homework
+})
+const mapDispatchToProps = dispatch => ({
+    refresh2: () => dispatch(refreshHomework(getStudentId()))
+})
+
+const HomeworkPage = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Homework);
+export default HomeworkPage
+//export default Homework;

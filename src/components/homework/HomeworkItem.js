@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import { connect } from 'react-redux'
 
 const styles = theme => ({
   root: {
@@ -48,22 +49,57 @@ const styles = theme => ({
   },
 });
 
-class HomeworkItem extends Component {
+class HomeworkItem extends React.Component {
+  constructor(props){
+      super(props);
+      // this.initState=this.initState().bind(this);
+     // this.initState();
+  }
+
+  state = {
+      homeworkID:this.props.item.homeworkID,
+      title:this.props.item.title,
+      content:this.props.item.content,
+      deadline:this.props.item.deadline,
+      state:this.props.item.deadline,
+      publisher:this.props.item.publisher,
+      receiver:this.props.item.receiver,
+      grade:this.props.item.grade,
+      homework_file:this.props.item.homework_file,
+      isDone:this.props.item.state==="finish"
+  }
+
+  /*initState = () =>{
+    this.setState({
+        homeworkID:this.props.item.homeworkID,
+        title:this.props.item.title,
+        content:this.props.item.content,
+        deadline:this.props.item.deadline,
+        state:this.props.item.deadline,
+        publisher:this.props.item.publisher,
+        receiver:this.props.item.receiver,
+        grade:this.props.item.grade,
+        homework_file:this.props.item.homework_file,
+        isDone:true
+    })
+  }*/
   render () {
-    const {classes, isDone} = this.props;
+  //  const {classes, isDone} = this.props;
+    const {classes} = this.props;
+   // this.initState;
     return (
       <div className={classes.root}>
         <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
             <div className={classes.column}>
-              <Typography className={classes.heading}>作业标题xxxx</Typography>
+              <Typography className={classes.heading}>{this.state.title}</Typography>
             </div>
             <div className={classes.column}>
               <Typography className={classes.secondaryHeading}>
-                deadline: 2018/2/2
+                deadline: {this.state.deadline}
               </Typography>
             </div>
-            {isDone
+            {this.state.isDone
               ? <div className={classes.column} style={{color: '#43A047'}}>
                     已完成
                 </div>
@@ -71,12 +107,12 @@ class HomeworkItem extends Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.details}>
             <div>
-              作业描述巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+                {this.state.content}
             </div>
           </ExpansionPanelDetails>
           <Divider />
           <ExpansionPanelActions>
-            <Button size="small" color="primary" disabled={isDone}>
+            <Button size="small" color="primary" disabled={this.state.isDone}>
               去提交
             </Button>
           </ExpansionPanelActions>
@@ -90,4 +126,13 @@ HomeworkItem.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles (styles) (HomeworkItem);
+const mapStateToProps = state =>({
+})
+const mapDispatchToProps = dispatch =>({
+})
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withStyles(styles)(HomeworkItem))
+
+//export default withStyles (styles) (HomeworkItem);

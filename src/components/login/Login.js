@@ -16,8 +16,8 @@ class Login extends React.Component {
     };
 
     handleLogin = () => {
-        // this.props.login(10165101228, 123);
-        this.props.login(this.state.id, this.state.password);
+         //this.props.login1(10165101228, 10165101228);
+        this.props.login1(this.state.id, this.state.password);
     }
 
     handleChange = name => event => {
@@ -77,7 +77,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: (id, password) => dispatch(login(id, password)),
+    login1: (id, password) => dispatch(login(id, password)),
 })
 
 export default connect(

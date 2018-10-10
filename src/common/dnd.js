@@ -79,7 +79,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  refresh: () => dispatch(refreshSchedule())
+  //refresh: () => dispatch(refreshSchedule())
 })
 
 export default connect(
