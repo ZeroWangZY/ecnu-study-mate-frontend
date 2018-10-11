@@ -52,7 +52,7 @@ class ScheduleReviewItem extends Component {
                 minHeight: 80
               }}>{review.content}</Typography>
               <Typography variant="caption" gutterBottom align="right">
-                {this.props.studentId === review.reviewerID
+                {this.props.studentId + '' === review.reviewerID + ''
                   ? <Button
                       color="secondary"
                       className={classes.button}
