@@ -1,5 +1,5 @@
 import {post} from "./api";
-import {getStudentId, getStudentInfo, getUserInfo} from "../redux/store";
+import {getStudentId, getUserInfo} from "../redux/store";
 
 export const addScheduleReviewAPI = (content) => {
   return post('/schedule/addReview', {

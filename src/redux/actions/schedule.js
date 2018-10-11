@@ -1,4 +1,4 @@
-import {getScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI, getUserInfoAPI} from '../../api/api'
+import {getScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI} from '../../api/api'
 import {setSnackText} from './app';
 import {getScheduleReviewAPI, addScheduleReviewAPI, deleteScheduleReviewAPI} from '../../api/schedule';
 

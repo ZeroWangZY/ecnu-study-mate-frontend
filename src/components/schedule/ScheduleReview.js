@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {withStyles} from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import AddScheduleReview from './AddScheduleReview';
 import ScheduleReviewItem from './ScheduleReviewItem';
 
@@ -20,6 +17,7 @@ class ScheduleReview extends Component {
     )
   }
 }
+
 const mapStateToProps = state => ({reviewList: state.schedule.reviewList})
 const mapDispatchToProps = dispatch => ({})
 
