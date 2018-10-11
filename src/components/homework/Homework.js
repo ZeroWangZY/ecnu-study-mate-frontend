@@ -11,7 +11,7 @@ class Homework extends React.Component {
     constructor(props){
         super(props);
     }
-
+// TODO: move refresh2() to componentDidMiunt
   render () {
       this.props.refresh2();
    //     const {homeList}=this.state;

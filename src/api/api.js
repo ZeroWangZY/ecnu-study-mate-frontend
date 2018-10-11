@@ -10,7 +10,6 @@ export const loginAPI = (id, password) => {
         }
     }).then(res => {
         if(res.status >= 200 && res.status < 300){
-            console.log("loginapi"+res);
             return res.json();
         } else {
             return res.json().then(Promise.reject.bind(Promise));
@@ -52,13 +51,10 @@ export const getMonthScheduleAPI = () => {
     let data = {
         'date': time.getFullYear() + '-' + month + '-' + day
     }
-  //  console.log(data.date.toString());
     return post('/schedule/getMonthSchedule', data).then(res => res.data.list);
 }
 
 export const addScheduleAPI = (title, desc, start, end) => {
-
-    //console.log(getStudentId());
     return post('/schedule/baseSqlHandle', {
         insert: [{
             'studentId': getStudentId(),

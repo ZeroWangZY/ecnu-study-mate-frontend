@@ -2,11 +2,8 @@ import { getMonthScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleA
 import { setSnackText } from './app';
 
 export const refreshSchedule = () => {
-    console.log("12111212");
   return dispatch => {
     getMonthScheduleAPI().then(data => {
-        console.log("33333");
-    //    writeObj(data);
       dispatch(setSchedule(data));
     });
   }
@@ -47,28 +44,4 @@ const setSchedule = (data) => ({
   data: data
 })
 
-function writeObj(obj){
-    var description = "";
-    var des2='';
-    for(var i in obj){
-        var property=obj[i];
-        description+=i+" = "+property+"\n";
-        for(var j in property){
-            var a=property[j];
-            des2+=j+" = " +a+"\n";
-        }
-        console.log(des2);
-    }
-    //alert(description);
-    console.log(description);
-}
-
-function writeObj2(obj){
-    var description = "";
-    for(var i in obj){
-        var property=obj[i];
-        description+=i+" = "+property+"\n";
-    }
-    console.log(description);
-}
 
