@@ -10,7 +10,7 @@ let store = createStore(
 );
 
 const localStore = localForage.createInstance({
-    name: "xyt"
+    name: "xyt" + require("../../../package.json").version
 });
 
 store.subscribe(() => {
