@@ -9,9 +9,9 @@ import { addScheduleReview } from '../../redux/actions/schedule';
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-    root: {
-      flexGrow: 1
-    }
+    // root: {
+    //   flexGrow: 1
+    // }
   }
 });
 
@@ -36,7 +36,7 @@ class AddScheduleReview extends Component {
     const {classes} = this.props;
     return (
       <Grid container>
-        <Grid item xs={10}>
+        <Grid item xs={9}>
           <TextField
             label="评论"
             style={{
@@ -51,7 +51,6 @@ class AddScheduleReview extends Component {
             shrink: true
           }}/>
         </Grid>
-        <Grid item xs={1} />
         <Grid item xs={1}>
           <Button onClick={this.addReview} variant="contained" color="primary" className={classes.button}>
             发送
