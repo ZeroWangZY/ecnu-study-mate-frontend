@@ -1,5 +1,6 @@
-import { loginAPI, refreshTokenAPI } from '../../api/api'
+import { loginAPI, refreshTokenAPI, getUserInfoAPI } from '../../api/api'
 import { refreshSchedule } from './schedule';
+import { getStudentId } from '../store';
 
 export const setDrawer = shouldShowDrawer => ({
   type: 'SET_DRAWER',
@@ -15,8 +16,8 @@ export const login = (id, password) => dispatch => {
   loginAPI(id, password)
     .then(json => {
       dispatch(loginAction(json.access_token, json.refresh_token, id));
-      dispatch(refreshSchedule());
-      dispatch(setSnackText('登录成功'));
+      dispatch(getUserInfoAndSchedule);
+      dispatch(setSnackText('登录成功')); 
     })
     .catch(json => {
       dispatch(setSnackText('登录失败：' + json.error_description));
@@ -69,4 +70,22 @@ const loginAction = (accessToken, refreshToken, studentId) => ({
 
 export const logoutAction = {
   type: 'LOGOUT'
+}
+
+const getUserInfoAndSchedule = dispatch => {
+  getUserInfoAPI(getStudentId()).then(res => {
+    if (res.flag === 'ROLE_ADVISOR') {
+      getUserInfoAPI(res.data.studentId).then(res => {
+        dispatch({
+          type: 'SET_APP',
+          data: { studentInfo: res.data }
+        })
+      })
+    }
+    dispatch({
+      type: 'SET_APP',
+      data: { role: res.flag, userInfo: res.data }
+    })
+    dispatch(refreshSchedule());
+  })
 }

@@ -1,11 +1,13 @@
-import { getMonthScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI } from '../../api/api'
+import { getScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI, getUserInfoAPI } from '../../api/api'
 import { setSnackText } from './app';
+import { getStudentId } from '../store';
 
 export const refreshSchedule = () => {
   return dispatch => {
-    getMonthScheduleAPI().then(data => {
+    getScheduleAPI().then(data => {
       dispatch(setSchedule(data));
     });
+    getUserInfoAPI(getStudentId());
   }
 }
 

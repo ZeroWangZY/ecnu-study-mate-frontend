@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import localForage from 'localforage';
+import { refreshSchedule } from '../actions/schedule';
 
 let store = createStore(
     rootReducer,
@@ -22,6 +23,9 @@ store.subscribe(() => {
 const getAccessToken = () => store.getState().app.accessToken
 const getStudentId = () => store.getState().app.studentId
 const getRefreshToken = () => store.getState().app.refreshToken
+const getRole = () => store.getState().app.role
+const getUserInfo = () => store.getState().app.userInfo
+const getStudentInfo = () => store.getState().app.studentInfo
 const getDispatch = () => store.dispatch
 
-export { store, getAccessToken, getStudentId, getRefreshToken, getDispatch }
+export { store, getAccessToken, getStudentId, getRefreshToken, getDispatch, getRole, getUserInfo, getStudentInfo }

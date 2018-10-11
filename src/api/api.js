@@ -1,4 +1,4 @@
-import { getStudentId, getAccessToken, getRefreshToken } from "../redux/store";
+import { getStudentId, getAccessToken, getRefreshToken, getUserInfo } from "../redux/store";
 
 const urlPrefix = '/api'
 
@@ -43,15 +43,17 @@ const post = (url, data) => {
     }).then(res => res.json())
 }
 
+export const getUserInfoAPI = (id) => {
+    return post('/user/getInfo', {
+        studentId: id
+    })
+}
 
-export const getMonthScheduleAPI = () => {
-    let time = new Date();
-    let month = time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1;
-    let day = time.getDate() + 1 < 10 ? '0' + (time.getDate() + 1) : time.getDate() + 1;
-    let data = {
-        'date': time.getFullYear() + '-' + month + '-' + day
-    }
-    return post('/schedule/getMonthSchedule', data).then(res => res.data.list);
+export const getScheduleAPI = () => {
+    return post('/schedule/search', {
+        eq_studentId: getUserInfo().studentId,
+        limit: 1000
+    }).then(res => res.data.rows)
 }
 
 export const addScheduleAPI = (title, desc, start, end) => {

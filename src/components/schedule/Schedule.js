@@ -103,20 +103,24 @@ class Schedule extends Component {
 
   render() {
     const { classes } = this.props;
+    const isAdvisor = this.props.role === 'ROLE_ADVISOR'
+    const addScheduleButton = isAdvisor ?
+      null :
+      <Button
+        variant="extendedFab"
+        aria-label="add"
+        className={classes.button}
+        color="primary"
+        onClick={this.handleClickOpen}
+      >
+        <AddIcon className={classes.extendedIcon} />
+        新增安排
+      </Button>
     return (
       <div className="schedule-container">
         <Dnd openEditDialog={this.openEditDialog} />
-        <Button
-          variant="extendedFab"
-          aria-label="add"
-          className={classes.button}
-          color="primary"
-          onClick={this.handleClickOpen}
-        >
-          <AddIcon className={classes.extendedIcon} />
-          新增安排
-        </Button>
-
+        {addScheduleButton}
+        {isAdvisor ? null : 
         <Dialog
           open={this.state.open}
           TransitionComponent={Transition}
@@ -196,11 +200,13 @@ class Schedule extends Component {
             </Button>}
           </DialogActions>
         </Dialog>
+        }
       </div>
     );
   }
 }
 const mapStateToProps = state => ({
+  role: state.app.role
 })
 
 const mapDispatchToProps = dispatch => ({
