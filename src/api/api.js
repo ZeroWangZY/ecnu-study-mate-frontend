@@ -32,7 +32,7 @@ export const refreshTokenAPI = () => {
     })
 }
 
-const post = (url, data) => {
+export const post = (url, data) => {
     return fetch(urlPrefix + url, {
         method: 'POST',
         body: JSON.stringify(data),

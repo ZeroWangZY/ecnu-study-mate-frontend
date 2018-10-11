@@ -2,7 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import localForage from 'localforage';
-import { refreshSchedule } from '../actions/schedule';
 
 let store = createStore(
     rootReducer,
