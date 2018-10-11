@@ -10,7 +10,6 @@ class ScheduleReview extends Component {
   render() {
     return (
       <div>
-        评论
         <AddScheduleReview/> 
         {this.props.reviewList.map((review, index) => <ScheduleReviewItem key={index} review={review}/>)}
       </div>

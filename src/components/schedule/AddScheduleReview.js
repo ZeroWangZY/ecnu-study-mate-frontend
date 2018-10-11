@@ -35,7 +35,7 @@ class AddScheduleReview extends Component {
   render() {
     const {classes} = this.props;
     return (
-      <Grid container spacing={24}>
+      <Grid container>
         <Grid item xs={10}>
           <TextField
             label="评论"
@@ -51,7 +51,8 @@ class AddScheduleReview extends Component {
             shrink: true
           }}/>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1} />
+        <Grid item xs={1}>
           <Button onClick={this.addReview} variant="contained" color="primary" className={classes.button}>
             发送
           </Button>
