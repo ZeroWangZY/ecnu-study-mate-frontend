@@ -29,6 +29,14 @@ export const mailFolderListItems = (
         <ListItemText primary="作业" />
       </ListItem>
     </Link>
+      <Link to="/homeworkManage">
+          <ListItem button>
+              <ListItemIcon>
+                  <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="作业管理" />
+          </ListItem>
+      </Link>
     <ListItem button>
       <ListItemIcon>
         <SendIcon />
@@ -41,6 +49,7 @@ export const mailFolderListItems = (
       </ListItemIcon>
       <ListItemText primary="学习资料" />
     </ListItem>
+
   </div>
 );
 

@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import HomeworkItem from './HomeworkItem';
-import { withStyles } from '@material-ui/core/styles';
 
 import {connect} from "react-redux";
 import {refreshHomework} from "../../redux/actions/homework";
-import {refreshSchedule} from "../../redux/actions/schedule";
 import {getStudentId} from "../../redux/store";
 
 class Homework extends React.Component {
     constructor(props){
         super(props);
+
+    }
+    componentDidMount() {
+        this.props.refresh2();
     }
 
   render () {
-      this.props.refresh2();
-   //     const {homeList}=this.state;
     return (
       <div className="homework-container" style={{textAlign: 'center'}}>
           {
@@ -42,4 +42,3 @@ const HomeworkPage = connect(
     mapDispatchToProps
 )(Homework);
 export default HomeworkPage
-//export default Homework;

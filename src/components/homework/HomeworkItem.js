@@ -52,8 +52,6 @@ const styles = theme => ({
 class HomeworkItem extends React.Component {
   constructor(props){
       super(props);
-      // this.initState=this.initState().bind(this);
-     // this.initState();
   }
 
   state = {
@@ -68,25 +66,8 @@ class HomeworkItem extends React.Component {
       homework_file:this.props.item.homework_file,
       isDone:this.props.item.state==="finish"
   }
-
-  /*initState = () =>{
-    this.setState({
-        homeworkID:this.props.item.homeworkID,
-        title:this.props.item.title,
-        content:this.props.item.content,
-        deadline:this.props.item.deadline,
-        state:this.props.item.deadline,
-        publisher:this.props.item.publisher,
-        receiver:this.props.item.receiver,
-        grade:this.props.item.grade,
-        homework_file:this.props.item.homework_file,
-        isDone:true
-    })
-  }*/
   render () {
-  //  const {classes, isDone} = this.props;
     const {classes} = this.props;
-   // this.initState;
     return (
       <div className={classes.root}>
         <ExpansionPanel defaultExpanded>
@@ -134,5 +115,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(withStyles(styles)(HomeworkItem))
-
-//export default withStyles (styles) (HomeworkItem);

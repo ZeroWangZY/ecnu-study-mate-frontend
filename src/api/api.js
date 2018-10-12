@@ -10,7 +10,6 @@ export const loginAPI = (id, password) => {
         }
     }).then(res => {
         if(res.status >= 200 && res.status < 300){
-            console.log("loginapi"+res);
             return res.json();
         } else {
             return res.json().then(Promise.reject.bind(Promise));
@@ -107,39 +106,37 @@ export const getHomeworkDetailAPI = (id) => {
 }
 
 export const addHomeworkAPI = (title,content1,deadline,publisher,receiver) => {
-    return post('/homework/add',{
-        insert:[{
+  //  console.log("addHomeworkAPI"+" "+title+" "+content1+" "+deadline+" "+publisher+" "+receiver);
+    return post('/homework/add', {
             'title':title,
             'content':content1,
             'deadline':deadline,
             'publisher':publisher,
             'receiver':receiver
-    }],
-        update: [],
-        delete: []
-    });
+    })
 }
 
-export const deleteHomeworkAPI = (id) => {
+export const deleteHomeworkAPI = (homeworkID) => {
     return post('/homework/delete',{
-        insert:[],
-        update:[],
-        delete:[id]
+        "homework_id" : homeworkID
     });
 }
 
-export const updateHomeworkAPI = (id,title,content1,deadline,publisher,receiver) =>{
-    return post("")
+export const updateHomeworkAPI = (homeworkID,title,content1,deadline,receiver,grade,state) =>{
+    console.log("updateHomeworkAPI"+content1);
+    return post("/homework/update",{
+        'title':title,
+        "homework_id" : homeworkID,
+        'content':content1,
+        'deadline':deadline,
+        'grade':grade
+    });
 }
 
 export const changeHomeworkContentAPI = (id,content) => {
     return post('/homework/content',{
-        insert:[],
-        update:[{
             'content':content,
             'homework_id':id
-        }],
-        delete:[]
     });
 }
 
