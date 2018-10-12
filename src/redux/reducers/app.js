@@ -1,30 +1,21 @@
 const initialState = {
     shouldShowDrawer: false,
     isLoginned: false,
-    studentId: null,
+    studentId: null,  // 登录者的id
     accessToken: null,
     refreshToken: null,
-    snackbarText: '',
+    snackbarText: '', // 提示框文字
+    userInfo: {},
+    role: null,  // 用户角色
+    studentInfo: {} // 如果用户是导师，他所指导学生的信息
 }
 
 const app = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_DRAWER':
             return Object.assign({}, state, { shouldShowDrawer: action.val });
-        case 'LOGIN':
-            return Object.assign({}, state, {
-                isLoginned: true,
-                studentId: action.studentId,
-                accessToken: action.accessToken,
-                refreshToken: action.refreshToken
-            });
         case 'LOGOUT':
-            return Object.assign({}, state, {
-                isLoginned: false,
-                studentId: null,
-                accessToken: null,
-                refreshToken: null
-            });
+            return initialState;
         case 'SET_TOKEN':
             return Object.assign({}, state, {
                 accessToken: action.accessToken,

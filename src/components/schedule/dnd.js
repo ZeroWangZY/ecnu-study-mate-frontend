@@ -4,10 +4,8 @@ import { DragDropContext } from 'react-dnd'
 import BigCalendar from 'react-big-calendar'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import { connect } from 'react-redux'
-
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import './big-calendar.css'
-import { refreshSchedule } from '../redux/actions/schedule';
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
@@ -75,11 +73,10 @@ class Dnd extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  schedule: state.schedule
+  schedule: state.schedule.scheduleList
 })
 
 const mapDispatchToProps = dispatch => ({
-  //refresh: () => dispatch(refreshSchedule())
 })
 
 export default connect(

@@ -2,18 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5656f4ad-b34b-4871-b380-3f51e8197491" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/redux/reducers/homeworkManage.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/api/schedule.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/schedule/AddScheduleReview.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/schedule/ScheduleReview.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/schedule/ScheduleReviewItem.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
       <change beforePath="$PROJECT_DIR$/src/api/api.js" afterPath="$PROJECT_DIR$/src/api/api.js" />
-      <change beforePath="$PROJECT_DIR$/src/common/MenuItem.js" afterPath="$PROJECT_DIR$/src/common/MenuItem.js" />
-      <change beforePath="$PROJECT_DIR$/src/common/dnd.js" afterPath="$PROJECT_DIR$/src/common/dnd.js" />
+      <change beforePath="$PROJECT_DIR$/src/common/LeftMenu.js" afterPath="$PROJECT_DIR$/src/common/LeftMenu.js" />
+      <change beforePath="$PROJECT_DIR$/src/common/MenuItem.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/common/Snackbar.js" afterPath="$PROJECT_DIR$/src/common/Snackbar.js" />
+      <change beforePath="$PROJECT_DIR$/src/common/big-calendar.css" afterPath="$PROJECT_DIR$/src/components/schedule/big-calendar.css" />
+      <change beforePath="$PROJECT_DIR$/src/common/dnd.js" afterPath="$PROJECT_DIR$/src/components/schedule/dnd.js" />
       <change beforePath="$PROJECT_DIR$/src/components/homework/Homework.js" afterPath="$PROJECT_DIR$/src/components/homework/Homework.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" afterPath="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" />
       <change beforePath="$PROJECT_DIR$/src/components/login/Login.js" afterPath="$PROJECT_DIR$/src/components/login/Login.js" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/homework.js" afterPath="$PROJECT_DIR$/src/redux/actions/homework.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/schedule/Schedule.js" afterPath="$PROJECT_DIR$/src/components/schedule/Schedule.js" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/app.js" afterPath="$PROJECT_DIR$/src/redux/actions/app.js" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions/schedule.js" afterPath="$PROJECT_DIR$/src/redux/actions/schedule.js" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/index.js" afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/app.js" afterPath="$PROJECT_DIR$/src/redux/reducers/app.js" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/schedule.js" afterPath="$PROJECT_DIR$/src/redux/reducers/schedule.js" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store/index.js" afterPath="$PROJECT_DIR$/src/redux/store/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +31,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.50592524">
+    <splitter split-orientation="horizontal" split-proportion="0.28387097">
       <split-first>
         <leaf>
           <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
@@ -41,23 +49,10 @@
           <file leaf-file-name="Schedule.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/schedule/Schedule.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="547">
-                  <caret line="186" column="58" lean-forward="false" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="58" />
+                <state relative-caret-position="1642">
+                  <caret line="207" column="20" lean-forward="false" selection-start-line="207" selection-start-column="20" selection-end-line="207" selection-end-column="20" />
                   <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                    <element signature="e#3402#5074#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dnd.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/dnd.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="370">
-                  <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="59" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
+                    <marker date="1539358471000" expanded="true" signature="7:15" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -103,21 +98,36 @@
           <file leaf-file-name="Snackbar.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/common/Snackbar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-143">
-                  <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
-                  <folding />
+                <state relative-caret-position="-113">
+                  <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+                  <folding>
+                    <marker date="1539358471000" expanded="true" signature="641:1848" ph="{...}" />
+                    <marker date="1539358471000" expanded="true" signature="738:849" ph="{&quot;vertical&quot;: 'bottom'...}" />
+                    <marker date="1539358471000" expanded="true" signature="1015:1096" ph="{&quot;aria-describedby&quot;: 'message-id'...}" />
+                    <marker date="1539358471000" expanded="true" signature="2039:2095" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Login.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Login.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/login/Login.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-380">
-                  <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+                <state relative-caret-position="-230">
+                  <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="LeftMenu.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/common/LeftMenu.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="525">
+                  <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -158,11 +168,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/api/api.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="423">
-                  <caret line="130" column="16" lean-forward="false" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
+                  <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -181,7 +191,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Homework</find>
       <find>&lt;Route path=&quot;/message&quot; component={Message} /&gt;</find>
       <find>Route path=&quot;/message</find>
       <find>&lt;Button</find>
@@ -209,8 +218,9 @@
       <find>console.lo</find>
       <find>writeObj2</find>
       <find>event</find>
-      <find>10165101228</find>
       <find>评分</find>
+      <find>10165101228</find>
+      <find>学习计划</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -244,8 +254,8 @@
         <option value="$PROJECT_DIR$/src/components/homework/Homework.js" />
         <option value="$PROJECT_DIR$/src/redux/actions/homework.js" />
         <option value="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" />
-        <option value="$PROJECT_DIR$/src/components/login/Login.js" />
         <option value="$PROJECT_DIR$/src/api/api.js" />
+        <option value="$PROJECT_DIR$/src/components/login/Login.js" />
       </list>
     </option>
   </component>
@@ -310,41 +320,6 @@
               <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="homework" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="homeworkManage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="message" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -492,12 +467,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538119362597</updated>
-      <workItem from="1538119364025" duration="108961000" />
+      <workItem from="1538119364025" duration="109431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108961000" />
+    <option name="totallyTimeSpent" value="109431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -648,20 +623,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/LeftMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/actions/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="967">
           <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="14" />
           <folding>
-            <element signature="e#0#57#0" expanded="false" />
+            <element signature="e#0#71#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -698,16 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/MenuItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="31" lean-forward="false" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/reducers/homeworkManage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -736,19 +693,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/common/Snackbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="-113">
+          <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+          <folding>
+            <marker date="1539358471000" expanded="true" signature="641:1848" ph="{...}" />
+            <marker date="1539358471000" expanded="true" signature="738:849" ph="{&quot;vertical&quot;: 'bottom'...}" />
+            <marker date="1539358471000" expanded="true" signature="1015:1096" ph="{&quot;aria-describedby&quot;: 'message-id'...}" />
+            <marker date="1539358471000" expanded="true" signature="2039:2095" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/schedule/Schedule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="186" column="58" lean-forward="false" selection-start-line="186" selection-start-column="38" selection-end-line="186" selection-end-column="58" />
+        <state relative-caret-position="1642">
+          <caret line="207" column="20" lean-forward="false" selection-start-line="207" selection-start-column="20" selection-end-line="207" selection-end-column="20" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
-            <element signature="e#3402#5074#0" expanded="false" />
+            <marker date="1539358471000" expanded="true" signature="7:15" ph="..." />
           </folding>
         </state>
       </provider>
@@ -796,27 +757,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
           <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4775">
-          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/login/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,11 +771,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4775">
+          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/api/api.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
-          <caret line="130" column="16" lean-forward="false" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
+          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/LeftMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/MenuItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/login/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

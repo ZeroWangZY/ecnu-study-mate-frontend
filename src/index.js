@@ -12,7 +12,7 @@ import { updateTokenAction, setApp } from './redux/actions/app';
 import localForage from "localforage";
 
 const localStore = localForage.createInstance({
-  name: "xyt"
+  name: "xyt" + require("../package.json").version
 });
 
 localStore.getItem('app').then(data => {

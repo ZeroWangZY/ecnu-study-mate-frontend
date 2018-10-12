@@ -13,7 +13,7 @@ class Homework extends React.Component {
     componentDidMount() {
         this.props.refresh2();
     }
-
+// TODO: move refresh2() to componentDidMiunt
   render () {
     return (
       <div className="homework-container" style={{textAlign: 'center'}}>

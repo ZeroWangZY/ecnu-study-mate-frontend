@@ -10,7 +10,7 @@ let store = createStore(
 );
 
 const localStore = localForage.createInstance({
-    name: "xyt"
+    name: "xyt" + require("../../../package.json").version
 });
 
 store.subscribe(() => {
@@ -22,6 +22,9 @@ store.subscribe(() => {
 const getAccessToken = () => store.getState().app.accessToken
 const getStudentId = () => store.getState().app.studentId
 const getRefreshToken = () => store.getState().app.refreshToken
+const getRole = () => store.getState().app.role
+const getUserInfo = () => store.getState().app.userInfo
+const getStudentInfo = () => store.getState().app.studentInfo
 const getDispatch = () => store.dispatch
 
-export { store, getAccessToken, getStudentId, getRefreshToken, getDispatch }
+export { store, getAccessToken, getStudentId, getRefreshToken, getDispatch, getRole, getUserInfo, getStudentInfo }
