@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Dnd from './dnd';
+import Calendar from './Calendar';
 import {withStyles} from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import {connect} from 'react-redux'
 import {addSchedule, updateSchedule, deleteSchedule} from '../../redux/actions/schedule';
 import ScheduleReview from './ScheduleReview';
+import { jsDateToCalendarDate } from '../../util/date';
 
 const styles = theme => ({
   button: {
@@ -30,7 +31,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
+    width: 230
   }
 });
 
@@ -39,12 +40,11 @@ function Transition(props) {
 }
 
 class Schedule extends Component {
-
   state = {
     open: false,
     title: '',
-    start: '2018-08-01T10:00',
-    end: '2018-08-01T10:00',
+    start: jsDateToCalendarDate(new Date()),
+    end: jsDateToCalendarDate(new Date()),
     desc: '',
     editing: false,
     currentEvent: null
@@ -54,8 +54,8 @@ class Schedule extends Component {
     this.setState({
       open: false,
       title: '',
-      start: '2018-08-01T10:00',
-      end: '2018-08-01T10:00',
+      start: jsDateToCalendarDate(new Date()),
+      end: jsDateToCalendarDate(new Date()),
       desc: '',
       editing: false
     })
@@ -130,7 +130,7 @@ class Schedule extends Component {
       </Button>
     return (
       <div className="schedule-container">
-        <Dnd openEditDialog={this.openEditDialog}/> {addScheduleButton}
+        <Calendar openEditDialog={this.openEditDialog}/> {addScheduleButton}
         {isAdvisor
           ? null
           : <Dialog

@@ -297,11 +297,11 @@
     -webkit-flex: 1 0 0;
         -ms-flex: 1 0 0px;
             flex: 1 0 0;
-    -webkit-flex-basis: 0px;
+    /* -webkit-flex-basis: 0px;
         -ms-flex-preferred-size: 0px;
-            flex-basis: 0px;
+            flex-basis: 0px; */
     overflow: hidden;
-    height: 100%;
+    height: 150px;
   }
   .rbc-month-row + .rbc-month-row {
     border-top: 1px solid #DDD;

@@ -22,21 +22,21 @@ const refreshScheduleReview = dispatch => {
 
 export const addSchedule = (title, desc, start, end) => dispatch => {
   addScheduleAPI(title, desc, start, end).then(res => {
-    dispatch(refreshSchedule());
+    dispatch(refreshSchedule);
     dispatch(setSnackText('添加成功'));
   })
 }
 
 export const updateSchedule = (id, title, desc, start, end) => dispatch => {
   updateScheduleAPI(id, title, desc, start, end).then(res => {
-    dispatch(refreshSchedule());
+    dispatch(refreshSchedule);
     dispatch(setSnackText('更新成功'));
   })
 }
 
 export const deleteSchedule = (id) => dispatch => {
   deleteScheduleAPI(id).then(res => {
-    dispatch(refreshSchedule());
+    dispatch(refreshSchedule);
     dispatch(setSnackText('删除成功'));
   })
 }
