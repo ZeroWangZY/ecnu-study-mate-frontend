@@ -1,6 +1,6 @@
 export const jsDateToCalendarDate = date => {
   let year = date.getFullYear();
-  let month = addZeroIfLessThanTen(date.getMonth());
+  let month = addZeroIfLessThanTen(date.getMonth() + 1);
   let day = addZeroIfLessThanTen(date.getDate());
   let hour = addZeroIfLessThanTen(date.getHours());
   let minute = addZeroIfLessThanTen(date.getMinutes());
