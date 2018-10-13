@@ -229,22 +229,10 @@ class HomeworkManage extends React.Component{
                                         margin="dense"
                                         id="content"
                                         label="成绩"
-                                        type="name"
+                                        type="number"
                                         value={this.state.grade}
                                         onChange={this.handleChange('grade')}
                                         className={classes.textField}
-                                    />
-
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        margin="dense"
-                                        id="state"
-                                        label="状态"
-                                        type="name"
-                                        value={this.state.state}
-                                        className={classes.textField}
-                                        onChange={this.handleChange('state')}
                                     />
                                     <TextField
                                         required
@@ -259,17 +247,6 @@ class HomeworkManage extends React.Component{
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
-                                    />
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        margin="dense"
-                                        id="receiver"
-                                        label="receiver学号"
-                                        type="name"
-                                        value={this.state.receiver}
-                                        onChange={this.handleChange('receiver')}
-                                        className={classes.textField}
                                     />
 
                                 </div>:
@@ -315,7 +292,7 @@ class HomeworkManage extends React.Component{
                                         margin="dense"
                                         id="receiver"
                                         label="receiver学号"
-                                        type="name"
+                                        type="number"
                                         value={this.state.receiver}
                                         onChange={this.handleChange('receiver')}
                                         className={classes.textField}
