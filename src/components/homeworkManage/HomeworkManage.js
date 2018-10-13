@@ -99,7 +99,6 @@ class HomeworkManage extends React.Component{
             grade:event.grade==null?"":event.grade,
             isDone:event.isDone
         })
-        console.log(this.state.grade+"55555");
     }
 
     openDeleteDialog= (event) =>{

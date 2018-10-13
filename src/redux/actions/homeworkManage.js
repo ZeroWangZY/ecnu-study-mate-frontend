@@ -17,7 +17,6 @@ export const refreshHomework = (id) => {
 }
 
 export const addHomework = (title,content1,deadline,publisher,receiver) => {
-    console.log("addHomework");
     return dispatch => {
         addHomeworkAPI(title,content1,deadline,publisher,receiver)
             .then(res => {

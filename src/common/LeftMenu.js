@@ -41,12 +41,20 @@ class Leftmenu extends Component {
             </Link>
             <Link to="/homework">
               <ListItem button>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary="作业" />
+                  <ListItemIcon>
+                      <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="作业" />
               </ListItem>
-            </Link>
+          </Link>
+              <Link to="/homeworkManage">
+                  <ListItem button>
+                      <ListItemIcon>
+                          <InboxIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="作业管理" />
+                  </ListItem>
+              </Link>
             <ListItem button>
               <ListItemIcon>
                 <SendIcon />

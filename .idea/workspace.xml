@@ -2,26 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5656f4ad-b34b-4871-b380-3f51e8197491" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/api/schedule.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/schedule/AddScheduleReview.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/schedule/ScheduleReview.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/schedule/ScheduleReviewItem.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" afterPath="$PROJECT_DIR$/src/api/api.js" />
       <change beforePath="$PROJECT_DIR$/src/common/LeftMenu.js" afterPath="$PROJECT_DIR$/src/common/LeftMenu.js" />
-      <change beforePath="$PROJECT_DIR$/src/common/MenuItem.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/common/Snackbar.js" afterPath="$PROJECT_DIR$/src/common/Snackbar.js" />
-      <change beforePath="$PROJECT_DIR$/src/common/big-calendar.css" afterPath="$PROJECT_DIR$/src/components/schedule/big-calendar.css" />
-      <change beforePath="$PROJECT_DIR$/src/common/dnd.js" afterPath="$PROJECT_DIR$/src/components/schedule/dnd.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/homework/Homework.js" afterPath="$PROJECT_DIR$/src/components/homework/Homework.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.js" afterPath="$PROJECT_DIR$/src/components/login/Login.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/schedule/Schedule.js" afterPath="$PROJECT_DIR$/src/components/schedule/Schedule.js" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/app.js" afterPath="$PROJECT_DIR$/src/redux/actions/app.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js" afterPath="$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/homeworkManage.js" afterPath="$PROJECT_DIR$/src/redux/actions/homeworkManage.js" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions/schedule.js" afterPath="$PROJECT_DIR$/src/redux/actions/schedule.js" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/app.js" afterPath="$PROJECT_DIR$/src/redux/reducers/app.js" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/schedule.js" afterPath="$PROJECT_DIR$/src/redux/reducers/schedule.js" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store/index.js" afterPath="$PROJECT_DIR$/src/redux/store/index.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,14 +16,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.28387097">
+    <splitter split-orientation="horizontal" split-proportion="0.27417925">
       <split-first>
         <leaf>
           <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+                <state relative-caret-position="480">
+                  <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -58,7 +43,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="HomeworkManage.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="HomeworkManage.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-4775">
@@ -68,7 +53,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="homework.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="homework.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/redux/actions/homework.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="15">
@@ -85,7 +70,7 @@
           <file leaf-file-name="HomeworkItem.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/homework/HomeworkItem.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="654">
+                <state relative-caret-position="1065">
                   <caret line="107" column="2" lean-forward="false" selection-start-line="107" selection-start-column="2" selection-end-line="107" selection-end-column="2" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
@@ -95,22 +80,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Snackbar.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/common/Snackbar.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-113">
-                  <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-                  <folding>
-                    <marker date="1539358471000" expanded="true" signature="641:1848" ph="{...}" />
-                    <marker date="1539358471000" expanded="true" signature="738:849" ph="{&quot;vertical&quot;: 'bottom'...}" />
-                    <marker date="1539358471000" expanded="true" signature="1015:1096" ph="{&quot;aria-describedby&quot;: 'message-id'...}" />
-                    <marker date="1539358471000" expanded="true" signature="2039:2095" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Login.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Login.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/login/Login.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-230">
@@ -125,8 +95,18 @@
           <file leaf-file-name="LeftMenu.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/common/LeftMenu.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="525">
-                  <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+                <state relative-caret-position="390">
+                  <caret line="51" column="36" lean-forward="true" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="homeworkManage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/reducers/homeworkManage.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="32" />
                   <folding />
                 </state>
               </provider>
@@ -160,7 +140,7 @@
             <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="247">
-                  <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+                  <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
                   <folding>
                     <element signature="e#0#183#0" expanded="true" />
                   </folding>
@@ -168,11 +148,33 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="api.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/api/api.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="423">
-                  <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
+                <state relative-caret-position="219">
+                  <caret line="126" column="22" lean-forward="true" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schedule.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/api/schedule.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#27#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="homework.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/reducers/homework.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -208,7 +210,6 @@
       <find>handleClose</find>
       <find>refreshHomeworkManage</find>
       <find>super</find>
-      <find>console.log</find>
       <find>events</find>
       <find>handleClickOpen</find>
       <find>writeObj</find>
@@ -216,11 +217,12 @@
       <find>updatet</find>
       <find>updateHomeworkAPI</find>
       <find>console.lo</find>
-      <find>writeObj2</find>
       <find>event</find>
       <find>评分</find>
-      <find>10165101228</find>
       <find>学习计划</find>
+      <find>10165101228</find>
+      <find>writeObj2</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -254,8 +256,9 @@
         <option value="$PROJECT_DIR$/src/components/homework/Homework.js" />
         <option value="$PROJECT_DIR$/src/redux/actions/homework.js" />
         <option value="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" />
-        <option value="$PROJECT_DIR$/src/api/api.js" />
         <option value="$PROJECT_DIR$/src/components/login/Login.js" />
+        <option value="$PROJECT_DIR$/src/common/LeftMenu.js" />
+        <option value="$PROJECT_DIR$/src/api/api.js" />
       </list>
     </option>
   </component>
@@ -320,6 +323,13 @@
               <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ecnu-study-mate-frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ecnu-study-mate-frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -467,12 +477,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538119362597</updated>
-      <workItem from="1538119364025" duration="109431000" />
+      <workItem from="1538119364025" duration="110281000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109431000" />
+    <option name="totallyTimeSpent" value="110281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -490,7 +500,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22389127" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19384836" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -633,14 +643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/homework.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -665,29 +667,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/homeworkManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/actions/schedule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,41 +698,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#183#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/homework.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/homework/Homework.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="14" selection-end-column="5" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/homework/HomeworkItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="107" column="2" lean-forward="false" selection-start-line="107" selection-start-column="2" selection-end-line="107" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#698#1423#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -771,30 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4775">
-          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="129" column="16" lean-forward="false" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/LeftMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/MenuItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -810,6 +741,95 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4775">
+          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/schedule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#183#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/homeworkManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/LeftMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="51" column="36" lean-forward="true" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/homework/HomeworkItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="107" column="2" lean-forward="false" selection-start-line="107" selection-start-column="2" selection-end-line="107" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#698#1423#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/homework.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/homework.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="126" column="22" lean-forward="true" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

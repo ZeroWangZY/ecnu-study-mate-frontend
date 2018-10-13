@@ -2,19 +2,10 @@ import {getScheduleAPI, addScheduleAPI, updateScheduleAPI, deleteScheduleAPI} fr
 import {setSnackText} from './app';
 import {getScheduleReviewAPI, addScheduleReviewAPI, deleteScheduleReviewAPI} from '../../api/schedule';
 
-<<<<<<< HEAD
-export const refreshSchedule = () => {
-  return dispatch => {
-    getMonthScheduleAPI().then(data => {
-    //    writeObj(data);
-      dispatch(setSchedule(data));
-    });
-  }
-=======
+
 export const refreshScheduleAndReview = dispatch => {
   dispatch(refreshScheduleReview);
   dispatch(refreshSchedule);
->>>>>>> f76e3fd8d72e6eb98166ae50bcf32c5e698f4ec2
 }
 
 const refreshSchedule = dispatch => {
@@ -50,8 +41,7 @@ export const deleteSchedule = (id) => dispatch => {
   })
 }
 
-<<<<<<< HEAD
-=======
+
 export const addScheduleReview = content => dispatch => {
   addScheduleReviewAPI(content).then(res => {
     dispatch(refreshScheduleReview)
@@ -65,7 +55,6 @@ export const deleteScheduleReview = id => dispatch => {
     dispatch(refreshScheduleReview)
   })
 }
->>>>>>> f76e3fd8d72e6eb98166ae50bcf32c5e698f4ec2
 
 const setSchedule = (data) => ({type: 'SET_SCHEDULE', data: data})
 
