@@ -84,7 +84,9 @@ class HomeworkItem extends React.Component {
               ? <div className={classes.column} style={{color: '#43A047'}}>
                     已完成
                 </div>
-              : null}
+              : <div className={classes.column} style={{color: '#c00'}}>
+                    待完成
+                </div>}
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.details}>
             <div>

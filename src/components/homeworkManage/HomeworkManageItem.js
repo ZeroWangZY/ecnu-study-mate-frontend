@@ -92,10 +92,7 @@ class HomeworkManageItem extends React.Component {
         grade:this.props.item.grade,
         homework_file:this.props.item.homework_file,
         isDone:this.props.item.state==="finish",
-        item:this.props.item,
-        //弹出框属性
-        open:false,
-        editing:false
+        item:this.props.item
     }
 
     initState = () => {
@@ -110,10 +107,7 @@ class HomeworkManageItem extends React.Component {
             grade:this.props.item.grade==null?"":this.props.item.grade,
             homework_file:this.props.item.homework_file,
             isDone:this.props.item.state==="finish",
-            item:this.props.item,
-            //弹出框属性
-            open:false,
-            editing:false
+            item:this.props.item
         })
 
     }
@@ -131,11 +125,14 @@ class HomeworkManageItem extends React.Component {
                                 学号: {this.state.receiver}
                             </Typography>
                         </div>
-                        {this.state.isDone
+                        {this.state.state==="mark"
+                            ? <div className={classes.column} >已打分</div>
+                            :this.state.state==="finish"
                             ? <div className={classes.column} style={{color: '#43A047'}}>
-                                已完成
+                                待评分
                             </div>
                             : <div  className={classes.column} style={{color:'#c00'}}>未完成</div>}
+
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.details}>
                         <div className={classes.row}>
@@ -164,43 +161,6 @@ class HomeworkManageItem extends React.Component {
                         </Button>
                     </ExpansionPanelActions>
                 </ExpansionPanel>
-                {/*<Button
-                    variant="extendedFab"
-                    aria-label="add"
-                    className={classes.button}
-                    color="primary"
-                    onClick={this.handleClickOpen}
-                >
-                    <AddIcon className={classes.extendedIcon} />
-                    新增作业
-                </Button>*/}
-
-                {/*<Dialog
-                    open={this.state.open}
-                    TransitionComponent={Transition}
-                    keepMounted
-                    onClose={this.handleClose}
-                    aria-labelledby="alert-dialog-slide-title"
-                    aria-describedby="alert-dialog-slide-description"
-                >
-                    <DialogTitle id="alert-dialog-slide-title">
-                        {this.state.editing ? '编辑安排' : '新增安排'}
-                    </DialogTitle>
-                    <DialogActions>
-                        {this.state.editing ?
-                            <div>
-                                <Button onClick={this.handleDeleteSchedule} color="secondary">
-                                    删除
-                                </Button>
-                                <Button onClick={this.handleEditSchedule} color="primary">
-                                    完成
-                                </Button>
-                            </div> :
-                            <Button onClick={this.handleAddSchedule} color="primary">
-                                完成
-                            </Button>}
-                    </DialogActions>
-                </Dialog>*/}
             </div>
 
         );
