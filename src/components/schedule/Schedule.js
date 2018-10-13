@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Dnd from './dnd';
+import Calendar from './Calendar';
 import {withStyles} from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
@@ -130,7 +130,7 @@ class Schedule extends Component {
       </Button>
     return (
       <div className="schedule-container">
-        <Dnd openEditDialog={this.openEditDialog}/> {addScheduleButton}
+        <Calendar openEditDialog={this.openEditDialog}/> {addScheduleButton}
         {isAdvisor
           ? null
           : <Dialog

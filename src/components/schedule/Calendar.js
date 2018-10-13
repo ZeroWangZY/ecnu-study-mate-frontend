@@ -5,11 +5,11 @@ import BigCalendar from 'react-big-calendar'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import { connect } from 'react-redux'
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
-import './big-calendar.css'
+import './Calendar.css'
 
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
-class Dnd extends React.Component {
+class Calendar extends React.Component {
   constructor(props) {
     super(props)
  //   this.moveEvent = this.moveEvent.bind(this)
@@ -51,7 +51,7 @@ class Dnd extends React.Component {
     return (
       <DragAndDropCalendar
         selectable
-        events={this.props.schedule.map((item,index) => ({
+        events={this.props.schedule.map((item) => ({
           id: item.id,
           title: item.title,
           start: new Date(item.startTime),
@@ -82,4 +82,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DragDropContext(HTML5Backend)(Dnd))
+)(DragDropContext(HTML5Backend)(Calendar))
