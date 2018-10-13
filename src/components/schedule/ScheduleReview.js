@@ -11,7 +11,7 @@ class ScheduleReview extends Component {
     return (
       <div>
         <AddScheduleReview/> 
-        {this.props.reviewList.map((review, index) => <ScheduleReviewItem key={index} review={review}/>)}
+        {this.props.reviewList.map((review) => <ScheduleReviewItem key={review.reviewID} review={review}/>)}
       </div>
     )
   }
