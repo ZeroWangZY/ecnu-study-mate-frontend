@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import HomeworkManageItem from './HomeworkManageItem'
 import {connect} from "react-redux"
 import { withStyles } from '@material-ui/core/styles';
-import {refreshHomework} from "../../redux/actions/homeworkManage";
-import {getStudentId} from "../../redux/store";
+import {refreshHomeworkManage} from "../../redux/actions/homeworkManage";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -15,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 import {addHomework} from "../../redux/actions/homeworkManage"
 import {deleteHomework} from "../../redux/actions/homeworkManage"
 import {updateHomework} from "../../redux/actions/homeworkManage"
+import {getReceiverId, getStudentId} from "../../redux/store";
 
 const styles = theme => ({
     button: {
@@ -39,12 +39,8 @@ const styles = theme => ({
 function Transition(props) {
     return <Slide direction="up" {...props} />;
 }
-class HomeworkManage extends React.Component{
+class HomeworkManage extends Component{
 
-
-    constructor(props) {
-        super(props);
-    }
     state = {
         open:false,
         editing:false,
@@ -55,7 +51,7 @@ class HomeworkManage extends React.Component{
         content: "homeworkcontentTest",
         deadline: '2018-08-01T10:00',
         publisher: getStudentId(),
-        receiver: 10165101228,
+        receiver: getReceiverId(),
         homework_file:"",
         grade:"",
         isDone:false
@@ -76,7 +72,7 @@ class HomeworkManage extends React.Component{
             content: "homeworkcontentTest",
             deadline: '2018-08-01T10:00',
             publisher: getStudentId(),
-            receiver: 10165101228,
+            receiver: getReceiverId(),
             homework_file:"",
             grade:"",
             isDone:false
@@ -114,7 +110,7 @@ class HomeworkManage extends React.Component{
             publisher: event.publisher,
             receiver: event.receiver,
             homework_file:event.homework_file,
-            grade:"",
+            grade:event.grade==null?"":event.grade,
             isDone:event.isDone
         })
     }
@@ -159,6 +155,7 @@ class HomeworkManage extends React.Component{
             <div className="homeworkManage-container" style={{textAlign: 'center'}}>
                 {
                     this.props.homeList.map((item,i) =>{
+                        console.log(item);
                         return (
                             <HomeworkManageItem key={item.homeworkID} item={item} openEditDialog={this.openEditDialog.bind(this)} openDeleteDialog={this.openDeleteDialog.bind(this)}/>
                         )
@@ -330,7 +327,7 @@ const mapStateToProps = state => ({
     homeList:state.homeworkManage
 })
 const mapDispatchToProps = dispatch => ({
-    refreshHomeworkManage: () => dispatch(refreshHomework(getStudentId())),
+    refreshHomeworkManage: () => dispatch(refreshHomeworkManage()),
     addHomework:(title,content1,deadline,publisher,receiver) => dispatch(addHomework(title,content1,deadline,publisher,receiver)),
     deleteHomework:(homeworkID) => dispatch(deleteHomework(homeworkID)),
     editHomework:(homeworkID,title,content1,deadline,receiver,grade,state)=>dispatch(updateHomework(homeworkID,title,content1,deadline,receiver,grade,state))

@@ -3,13 +3,8 @@ import HomeworkItem from './HomeworkItem';
 
 import {connect} from "react-redux";
 import {refreshHomework} from "../../redux/actions/homework";
-import {getStudentId} from "../../redux/store";
 
-class Homework extends React.Component {
-    constructor(props){
-        super(props);
-
-    }
+class Homework extends Component {
     componentDidMount() {
         this.props.refresh2();
     }
@@ -20,7 +15,7 @@ class Homework extends React.Component {
           {
              this.props.homeList.map((item,i) =>{
                  return (
-                     <HomeworkItem key={i} item={item}/>
+                     <HomeworkItem key={item.homeworkID} item={item}/>
                  )
              })
           }
@@ -34,7 +29,7 @@ const mapStateToProps = state => ({
     homeList:state.homework
 })
 const mapDispatchToProps = dispatch => ({
-    refresh2: () => dispatch(refreshHomework(getStudentId()))
+    refresh2: () => dispatch(refreshHomework())
 })
 
 const HomeworkPage = connect(

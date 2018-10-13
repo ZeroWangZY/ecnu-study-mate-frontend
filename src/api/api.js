@@ -1,4 +1,4 @@
-import { getStudentId, getAccessToken, getRefreshToken, getUserInfo } from "../redux/store";
+import { getStudentId, getAccessToken, getRefreshToken, getUserInfo ,getReceiverId} from "../redux/store";
 
 const urlPrefix = '/api'
 
@@ -97,9 +97,9 @@ export const deleteScheduleAPI = (id) => {
     });
 }
 
-export const getHomeworkDetailAPI = (id) => {
+export const getHomeworkDetailAPI = () => {
     let data = {
-        'receiver_id': id
+        receiver_id: getReceiverId()
     }
     return post('/homework/search',data).then(res =>res.data);
 }

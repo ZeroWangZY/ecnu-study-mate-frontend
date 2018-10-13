@@ -49,10 +49,7 @@ const styles = theme => ({
   },
 });
 
-class HomeworkItem extends React.Component {
-  constructor(props){
-      super(props);
-  }
+class HomeworkItem extends Component {
 
   state = {
       homeworkID:this.props.item.homeworkID,

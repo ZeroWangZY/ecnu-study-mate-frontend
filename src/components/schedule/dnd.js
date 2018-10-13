@@ -10,11 +10,6 @@ import './big-calendar.css'
 const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 class Dnd extends React.Component {
-  constructor(props) {
-    super(props)
- //   this.moveEvent = this.moveEvent.bind(this)
-  }
-
   moveEvent({ event, start, end }) {
     const { events } = this.state
 

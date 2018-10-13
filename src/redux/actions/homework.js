@@ -2,10 +2,10 @@ import {
     getHomeworkDetailAPI
 } from "../../api/api";
 
-export const refreshHomework = (id) => {
+export const refreshHomework = () => {
     return dispatch => {
-        getHomeworkDetailAPI(id).then(data => {
-            if(data!=undefined) {
+        getHomeworkDetailAPI().then(data => {
+            if(data!==undefined) {
                 dispatch(setHomework(data));
             }
         });

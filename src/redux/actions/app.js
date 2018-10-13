@@ -1,5 +1,7 @@
 import {loginAPI, refreshTokenAPI, getUserInfoAPI} from '../../api/api'
 import {refreshScheduleAndReview} from './schedule';
+import {refreshHomework} from './homework';
+import {refreshHomeworkManage} from './homeworkManage';
 import {getStudentId} from '../store';
 
 export const setDrawer = shouldShowDrawer => ({type: 'SET_DRAWER', val: shouldShowDrawer})
@@ -41,7 +43,9 @@ export const setApp = data => dispatch => {
     dispatch({type: 'SET_TOKEN', accessToken: json.access_token, refreshToken: json.refresh_token});
     return json;
   }).then(json => {
-    dispatch(refreshScheduleAndReview)
+    dispatch(refreshScheduleAndReview);
+    dispatch(refreshHomework());
+    dispatch(refreshHomeworkManage());
   }).catch(json => {
     dispatch(setSnackText('登录过期，请重新登录'));
     dispatch(logoutAction);
@@ -72,5 +76,7 @@ const getUserInfoAndScheduleAfterLogin = dispatch => {
       }
     })
     dispatch(refreshScheduleAndReview);
+    dispatch(refreshHomework());
+    dispatch(refreshHomeworkManage());
   })
 }

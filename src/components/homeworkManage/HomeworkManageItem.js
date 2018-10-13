@@ -10,13 +10,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { connect } from 'react-redux'
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import AddIcon from '@material-ui/icons/Add';
-import Slide from '@material-ui/core/Slide';
-import TextField from '@material-ui/core/TextField';
 const styles = theme => ({
     root: {
         maxWidth: 420,
@@ -72,12 +65,10 @@ const styles = theme => ({
 });
 
 
-class HomeworkManageItem extends React.Component {
-    constructor(props){
-        super(props);
-    }
+class HomeworkManageItem extends Component {
 
     componentDidMount() {
+        console.log(this.props.item.title);
         this.initState();
     }
 
