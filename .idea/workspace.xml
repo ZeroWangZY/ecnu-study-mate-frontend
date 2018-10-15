@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5656f4ad-b34b-4871-b380-3f51e8197491" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/redux/actions/upload.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/api/api.js" afterPath="$PROJECT_DIR$/src/api/api.js" />
       <change beforePath="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" afterPath="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/homeworkManage/HomeworkManageItem.js" afterPath="$PROJECT_DIR$/src/components/homeworkManage/HomeworkManageItem.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.js" afterPath="$PROJECT_DIR$/src/components/login/Login.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,16 +15,28 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5405623">
+    <splitter split-orientation="horizontal" split-proportion="0.5875519">
       <split-first>
         <leaf>
           <file leaf-file-name="HomeworkItem.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/homework/HomeworkItem.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="337">
-                  <caret line="126" column="47" lean-forward="true" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
+                <state relative-caret-position="373">
+                  <caret line="132" column="12" lean-forward="false" selection-start-line="132" selection-start-column="12" selection-end-line="132" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/actions/upload.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+                  <folding>
+                    <element signature="e#0#48#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -45,8 +57,8 @@
           <file leaf-file-name="Homework.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/homework/Homework.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="60">
-                  <caret line="4" column="61" lean-forward="false" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
+                <state relative-caret-position="255">
+                  <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -77,33 +89,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="homeworkManage.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="452">
-                  <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="46" />
-                  <folding>
-                    <element signature="e#0#111#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="homework.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/redux/reducers/homework.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/api/api.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="532">
-                  <caret line="99" column="43" lean-forward="false" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
+                <state relative-caret-position="637">
+                  <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -121,6 +111,16 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="homework.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/actions/homework.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -128,7 +128,7 @@
           <file leaf-file-name="HomeworkManageItem.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManageItem.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="292">
+                <state relative-caret-position="512">
                   <caret line="126" column="32" lean-forward="false" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
@@ -151,11 +151,23 @@
           <file leaf-file-name="HomeworkManage.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-3650">
-                  <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+                <state relative-caret-position="203">
+                  <caret line="204" column="40" lean-forward="false" selection-start-line="204" selection-start-column="40" selection-end-line="211" selection-end-column="76" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                     <element signature="n#!!block;n#Transition#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="homeworkManage.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-38">
+                  <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#0#111#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -184,7 +196,6 @@
       <find>events</find>
       <find>handleClickOpen</find>
       <find>writeObj</find>
-      <find>addHomework</find>
       <find>updatet</find>
       <find>updateHomeworkAPI</find>
       <find>console.lo</find>
@@ -204,6 +215,7 @@
       <find>refreshHomeworkManage</find>
       <find>getHomeworkDetailAPI</find>
       <find>Divider</find>
+      <find>addHomework</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -231,7 +243,6 @@
         <option value="$PROJECT_DIR$/src/common/dnd.js" />
         <option value="$PROJECT_DIR$/src/common/LeftMenu.js" />
         <option value="$PROJECT_DIR$/src/redux/store/index.js" />
-        <option value="$PROJECT_DIR$/src/api/api.js" />
         <option value="$PROJECT_DIR$/src/redux/reducers/homework.js" />
         <option value="$PROJECT_DIR$/src/components/schedule/dnd.js" />
         <option value="$PROJECT_DIR$/src/redux/actions/homework.js" />
@@ -242,6 +253,8 @@
         <option value="$PROJECT_DIR$/src/components/login/Login.js" />
         <option value="$PROJECT_DIR$/src/components/homeworkManage/HomeworkManageItem.js" />
         <option value="$PROJECT_DIR$/src/components/homeworkManage/HomeworkManage.js" />
+        <option value="$PROJECT_DIR$/src/api/api.js" />
+        <option value="$PROJECT_DIR$/src/redux/actions/upload.js" />
         <option value="$PROJECT_DIR$/src/components/homework/HomeworkItem.js" />
       </list>
     </option>
@@ -482,12 +495,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538119362597</updated>
-      <workItem from="1538119364025" duration="128188000" />
+      <workItem from="1538119364025" duration="131153000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128188000" />
+    <option name="totallyTimeSpent" value="131153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -505,7 +518,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10944206" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13805436" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -711,16 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/homework.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#57#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/reducers/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -770,7 +773,7 @@
         <state relative-caret-position="-353">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -787,44 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/login/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/homework/Homework.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="61" lean-forward="false" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/api/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="99" column="43" lean-forward="false" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="43" />
           <folding />
         </state>
       </provider>
@@ -847,9 +812,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/homework.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="163" column="0" lean-forward="true" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/homeworkManage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/actions/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/login/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" column="10" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/homework/Homework.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/homeworkManage/HomeworkManageItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
+        <state relative-caret-position="512">
           <caret line="126" column="32" lean-forward="false" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -871,8 +892,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/homework/HomeworkItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="126" column="47" lean-forward="true" selection-start-line="126" selection-start-column="47" selection-end-line="126" selection-end-column="47" />
+        <state relative-caret-position="373">
+          <caret line="132" column="12" lean-forward="false" selection-start-line="132" selection-start-column="12" selection-end-line="132" selection-end-column="12" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

@@ -159,3 +159,7 @@ export const homeworkFinishAPI = (id) =>{
         delete:[]
     });
 }
+
+export const uploadFilesAPI =(data)=>{
+
+}
