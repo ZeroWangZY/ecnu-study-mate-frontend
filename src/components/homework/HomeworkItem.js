@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import SendIcon from '@material-ui/icons/Send';
 import { connect } from 'react-redux'
 
 const styles = theme => ({
@@ -25,6 +26,9 @@ const styles = theme => ({
     fontSize: theme.typography.pxToRem (15),
     color: theme.palette.text.secondary,
   },
+  thirdHeading:{
+    fontSize: theme.typography.pxToRem (10),
+  },
   icon: {
     verticalAlign: 'bottom',
     height: 20,
@@ -34,7 +38,22 @@ const styles = theme => ({
     alignItems: 'center',
   },
   column: {
-    flexBasis: '33.33%',
+    flexBasis: '50%',
+  },
+  columnRight:{
+    flexBasis: '50%',
+    padding:'0 10px'
+  },
+  content:{
+    textAlign: 'left'
+  },
+  row: {
+    display: 'block',
+    width: '100%'
+  },
+  bottom_right:{
+    textAlign:'right',
+    padding: '10px 0'
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -47,6 +66,10 @@ const styles = theme => ({
       textDecoration: 'underline',
     },
   },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  }
 });
 
 class HomeworkItem extends Component {
@@ -72,29 +95,39 @@ class HomeworkItem extends Component {
             <div className={classes.column}>
               <Typography className={classes.heading}>{this.state.title}</Typography>
             </div>
-            <div className={classes.column}>
-              <Typography className={classes.secondaryHeading}>
-                deadline: {this.state.deadline}
-              </Typography>
-            </div>
+
             {this.state.isDone
-              ? <div className={classes.column} style={{color: '#43A047'}}>
+              ? <div className={classes.columnRight} style={{color: '#43A047'}}>
                     已完成
                 </div>
-              : <div className={classes.column} style={{color: '#c00'}}>
+              : <div className={classes.columnRight} style={{color: '#c00'}}>
                     待完成
                 </div>}
           </ExpansionPanelSummary>
           <ExpansionPanelDetails className={classes.details}>
-            <div>
-                {this.state.content}
+            <div className={classes.row}>
+                <div className={classes.content}>
+                    {this.state.content}
+                </div>
+                <div className={classes.bottom_right}>
+                    <Typography className={classes.thirdHeading}>
+                        deadline: {this.state.deadline}
+                    </Typography>
+                </div>
             </div>
+
           </ExpansionPanelDetails>
           <Divider />
           <ExpansionPanelActions>
-            <Button size="small" color="primary" disabled={this.state.isDone}>
-              去提交
-            </Button>
+            <form className={classes.container}>
+              <div>
+                <SendIcon/>
+                <input type="file" name="homeworkFile"/>
+              </div>
+                <Button size="small" color="primary" disabled={this.state.isDone}>
+                    去提交
+                </Button>
+            </form>
           </ExpansionPanelActions>
         </ExpansionPanel>
       </div>

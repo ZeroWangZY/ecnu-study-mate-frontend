@@ -36,7 +36,11 @@ const styles = theme => ({
         alignItems: 'center',
     },
     column: {
-        flexBasis: '33.33%',
+        flexBasis: '50%',
+    },
+    columnRight:{
+        flexBasis: '50%',
+        padding:'0 10px'
     },
     row: {
         display: 'block',
@@ -45,7 +49,6 @@ const styles = theme => ({
     bottom_right:{
         textAlign:'right',
         padding: '10px 0'
-
     },
     content:{
         textAlign: 'left'
@@ -108,21 +111,18 @@ class HomeworkManageItem extends Component {
             <div className={classes.root}>
                 <ExpansionPanel defaultExpanded>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+
                         <div className={classes.column}>
                             <Typography className={classes.heading}>{this.state.title}</Typography>
                         </div>
-                        <div className={classes.column}>
-                            <Typography className={classes.secondaryHeading}>
-                                学号: {this.state.receiver}
-                            </Typography>
-                        </div>
+
                         {this.state.state==="mark"
-                            ? <div className={classes.column} >已打分</div>
+                            ? <div className={classes.columnRight } >已打分</div>
                             :this.state.state==="finish"
-                            ? <div className={classes.column} style={{color: '#43A047'}}>
+                            ? <div className={classes.columnRight} style={{color: '#43A047'}}>
                                 待评分
                             </div>
-                            : <div  className={classes.column} style={{color:'#c00'}}>未完成</div>}
+                            : <div  className={classes.columnRight} style={{color:'#c00'}}>未完成</div>}
 
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.details}>
@@ -134,12 +134,16 @@ class HomeworkManageItem extends Component {
                                 <Typography className={classes.thirdHeading}>
                                     截止日期：{this.state.deadline}
                                 </Typography>
+                                <Typography className={classes.thirdHeading}>
+                                    学号: {this.state.receiver}
+                                </Typography>
                             </div>
-                            <div>
+                            <div className={classes.bottom_right}>
                                 得分：{
                                     this.state.grade===""?'未评分':this.state.grade
                                 }
                             </div>
+
                         </div>
                     </ExpansionPanelDetails>
                     <Divider />
