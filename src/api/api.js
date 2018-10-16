@@ -43,6 +43,28 @@ export const post = (url, data) => {
     }).then(res => res.json())
 }
 
+export const filePost = (url, data1,homeworkID) => {
+    let data =new FormData();
+    data.append('file',data1);
+    data.append('homeworkID',homeworkID);
+    console.log(data);
+    console.log(data1);
+   // data.append('file',document.getElementById('file').files[0]);
+    let request = new Request(urlPrefix + url, {
+        method: 'POST',
+        mode:'cors',
+        headers: {
+            'Authorization': 'Bearer ' + getAccessToken()
+        },
+        body: data
+    });
+    return fetch(request)
+        .then( res => res.json())
+        .catch((err)=>{
+        console.log("发生了一个错误,存在相同的文件或者上传文件不合法;");
+    });
+}
+
 export const getUserInfoAPI = (id) => {
     return post('/user/getInfo', {
         studentId: id
@@ -160,6 +182,6 @@ export const homeworkFinishAPI = (id) =>{
     });
 }
 
-export const uploadFilesAPI =(data)=>{
-
+export const uploadFilesAPI =(data,homeworkID)=>{
+    return filePost('/file/fileupload',data,homeworkID);
 }

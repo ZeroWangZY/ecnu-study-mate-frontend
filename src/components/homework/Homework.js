@@ -10,12 +10,13 @@ class Homework extends Component {
     }
 // TODO: move refresh2() to componentDidMiunt
   render () {
+    let currentTime1 = new Date().getTime();
     return (
       <div className="homework-container" style={{textAlign: 'center'}}>
           {
              this.props.homeList.map((item,i) =>{
                  return (
-                     <HomeworkItem key={item.homeworkID} item={item}/>
+                     <HomeworkItem key={item.homeworkID + currentTime1} item={item}/>
                  )
              })
           }

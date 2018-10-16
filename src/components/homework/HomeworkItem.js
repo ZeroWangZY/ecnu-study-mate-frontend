@@ -12,6 +12,7 @@ import Divider from '@material-ui/core/Divider';
 import SendIcon from '@material-ui/icons/Send';
 import { connect } from 'react-redux'
 import {uploadFiles} from "../../redux/actions/upload";
+import homework from "../../redux/reducers/homework";
 
 const styles = theme => ({
   root: {
@@ -90,9 +91,8 @@ class HomeworkItem extends Component {
 
   handleFormSubmit = (data) =>{
       data.preventDefault();
-      let formData = new FormData();
-      formData.append('file',data.target.file.files[0]);
-      this.props.uploadFiles1(formData);
+      console.log(document.getElementById(this.state.homeworkID));
+      this.props.uploadFiles1(document.getElementById(this.state.homeworkID).files[0],this.state.homeworkID);
   }
   render () {
     const {classes} = this.props;
@@ -130,7 +130,7 @@ class HomeworkItem extends Component {
             <form className={classes.container} onSubmit={this.handleFormSubmit} >
               <div>
                 <SendIcon/>
-                <input type="file" name="homeworkFile"/>
+                <input id={this.state.homeworkID} type="file" name="file"/>
               </div>
                 <Button type="submit" size="small" color="primary" disabled={this.state.isDone} >
                     去提交
@@ -151,7 +151,7 @@ HomeworkItem.propTypes = {
 const mapStateToProps = state =>({
 })
 const mapDispatchToProps = dispatch =>({
-    uploadFiles1: (data) => dispatch(uploadFiles(data))
+    uploadFiles1: (data,homeworkID) => dispatch(uploadFiles(data,homeworkID))
 })
 export default connect(
     mapStateToProps,

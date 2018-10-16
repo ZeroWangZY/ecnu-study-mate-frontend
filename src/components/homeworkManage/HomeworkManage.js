@@ -126,7 +126,6 @@ class HomeworkManage extends Component{
     }
 
     handleAddHomework = () =>{
-        console.log('1');
         this.props.addHomework(this.state.title,this.state.content,this.state.deadline,this.state.publisher,this.state.receiver);
         this.handleClose();
     }
@@ -151,13 +150,14 @@ class HomeworkManage extends Component{
 
     render(){
         const { classes } = this.props;
+        let currentTime = new Date().getTime();
         return (
             <div className="homeworkManage-container" style={{textAlign: 'center'}}>
                 {
                     this.props.homeList.map((item,i) =>{
                         console.log(item);
                         return (
-                            <HomeworkManageItem key={item.homeworkID} item={item} openEditDialog={this.openEditDialog.bind(this)} openDeleteDialog={this.openDeleteDialog.bind(this)}/>
+                            <HomeworkManageItem key={item.homeworkID + currentTime} item={item} openEditDialog={this.openEditDialog.bind(this)} openDeleteDialog={this.openDeleteDialog.bind(this)}/>
                         )
                     })
                 }

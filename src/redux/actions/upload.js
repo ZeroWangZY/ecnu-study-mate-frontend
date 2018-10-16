@@ -1,13 +1,19 @@
-import {updateHomeworkAPI} from "../../api/api";
+import {uploadFilesAPI} from "../../api/api";
 import {refreshHomework} from "./homework";
 import {setSnackText} from "./app";
 
-export const uploadFiles = (data) =>{
+export const uploadFiles = (data,homeworkID) =>{
     return dispatch =>{
-        updateHomeworkAPI(data)
+        uploadFilesAPI(data,homeworkID)
             .then(res =>{
-            dispatch(refreshHomework());
-            dispatch(setSnackText("上传成功"));
+                console.log(res);
+                if(res.flag==='T'){
+                    dispatch(refreshHomework());
+                    console.log(11111);
+                    dispatch(setSnackText("上传成功"));
+                }else {
+                    dispatch(setSnackText("上传不成功，请重新操作"));
+                }
         })
     }
 }
