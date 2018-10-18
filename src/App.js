@@ -8,6 +8,7 @@ import Message from './components/message/Message';
 import Login from './components/login/Login';
 import Snackbar from './common/Snackbar';
 import HomeworkManage from "./components/homeworkManage/HomeworkManage";
+import EmotionSurvey from './components/emotion/EmotionSurvey';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/homework" component={Homework} />
           <Route path="/homeworkManage" component={HomeworkManage} />
           <Route path="/message" component={Message} />
+          <Route path="/emotion" component={EmotionSurvey} />
         </Switch>
         <LeftMenu />
       </div>

@@ -79,12 +79,14 @@ class Leftmenu extends Component {
         <Divider/>
         <List>
           <div>
-            <ListItem button>
-              <ListItemIcon>
-                <ReportIcon/>
-              </ListItemIcon>
-              <ListItemText primary="性格和就业测试"/>
-            </ListItem>
+            <Link to="/emotion">
+              <ListItem button>
+                <ListItemIcon>
+                  <ReportIcon/>
+                </ListItemIcon>
+                <ListItemText primary="情绪察觉记录"/>
+              </ListItem>
+            </Link>
             <ListItem button>
               <ListItemIcon>
                 <DeleteIcon/>
