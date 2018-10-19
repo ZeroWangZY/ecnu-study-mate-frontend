@@ -23,7 +23,7 @@ export const downloadFiles = (homeworkID) =>{
         downFilesAPI(homeworkID)
             .then(res =>{
                 console.log(res);
-                /*res.blob().then(blob => {
+                res.blob().then(blob => {
                     const aLink = document.createElement('a');
                     document.body.appendChild(aLink);
                     aLink.style.display='none';
@@ -34,14 +34,11 @@ export const downloadFiles = (homeworkID) =>{
                     document.body.removeChild(aLink);
                     dispatch(refreshHomework());
                 });
-*/
-                console.log("1111");
             })
     }
 }
 
 export const failUploadMes = (ms) =>{
-    console.log("11111");
     return dispatch => {
         dispatch(setSnackText(ms))
     };

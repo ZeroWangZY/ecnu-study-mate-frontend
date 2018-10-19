@@ -43,6 +43,17 @@ export const post = (url, data) => {
     }).then(res => res.json())
 }
 
+export const downpost = (url, data) => {
+    return fetch(urlPrefix + url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + getAccessToken()
+        }
+    }).then(res => res)
+}
+
 export const filePost = (url, data1,homeworkID) => {
     let data =new FormData();
     data.append('file',data1);
@@ -185,7 +196,7 @@ export const uploadFilesAPI =(data,homeworkID)=>{
 }
 
 export const downFilesAPI =(homeworkID)=>{
-    return post('/file/filedownload',{
-        homeworkID:homeworkID
+    return downpost('/file/filedownload',{
+        'homeworkID':homeworkID
     });
 }
