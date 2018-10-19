@@ -71,7 +71,6 @@ const styles = theme => ({
 class HomeworkManageItem extends Component {
 
     componentDidMount() {
-        console.log(this.props.item.title);
         this.initState();
     }
 

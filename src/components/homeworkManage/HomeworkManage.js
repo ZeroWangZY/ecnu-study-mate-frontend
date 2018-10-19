@@ -155,7 +155,6 @@ class HomeworkManage extends Component{
             <div className="homeworkManage-container" style={{textAlign: 'center'}}>
                 {
                     this.props.homeList.map((item,i) =>{
-                        console.log(item);
                         return (
                             <HomeworkManageItem key={item.homeworkID + currentTime} item={item} openEditDialog={this.openEditDialog.bind(this)} openDeleteDialog={this.openDeleteDialog.bind(this)}/>
                         )
@@ -282,17 +281,6 @@ class HomeworkManage extends Component{
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
-                                    />
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        margin="dense"
-                                        id="receiver"
-                                        label="receiver学号"
-                                        type="number"
-                                        value={this.state.receiver}
-                                        onChange={this.handleChange('receiver')}
-                                        className={classes.textField}
                                     />
                                 </div>
 

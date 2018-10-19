@@ -1,4 +1,4 @@
-import {uploadFilesAPI} from "../../api/api";
+import {downFilesAPI, uploadFilesAPI} from "../../api/api";
 import {refreshHomework} from "./homework";
 import {setSnackText} from "./app";
 
@@ -9,11 +9,40 @@ export const uploadFiles = (data,homeworkID) =>{
                 console.log(res);
                 if(res.flag==='T'){
                     dispatch(refreshHomework());
-                    console.log(11111);
                     dispatch(setSnackText("上传成功"));
                 }else {
                     dispatch(setSnackText("上传不成功，请重新操作"));
                 }
-        })
+            })
     }
+}
+
+
+export const downloadFiles = (homeworkID) =>{
+    return dispatch =>{
+        downFilesAPI(homeworkID)
+            .then(res =>{
+                console.log(res);
+                /*res.blob().then(blob => {
+                    const aLink = document.createElement('a');
+                    document.body.appendChild(aLink);
+                    aLink.style.display='none';
+                    const objectUrl = window.URL.createObjectURL(blob);
+                    aLink.href = objectUrl;
+                    aLink.download = "下载";
+                    aLink.click();
+                    document.body.removeChild(aLink);
+                    dispatch(refreshHomework());
+                });
+*/
+                console.log("1111");
+            })
+    }
+}
+
+export const failUploadMes = (ms) =>{
+    console.log("11111");
+    return dispatch => {
+        dispatch(setSnackText(ms))
+    };
 }

@@ -47,9 +47,7 @@ export const filePost = (url, data1,homeworkID) => {
     let data =new FormData();
     data.append('file',data1);
     data.append('homeworkID',homeworkID);
-    console.log(data);
     console.log(data1);
-   // data.append('file',document.getElementById('file').files[0]);
     let request = new Request(urlPrefix + url, {
         method: 'POST',
         mode:'cors',
@@ -184,4 +182,10 @@ export const homeworkFinishAPI = (id) =>{
 
 export const uploadFilesAPI =(data,homeworkID)=>{
     return filePost('/file/fileupload',data,homeworkID);
+}
+
+export const downFilesAPI =(homeworkID)=>{
+    return post('/file/filedownload',{
+        homeworkID:homeworkID
+    });
 }
