@@ -1,47 +1,124 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import {connect} from "react-redux";
+import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import {commitSurveyAPI} from '../../api/emotion';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { setSnackText } from '../../redux/actions/app';
 
-const styles = {
+const styles = theme => ({
   root: {
     color: green[600],
     '&$checked': {
       color: green[500]
     }
   },
-  checked: {}
-};
+  button: {
+    margin: theme.spacing.unit
+  },
+  checked: {},
+  input: {
+    margin: theme.spacing.unit
+  }
+});
 
 class EmotionSurvey extends Component {
   state = {
-    checkedA: true,
-    checkedB: true,
-    checkedF: true,
-    checkedG: true,
+    open: false,
+    other: [
+      '', '', '', '', ''
+    ],
     check: [
-      [false,false,false,false,false],
-      [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      [false,false,false,false,false,false,false,false,false,false],
-      [false,false,false,false,false,false,false],
-      [false,false,false,false,false,false,false,false,false,false,false],
+      [
+        false, false, false, false, false
+      ],
+      [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
     ]
   };
 
+  handleCommit = () => {
+    commitSurveyAPI(convertToApiFormat(this.state.check, this.state.other)).then(res => {
+      this.props.setSnack('提交成功');
+      this.handleClose()
+    })
+  }
   handleChange = (i, j) => event => {
     let check = this.state.check;
-    check[i][j] = event.target.checked
-    this.setState({
-      check: check
-    });
+    if (i === 1) {
+      check[i][j] = event.target.value
+    } else {
+      check[i][j] = event.target.checked
+    }
+    this.setState({check: check});
+  };
+
+  handleClickOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
   };
 
   render() {
@@ -104,36 +181,168 @@ class EmotionSurvey extends Component {
       ]
     ]
     return (
-      <div className="emotion-survey-container">
-        {problem.map((item, i) => (
-          <div key={i}>
-            <FormGroup>
-              {item}
-              {answers[i].map((item, j) => (
-                <div key={j}>
-                  <FormControlLabel
-                    control={< Checkbox checked = {
-                    this.state.check[i][j]
-                  }
-                  onChange = {
-                    this.handleChange(i,j)
-                  }
-                  value={item} />}
-                    label={item}/>
-                </div>
-              ))}
-            </FormGroup>
-          </div>
-        ))}
-
+      <div className="emotion-survey-container" style={{
+        margin: 30
+      }}>
+        {problem.map((item, i) => {
+          return i === 1
+            ? <div key={i}>
+                {item}
+                {answers[i].map((item, j) => (
+                  <div key={j}>
+                    {item}
+                    <TextField
+                      style={{
+                      marginLeft: 20,
+                      width: 30
+                    }}
+                      id="standard-number"
+                      value={this.state.check[i][j]}
+                      onChange={this.handleChange(i, j)}
+                      type="number"
+                      InputLabelProps={{}}
+                      margin="normal"/>
+                  </div>
+                ))}
+                <Input
+                  value={this.state.other[i]}
+                  className={classes.input}
+                  placeholder="其他(选填)"
+                  inputProps={{
+                  'aria-label': 'Description'
+                }}/>
+                <TextField
+                  style={{
+                  marginLeft: 20,
+                  width: 30
+                }}
+                  id="standard-number"
+                  value={this.state.check[i][17]}
+                  onChange={this.handleChange(i, 17)}
+                  type="number"
+                  InputLabelProps={{}}
+                  margin="normal"/>
+              </div>
+            : <div key={i}>
+              <FormGroup>
+                {item}
+                {answers[i].map((item, j) => (
+                  <div key={j}>
+                    <FormControlLabel
+                      control={< Checkbox checked = {
+                      this.state.check[i][j]
+                    }
+                    onChange = {
+                      this.handleChange(i, j)
+                    }
+                    value = {
+                      item
+                    } />}
+                      label={item}/>
+                  </div>
+                ))}
+              </FormGroup>
+              <Input
+                value={this.state.other[i]}
+                className={classes.input}
+                placeholder="其他(选填)"
+                inputProps={{
+                'aria-label': 'Description'
+              }}/>
+            </div>
+        })}
+        <Button
+          variant="contained"
+          className={classes.button}
+          onClick={this.handleClickOpen}>
+          提交
+        </Button>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">{"是否确定提交?"}</DialogTitle>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              取消
+            </Button>
+            <Button onClick={this.handleCommit} color="primary" autoFocus>
+              确定
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     );
 
   }
 }
 
+const convertToApiFormat = (keys, other) => {
+  let result = []
+  for (let i = 0; i < 5; i++) {
+    if(i === 1){
+      result.push({
+        keys: keys[i],
+        other: other[i]
+      })
+    } else {
+      let temp = [];
+      for(let j = 0; j < keys[i].length; j++){
+        if(keys[i][j] === true) {
+          temp.push(j)
+        }
+      }
+      result.push({
+        keys: temp,
+        other: other[i]
+      })
+    }
+  }
+  return result
+  return [
+    {
+      keys: [1],
+      other: null
+    }, {
+      keys: [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      other: 'xxx'
+    }, {
+      keys: [1],
+      other: null
+    }, {
+      keys: [1],
+      other: null
+    }, {
+      keys: [1],
+      other: null
+    }
+  ]
+}
+
 const mapStateToProps = state => ({})
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  setSnack: (text) => dispatch(setSnackText(text))
+})
 
 EmotionSurvey = connect(mapStateToProps, mapDispatchToProps)(EmotionSurvey);
 export default withStyles(styles)(EmotionSurvey)
