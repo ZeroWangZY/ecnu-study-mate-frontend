@@ -14,6 +14,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import StarIcon from '@material-ui/icons/Star';
 import SendIcon from '@material-ui/icons/Send';
 import MailIcon from '@material-ui/icons/Mail';
+import Settings from '@material-ui/icons/Settings';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ReportIcon from '@material-ui/icons/Report';
 import {Link} from 'react-router-dom';
@@ -101,6 +102,14 @@ class Leftmenu extends Component {
                 <ListItemText primary="消息"/>
               </ListItem>
             </Link>
+              <Link to="/changePerInfo">
+                  <ListItem button>
+                      <ListItemIcon>
+                          <Settings/>
+                      </ListItemIcon>
+                      <ListItemText primary="修改个人信息"/>
+                  </ListItem>
+              </Link>
           </div>
         </List>
       </div>

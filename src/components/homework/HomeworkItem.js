@@ -114,7 +114,6 @@ class HomeworkItem extends Component {
 */
   }
   down(){
-      console.log("down");
       this.props.downloadFile(this.state.homeworkID);
   }
 /*    download(){

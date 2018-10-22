@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import { connect } from 'react-redux'
+import {downloadFiles, failUploadMes} from "../../redux/actions/upload";
 const styles = theme => ({
     root: {
         maxWidth: 420,
@@ -65,14 +66,13 @@ const styles = theme => ({
             textDecoration: 'underline',
         },
     },
+    down:{
+        display:'contents'
+    }
 });
 
 
 class HomeworkManageItem extends Component {
-
-    componentDidMount() {
-        this.initState();
-    }
 
     state = {
         homeworkID:this.props.item.homeworkID,
@@ -85,7 +85,13 @@ class HomeworkManageItem extends Component {
         grade:this.props.item.grade,
         homework_file:this.props.item.homework_file,
         isDone:this.props.item.state==="finish",
+        isMark:this.props.item.state==="mark",//是否评分
         item:this.props.item
+    }
+
+
+    componentDidMount() {
+        this.initState();
     }
 
     initState = () => {
@@ -100,9 +106,14 @@ class HomeworkManageItem extends Component {
             grade:this.props.item.grade==null?"":this.props.item.grade,
             homework_file:this.props.item.homework_file,
             isDone:this.props.item.state==="finish",
+            isMark:this.props.item.state==="mark",//是否评分
             item:this.props.item
         })
 
+    }
+
+    down(){
+        this.props.downloadFile(this.state.homeworkID);
     }
     render () {
         const {classes} = this.props;
@@ -142,6 +153,12 @@ class HomeworkManageItem extends Component {
                                     this.state.grade===""?'未评分':this.state.grade
                                 }
                             </div>
+                            <div className={classes.bottom_right}>
+                                {this.state.isDone||this.state.isMark
+                                    ?<Button onClick={()=>this.down()}>下载</Button>
+                                    :""
+                                }
+                            </div>
 
                         </div>
                     </ExpansionPanelDetails>
@@ -162,12 +179,15 @@ class HomeworkManageItem extends Component {
 }
 
 HomeworkManageItem.propTypes = {
+    downloadFile:PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state =>({
 })
 const mapDispatchToProps = dispatch =>({
+    downloadFile:(homeworkID)=>dispatch(downloadFiles(homeworkID)),
+    failUploadMes:(ms) => dispatch(failUploadMes(ms)),
 })
 export default connect(
     mapStateToProps,
