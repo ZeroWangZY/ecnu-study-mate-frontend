@@ -3,6 +3,7 @@ import TopBar from './common/TopBar';
 import LeftMenu from './common/LeftMenu';
 import { Route, Switch } from 'react-router-dom';
 import Homework from './components/homework/Homework';
+import Plan from './components/plan/Plan';
 import Schedule from './components/schedule/Schedule';
 import Message from './components/message/Message';
 import Login from './components/login/Login';
@@ -22,6 +23,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Schedule} />
           <Route path="/homework" component={Homework} />
+          <Route path="/plan" component={Plan} />
           <Route path="/homeworkManage" component={HomeworkManage} />
           <Route path="/message" component={Message} />
           <Route path="/emotion" component={EmotionSurvey} />

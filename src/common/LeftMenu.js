@@ -63,12 +63,14 @@ class Leftmenu extends Component {
                   </ListItem>
                 </Link>
               : null}
-            <ListItem button>
-              <ListItemIcon>
-                <SendIcon/>
-              </ListItemIcon>
-              <ListItemText primary="学习计划"/>
-            </ListItem>
+              <Link to="/plan">
+                <ListItem button>
+                  <ListItemIcon>
+                    <SendIcon/>
+                  </ListItemIcon>
+                  <ListItemText primary="学习计划"/>
+                </ListItem>
+              </Link>
             <ListItem button>
               <ListItemIcon>
                 <DraftsIcon/>
