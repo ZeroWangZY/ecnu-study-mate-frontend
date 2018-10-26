@@ -1,10 +1,15 @@
 import {changePerInfoAPI} from "../../api/changePerInfo";
 import {setSnackText} from "./app";
 
-export const changePerInfo = (password,newPassword,name,email) => dispatch =>{
-    changePerInfoAPI(password,newPassword,name,email)
+export const changePerInfo = (name,username,email,password,oldPwd,sex,phone) => dispatch =>{
+    console.log(name+"  "+username+"  "+email+"  "+password+"  "+oldPwd+"  "+sex+"  "+phone)
+    changePerInfoAPI(name,username,email,password,oldPwd,sex,phone)
         .then(res => {
             console.log(res);
+            if(!res.data.success){
+                console.log(res.data.info);
+                dispatch(failMes(res.data.info));
+            }
 
     })
 }
