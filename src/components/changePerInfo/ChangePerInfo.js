@@ -45,7 +45,7 @@ class ChangePerInfo extends Component{
         password1:"",
         password2:"",
         oldPwd:"",
-        sex:"男",
+        sex:"male",
         phone:""
     }
     initState =() =>{
@@ -56,7 +56,7 @@ class ChangePerInfo extends Component{
             password1:"",
             password2:"",
             oldPwd:"",
-            sex:"男",
+            sex:"male",
             phone:""
         })
     }
@@ -178,8 +178,8 @@ class ChangePerInfo extends Component{
                         value={this.state.sex}
                         onChange={this.handleChange('sex')}
                     >
-                        <FormControlLabel value="男" control={<Radio color="primary"/>} label="男" />
-                        <FormControlLabel value="女" control={<Radio color="primary"/>} label="女" />
+                        <FormControlLabel value="male" control={<Radio color="primary"/>} label="男" />
+                        <FormControlLabel value="female" control={<Radio color="primary"/>} label="女" />
                     </RadioGroup>
                 <Button onClick={()=>this.handleSend()} color="primary">提交</Button>
             </div>
