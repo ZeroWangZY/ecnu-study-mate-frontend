@@ -7,12 +7,36 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography/Typography'
+import BigCalendar from 'react-big-calendar'
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+import PropTypes from 'prop-types'
 /**
  * @author Yiyang Xu
  */
 const weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 class PlanDetail extends React.Component {
+  static propTypes = {
+    plans: PropTypes.arrayOf(
+      PropTypes.shape({
+        content: PropTypes.string.isRequired,
+        timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
+        title: PropTypes.string.isRequired
+      })
+    ),
+    timePlan: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
+  }
+
   render() {
+    return (
+      <div>
+        {this.renderTable()}
+        {this.renderGraph()}
+      </div>
+    )
+  }
+
+  renderTable = () => {
     let { classes, timePlan } = this.props
     let id = 0
     function createData(name, nums) {
@@ -26,9 +50,8 @@ class PlanDetail extends React.Component {
       createData('自我调整时间', timePlan[2]),
       createData('运动时间', timePlan[3])
     ]
-
     return (
-      <div>
+      <div style={{ marginBottom: 24 }}>
         <Typography variant="h5" color="primary">
           计划详情
         </Typography>
@@ -61,6 +84,32 @@ class PlanDetail extends React.Component {
               })}
             </TableBody>
           </Table>
+        </Paper>
+      </div>
+    )
+  }
+
+  renderGraph = () => {
+    const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
+    const { classes, plans } = this.props
+    let formats = {
+      timeGutterFormat: 'a HH:mm'
+    }
+    let events = plans.map(item => ({ title: item.content, start: item.timeRange[0], end: item.timeRange[1] }))
+    return (
+      <div>
+        <Typography variant="h5" color="primary">
+          本周图表
+        </Typography>
+        <Paper className={classes.root}>
+          <BigCalendar
+            formats={formats}
+            localizer={localizer}
+            events={events}
+            defaultView={'week'}
+            toolbar={false}
+            step={50}
+          />
         </Paper>
       </div>
     )

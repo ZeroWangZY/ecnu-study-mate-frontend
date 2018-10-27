@@ -2,9 +2,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 /**
  * @author Yiyang Xu
@@ -12,21 +10,22 @@ import Typography from '@material-ui/core/Typography'
 class PlanListItem extends React.PureComponent {
   static propTypes = {
     content: PropTypes.string.isRequired,
-    time: PropTypes.any
+    title: PropTypes.string.isRequired,
+    time: PropTypes.string.isRequired
   }
   render() {
-    const { classes, content } = this.props
+    const { classes, content, title, time } = this.props
     return (
       <Card className={classes.card}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            学习提高
+            {title}
           </Typography>
-          <Typography variant="h5">{content}</Typography>
+          <Typography variant="body1">{content}</Typography>
+          <Typography variant="body2" color="textSecondary">
+            {time}
+          </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small">设置</Button>
-        </CardActions>
       </Card>
     )
   }

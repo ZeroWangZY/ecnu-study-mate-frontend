@@ -11,10 +11,22 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import TextField from '@material-ui/core/TextField'
 import DialogActions from '@material-ui/core/DialogActions'
+import moment from 'moment'
+import PropTypes from 'prop-types'
 /**
  * @author Yiyang Xu
  */
 class PlanList extends React.Component {
+  static propTypes = {
+    plans: PropTypes.arrayOf(
+      PropTypes.shape({
+        content: PropTypes.string.isRequired,
+        timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
+        title: PropTypes.string.isRequired
+      })
+    ),
+    onAddPlan: PropTypes.func.isRequired
+  }
   state = {
     dialogOpen: false
   }
@@ -40,9 +52,17 @@ class PlanList extends React.Component {
           </Button>
         </div>
         <List>
-          {plans.map((item, index) => (
-            <PlanListItem key={index.toString()} content={item.content} time={item.timeBlock} />
-          ))}
+          {plans.map((item, index) => {
+            let formattedTime = item.timeRange.map(item => moment(item).format('dddd H:m'))
+            return (
+              <PlanListItem
+                key={index.toString()}
+                content={item.content}
+                time={formattedTime.join(' ~ ')}
+                title={item.title}
+              />
+            )
+          })}
         </List>
         <AddPlanDialog open={this.state.dialogOpen} onClose={this.handleClose} />
       </div>
@@ -53,7 +73,9 @@ class PlanList extends React.Component {
 class AddPlanDialog extends React.Component {
   state = {
     title: '',
-    content: ''
+    content: '',
+    startTime: new Date(),
+    endTime: new Date()
   }
 
   handleChange = name => event => {
@@ -63,7 +85,9 @@ class AddPlanDialog extends React.Component {
   }
 
   handleSubmit = () => {
-    this.props.onClose({ ...this.state })
+    let { title, content, startTime, endTime } = this.state
+    let timeRange = [startTime, endTime]
+    this.props.onClose({ title, content, timeRange })
   }
   handleClose = () => {
     this.props.onClose(null)
@@ -84,6 +108,22 @@ class AddPlanDialog extends React.Component {
             onChange={this.handleChange('title')}
           />
           <TextField margin="dense" label="内容" type="text" fullWidth onChange={this.handleChange('content')} />
+          <TextField
+            fullWidth
+            margin="dense"
+            label="开始时间"
+            type="datetime-local"
+            defaultValue="2018-10-25T10:30"
+            onChange={this.handleChange('startTime')}
+          />
+          <TextField
+            fullWidth
+            margin="dense"
+            label="结束时间"
+            type="datetime-local"
+            defaultValue="2018-10-25T10:30"
+            onChange={this.handleChange('endTime')}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">

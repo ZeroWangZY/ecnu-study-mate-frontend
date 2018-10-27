@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/es/styles/withStyles'
 import List from '@material-ui/core/List/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -13,6 +14,11 @@ import IconButton from '@material-ui/core/IconButton'
  * @author Yiyang Xu
  */
 class WeekList extends React.Component {
+  static propTypes = {
+    weeks: PropTypes.arrayOf(PropTypes.number).isRequired,
+    setWeek: PropTypes.func.isRequired,
+    selectedWeek: PropTypes.number.isRequired
+  }
   state = {
     expand: true
   }
@@ -20,6 +26,7 @@ class WeekList extends React.Component {
   handleExpand = () => {
     this.setState(state => ({ expand: !state.expand }))
   }
+
   render() {
     let { weeks, setWeek, selectedWeek } = this.props
     return (
