@@ -102,14 +102,23 @@ class AddPlanDialog extends React.Component {
           <TextField
             autoFocus
             label="标题"
+            id="title"
             type="text"
             margin="dense"
             fullWidth
             onChange={this.handleChange('title')}
           />
-          <TextField margin="dense" label="内容" type="text" fullWidth onChange={this.handleChange('content')} />
+          <TextField
+            margin="dense"
+            id="content"
+            label="内容"
+            type="text"
+            fullWidth
+            onChange={this.handleChange('content')}
+          />
           <TextField
             fullWidth
+            id="startTime"
             margin="dense"
             label="开始时间"
             type="datetime-local"
@@ -118,6 +127,7 @@ class AddPlanDialog extends React.Component {
           />
           <TextField
             fullWidth
+            id="endTime"
             margin="dense"
             label="结束时间"
             type="datetime-local"

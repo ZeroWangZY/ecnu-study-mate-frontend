@@ -34,7 +34,7 @@ class Plan extends React.Component {
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
-          <Grid item lg={3} md={3} xs={12} style={{ maxWidth: 360 }}>
+          <Grid item lg={3} md={3} xs={12} style={{ maxWidth: 400 }}>
             <WeekList weeks={weeks} setWeek={this.setWeek} selectedWeek={curWeek} />
             <PlanList plans={planThisWeek.items} onAddPlan={this.onAddPlan} />
           </Grid>
