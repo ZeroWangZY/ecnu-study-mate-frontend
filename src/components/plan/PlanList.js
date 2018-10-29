@@ -1,5 +1,5 @@
 import React from 'react'
-import withStyles from '@material-ui/core/es/styles/withStyles'
+import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import PlanListItem from './PlanListItem'
 import Typography from '@material-ui/core/Typography'
