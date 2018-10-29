@@ -87,7 +87,7 @@ export const getScheduleAPI = () => {
     }).then(res => res.data.rows)
 }
 
-export const addScheduleAPI = (title, desc, start, end) => {
+export const addScheduleAPI = (title, desc, start, end, type, progress) => {
     return post('/schedule/baseSqlHandle', {
         insert: [{
             'studentId': getStudentId(),
@@ -96,14 +96,15 @@ export const addScheduleAPI = (title, desc, start, end) => {
             'scheduleType': 'calendar',
             'title': title,
             'content': desc,
-            'scheduleTag': 'study'
+            'scheduleTag': type,
+            'progress': progress
         }],
         update: [],
         delete: []
     });
 }
 
-export const updateScheduleAPI = (id, title, desc, start, end) => {
+export const updateScheduleAPI = (id, title, desc, start, end, type, progress) => {
     return post('/schedule/baseSqlHandle', {
         insert: [],
         update: [{
@@ -114,7 +115,8 @@ export const updateScheduleAPI = (id, title, desc, start, end) => {
             'scheduleType': 'calendar',
             'title': title,
             'content': desc,
-            'scheduleTag': 'study'
+            'scheduleTag': type,
+            'progress': progress
         }],
         delete: []
     });

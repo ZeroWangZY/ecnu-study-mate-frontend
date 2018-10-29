@@ -203,8 +203,23 @@
     cursor: inherit;
     pointer-events: none;
   }
-  .rbc-event.rbc-selected {
-    background-color: #265985;
+  .event-progress-0 {
+    background-color: #42A5F5;
+  }
+  .event-progress-20 {
+    background-color: #2196F3;
+  }
+  .event-progress-40 {
+    background-color: #1E88E5;
+  }
+  .event-progress-60 {
+    background-color: #1976D2;
+  }
+  .event-progress-80 {
+    background-color: #1565C0;
+  }
+  .event-progress-100 {
+    background-color: #00E676;
   }
   .rbc-event-label {
     font-size: 80%;
