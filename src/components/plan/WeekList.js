@@ -42,7 +42,7 @@ class WeekList extends React.Component {
             <List>
               {weeks.map((week, index) => (
                 <ListItem key={index.toString()} button onClick={setWeek(week)} selected={selectedWeek === week}>
-                  <ListItemText primary={`第 ${week + 1} 周`} />
+                  <ListItemText primary={`第 ${week} 周`} />
                 </ListItem>
               ))}
             </List>

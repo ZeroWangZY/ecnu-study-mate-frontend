@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField'
 import DialogActions from '@material-ui/core/DialogActions'
 import moment from 'moment'
 import PropTypes from 'prop-types'
+import { mockPlanContent, mockPlanTitle } from '../../util/mock/plan'
 /**
  * @author Yiyang Xu
  */
@@ -22,7 +23,8 @@ class PlanList extends React.Component {
       PropTypes.shape({
         content: PropTypes.string.isRequired,
         timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
+        isImportant: PropTypes.bool.isRequired
       })
     ),
     onAddPlan: PropTypes.func.isRequired
@@ -33,7 +35,7 @@ class PlanList extends React.Component {
   handleClose = form => {
     this.setState({ dialogOpen: false })
     if (form) {
-      this.props.onAddPlan(form)
+      this.props.onAddPlan(form.title, form.content, form.timeRange, false)
     }
   }
   handleOpen = () => {
@@ -72,8 +74,8 @@ class PlanList extends React.Component {
 
 class AddPlanDialog extends React.Component {
   state = {
-    title: '',
-    content: '',
+    title: mockPlanTitle(),
+    content: mockPlanContent(),
     startTime: new Date(),
     endTime: new Date()
   }
@@ -91,6 +93,7 @@ class AddPlanDialog extends React.Component {
   }
   handleClose = () => {
     this.props.onClose(null)
+    this.setState({title: mockPlanTitle(), content: mockPlanContent()})
   }
   render() {
     const { open } = this.props
@@ -100,6 +103,7 @@ class AddPlanDialog extends React.Component {
         <DialogContent>
           <DialogContentText>请按照你的实际情况，对本周的学习进行计划</DialogContentText>
           <TextField
+            defaultValue={this.state.title}
             autoFocus
             label="标题"
             id="title"
@@ -109,6 +113,7 @@ class AddPlanDialog extends React.Component {
             onChange={this.handleChange('title')}
           />
           <TextField
+            defaultValue={this.state.content}
             margin="dense"
             id="content"
             label="内容"

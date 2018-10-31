@@ -62,4 +62,11 @@ function createPlans(weekNum) {
   return result
 }
 
+export function mockPlanTitle() {
+  return titleList[randInt(titleList.length)]
+}
+export function mockPlanContent() {
+  return planList[randInt(planList.length)]
+}
+
 export { createPlans }
