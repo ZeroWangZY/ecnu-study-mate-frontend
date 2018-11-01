@@ -22,7 +22,8 @@ class PlanDetail extends React.Component {
         content: PropTypes.string,
         title: PropTypes.string,
         timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
-        isImportant: PropTypes.bool
+        isImportant: PropTypes.bool,
+        id: PropTypes.string
       })
     ),
     timePlan: PropTypes.shape({

@@ -1,4 +1,4 @@
-import { getPlanAPI, addPlanAPI } from '../../api/plan'
+import { getPlanAPI, addPlanAPI, deletePlanAPI, updatePlanAPI } from '../../api/plan'
 import { setSnackText } from './app'
 
 export const refreshPlan = dispatch => {
@@ -15,13 +15,13 @@ export const refreshPlan = dispatch => {
         items: item.items.map(i => {
           return {
             ...i,
+            id: i.id.toString(),
             isImportant: i.isImportant === 'false',
             timeRange: i.timeRange.split(',').map(time => new Date(Number(time)))
           }
         })
       }
     })
-    console.log(data)
     dispatch(refreshPlanAction(data))
   })
 }
@@ -29,7 +29,21 @@ export const refreshPlan = dispatch => {
 export const addPlan = (title, content, timeRange, isImportant, week) => dispatch => {
   addPlanAPI(title, content, timeRange, isImportant, week).then(result => {
     dispatch(setSnackText('添加计划成功'))
-    dispatch(addPlanAction({ title, content, timeRange, isImportant, week }))
+    refreshPlan(dispatch)
+  })
+}
+
+export const deletePlan = id => dispatch => {
+  deletePlanAPI(id).then(result => {
+    dispatch(setSnackText('删除计划成功'))
+    refreshPlan(dispatch)
+  })
+}
+
+export const updatePlan = (id, title, content, timeRange, isImportant, week) => dispatch => {
+  updatePlanAPI(id, title, content, timeRange, isImportant, week).then(result => {
+    dispatch(setSnackText('修改计划成功：' + content))
+    refreshPlan(dispatch)
   })
 }
 

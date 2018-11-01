@@ -5,7 +5,7 @@ import PlanDetail from './PlanDetail'
 import PlanList from './PlanList'
 import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
-import { addPlan, refreshPlan } from '../../redux/actions/plan'
+import { addPlan, deletePlan, refreshPlan, updatePlan } from '../../redux/actions/plan'
 import PropTypes from 'prop-types'
 
 /**
@@ -18,6 +18,7 @@ class Plan extends React.Component {
   }
 
   componentDidMount() {
+    //TODO: 登录问题
     this.props.refreshPlan()
   }
 
@@ -28,9 +29,12 @@ class Plan extends React.Component {
   handleAddPlan = (title, content, timeRange, isImportant) => {
     this.props.addPlan(title, content, timeRange, isImportant, this.state.curWeek)
   }
+  handleUpdatePlan = (id, title, content, timeRange, isImportant) => {
+    this.props.updatePlan(id, title, content, timeRange, isImportant, this.state.curWeek)
+  }
 
   render() {
-    const { classes, weeks } = this.props
+    const { classes, weeks, deletePlan } = this.props
     if (weeks.length === 0) return <div />
     const { curWeek } = this.state
     let weekIndexList = weeks.map(i => i.week)
@@ -40,7 +44,12 @@ class Plan extends React.Component {
         <Grid container spacing={24}>
           <Grid item lg={3} md={3} xs={12} style={{ maxWidth: 400 }}>
             <WeekList weeks={weekIndexList} setWeek={this.setWeek} selectedWeek={curWeek} />
-            <PlanList plans={planThisWeek.items} onAddPlan={this.handleAddPlan} />
+            <PlanList
+              plans={planThisWeek.items}
+              onAddPlan={this.handleAddPlan}
+              onDeletePlan={deletePlan}
+              onUpdatePlan={this.handleUpdatePlan}
+            />
           </Grid>
           <Grid item lg={9} md={9} xs={12}>
             <PlanDetail timePlan={planThisWeek.timePlan} plans={planThisWeek.items} />
@@ -66,7 +75,8 @@ Plan.propTypes = {
           content: PropTypes.string,
           title: PropTypes.string,
           timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
-          isImportant: PropTypes.bool
+          isImportant: PropTypes.bool,
+          id: PropTypes.string
         })
       )
     })
@@ -86,7 +96,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   refreshPlan: () => dispatch(refreshPlan),
   addPlan: (title, content, timeRange, isImportant, week) =>
-    dispatch(addPlan(title, content, timeRange, isImportant, week))
+    dispatch(addPlan(title, content, timeRange, isImportant, week)),
+  deletePlan: id => dispatch(deletePlan(id)),
+  updatePlan: (id, title, content, timeRange, isImportant, week) =>
+    dispatch(updatePlan(id, title, content, timeRange, isImportant, week))
 })
 
 export default connect(
