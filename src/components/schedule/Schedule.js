@@ -82,12 +82,15 @@ class Schedule extends Component {
   };
 
   handleAddSchedule = () => {
-    this
-      .props
-      .addSchedule(this.state.title, this.state.desc, this.state.start, this.state.end, this.state.type, this.state.progress);
-    this.handleClose();
-  }
-
+    if ((new Date(this.state.end) > (new Date(this.state.start)))) {
+      this
+        .props
+        .addSchedule(this.state.title, this.state.desc, this.state.start, this.state.end);
+      this.handleClose();
+    } else 
+      alert("提示：时间填写错误");
+    }
+  
   handleDeleteSchedule = () => {
     this
       .props
@@ -96,12 +99,15 @@ class Schedule extends Component {
   }
 
   handleEditSchedule = () => {
-    this
-      .props
-      .updateSchedule(this.state.currentEvent.id, this.state.title, this.state.desc, this.state.start, this.state.end, this.state.type, this.state.progress);
-    this.handleClose();
-  }
-
+    if ((new Date(this.state.end) > (new Date(this.state.start)))) {
+      this
+        .props
+        .updateSchedule(this.state.currentEvent.id, this.state.title, this.state.desc, this.state.start, this.state.end);
+      this.handleClose();
+    } else 
+      alert("提示：时间填写错误");
+    }
+  
   openEditDialog = (event) => {
     this.setState({
       open: true,

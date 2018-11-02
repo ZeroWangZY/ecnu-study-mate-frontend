@@ -19,12 +19,19 @@ class PlanDetail extends React.Component {
   static propTypes = {
     plans: PropTypes.arrayOf(
       PropTypes.shape({
-        content: PropTypes.string.isRequired,
-        timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)).isRequired,
-        title: PropTypes.string.isRequired
+        content: PropTypes.string,
+        title: PropTypes.string,
+        timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
+        isImportant: PropTypes.bool,
+        id: PropTypes.string
       })
     ),
-    timePlan: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
+    timePlan: PropTypes.shape({
+      relaxTime: PropTypes.arrayOf(PropTypes.number),
+      sleepTime: PropTypes.arrayOf(PropTypes.number),
+      studyTime: PropTypes.arrayOf(PropTypes.number),
+      sportTime: PropTypes.arrayOf(PropTypes.number)
+    })
   }
 
   render() {
@@ -45,10 +52,10 @@ class PlanDetail extends React.Component {
     }
 
     const rows = [
-      createData('学习时间', timePlan[0]),
-      createData('睡眠时间', timePlan[1]),
-      createData('自我调整时间', timePlan[2]),
-      createData('运动时间', timePlan[3])
+      createData('学习时间', timePlan.studyTime),
+      createData('睡眠时间', timePlan.sleepTime),
+      createData('自我调整时间', timePlan.relaxTime),
+      createData('运动时间', timePlan.sportTime)
     ]
     return (
       <div style={{ marginBottom: 24 }}>
