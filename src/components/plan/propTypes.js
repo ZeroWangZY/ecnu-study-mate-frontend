@@ -1,0 +1,16 @@
+import { shape, string, arrayOf, number, func, instanceOf, bool } from 'prop-types'
+
+export const planType = shape({
+  content: string,
+  title: string,
+  timeRange: arrayOf(instanceOf(Date)),
+  isImportant: bool,
+  id: string
+})
+
+export const timePlanType = shape({
+  relaxTime: arrayOf(number),
+  sleepTime: arrayOf(number),
+  studyTime: arrayOf(number),
+  sportTime: arrayOf(number)
+})

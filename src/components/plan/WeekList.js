@@ -14,11 +14,6 @@ import IconButton from '@material-ui/core/IconButton'
  * @author Yiyang Xu
  */
 class WeekList extends React.Component {
-  static propTypes = {
-    weeks: PropTypes.arrayOf(PropTypes.number).isRequired,
-    setWeek: PropTypes.func.isRequired,
-    selectedWeek: PropTypes.number.isRequired
-  }
   state = {
     expand: true
   }
@@ -41,7 +36,7 @@ class WeekList extends React.Component {
           <Collapse in={this.state.expand} timeout="auto" unmountOnExit>
             <List>
               {weeks.map((week, index) => (
-                <ListItem key={index.toString()} button onClick={setWeek(week)} selected={selectedWeek === week}>
+                <ListItem key={index.toString()} button onClick={setWeek(index)} selected={selectedWeek === index}>
                   <ListItemText primary={`第 ${week} 周`} />
                 </ListItem>
               ))}
@@ -53,5 +48,10 @@ class WeekList extends React.Component {
   }
 }
 
+WeekList.propTypes = {
+  weeks: PropTypes.arrayOf(PropTypes.number).isRequired,
+  setWeek: PropTypes.func.isRequired,
+  selectedWeek: PropTypes.number.isRequired
+}
 const styles = {}
 export default withStyles(styles)(WeekList)

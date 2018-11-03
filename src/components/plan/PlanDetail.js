@@ -11,29 +11,12 @@ import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import PropTypes from 'prop-types'
+import { planType, timePlanType } from './propTypes'
 /**
  * @author Yiyang Xu
  */
 const weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
 class PlanDetail extends React.Component {
-  static propTypes = {
-    plans: PropTypes.arrayOf(
-      PropTypes.shape({
-        content: PropTypes.string,
-        title: PropTypes.string,
-        timeRange: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
-        isImportant: PropTypes.bool,
-        id: PropTypes.string
-      })
-    ),
-    timePlan: PropTypes.shape({
-      relaxTime: PropTypes.arrayOf(PropTypes.number),
-      sleepTime: PropTypes.arrayOf(PropTypes.number),
-      studyTime: PropTypes.arrayOf(PropTypes.number),
-      sportTime: PropTypes.arrayOf(PropTypes.number)
-    })
-  }
-
   render() {
     return (
       <div>
@@ -133,4 +116,9 @@ const styles = theme => ({
     minWidth: 700
   }
 })
+
+PlanDetail.propTypes = {
+  plans: PropTypes.arrayOf(planType),
+  timePlan: timePlanType
+}
 export default withStyles(styles)(PlanDetail)
