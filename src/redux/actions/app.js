@@ -1,4 +1,4 @@
-import {loginAPI, refreshTokenAPI, getUserInfoAPI} from '../../api/api'
+import {loginAPI, refreshTokenAPI, getUserInfoAPI} from '../../api/user'
 import {refreshScheduleAndReview} from './schedule';
 import {refreshHomework} from './homework';
 import {refreshHomeworkManage} from './homeworkManage';
