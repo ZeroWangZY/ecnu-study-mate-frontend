@@ -47,7 +47,7 @@ export const setApp = data => dispatch => {
     dispatch(refreshScheduleAndReview);
     dispatch(refreshHomework());
     dispatch(refreshHomeworkManage());
-    dispatch(refreshPlan)
+    dispatch(refreshPlan);
   }).catch(json => {
     dispatch(setSnackText('登录过期，请重新登录'));
     dispatch(logoutAction);
@@ -80,5 +80,6 @@ const getUserInfoAndScheduleAfterLogin = dispatch => {
     dispatch(refreshScheduleAndReview);
     dispatch(refreshHomework());
     dispatch(refreshHomeworkManage());
+    dispatch(refreshPlan);
   })
 }
