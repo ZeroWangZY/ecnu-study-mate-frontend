@@ -1,6 +1,6 @@
 import {
     getHomeworkDetailAPI, addHomeworkAPI, deleteHomeworkAPI, updateHomeworkAPI
-} from "../../api/api";
+} from "../../api/homework";
 import {setSnackText} from "./app";
 import {getStudentId} from "../store";
 
