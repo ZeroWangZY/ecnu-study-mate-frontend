@@ -20,3 +20,51 @@ export const deleteScheduleReviewAPI = (id) => {
     review_id: id
   })
 }
+
+export const getScheduleAPI = () => {
+    return post('/schedule/search', {
+        eq_studentId: getUserInfo().studentId,
+        limit: 1000
+    }).then(res => res.data.rows)
+}
+
+export const addScheduleAPI = (title, desc, start, end) => {
+    return post('/schedule/baseSqlHandle', {
+        insert: [{
+            'studentId': getStudentId(),
+            'startTime': start.replace('T', ':'),
+            'endTime': end.replace('T', ':'),
+            'scheduleType': 'calendar',
+            'title': title,
+            'content': desc,
+            'scheduleTag': 'study'
+        }],
+        update: [],
+        delete: []
+    });
+}
+
+export const updateScheduleAPI = (id, title, desc, start, end) => {
+    return post('/schedule/baseSqlHandle', {
+        insert: [],
+        update: [{
+            'id': id,
+            'studentId': getStudentId(),
+            'startTime': start.replace('T', ':'),
+            'endTime': end.replace('T', ':'),
+            'scheduleType': 'calendar',
+            'title': title,
+            'content': desc,
+            'scheduleTag': 'study'
+        }],
+        delete: []
+    });
+}
+
+export const deleteScheduleAPI = (id) => {
+    return post('/schedule/baseSqlHandle', {
+        insert: [],
+        update: [],
+        delete: [id]
+    });
+}
