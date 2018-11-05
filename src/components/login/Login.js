@@ -17,8 +17,8 @@ class Login extends React.Component {
 
     handleLogin = () => {
        // this.props.login(10165101228, 10165101228);
-        this.props.login(10142510261, 10142510261);
-        // this.props.login(this.state.id, this.state.password);
+        // this.props.login(10142510261, 10142510261);
+        this.props.login(this.state.id, this.state.password);
     }
 
     handleChange = name => event => {
