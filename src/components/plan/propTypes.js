@@ -9,6 +9,7 @@ export const planType = shape({
 })
 
 export const timePlanType = shape({
+  id: number,
   relaxTime: arrayOf(number),
   sleepTime: arrayOf(number),
   studyTime: arrayOf(number),

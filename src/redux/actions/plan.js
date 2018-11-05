@@ -1,4 +1,4 @@
-import { getPlanAPI, addPlanAPI, deletePlanAPI, updatePlanAPI } from '../../api/plan'
+import { getPlanAPI, addPlanAPI, deletePlanAPI, updatePlanAPI, updateTimePlanAPI } from '../../api/plan'
 import { setSnackText } from './app'
 
 export const refreshPlan = dispatch => {
@@ -7,6 +7,7 @@ export const refreshPlan = dispatch => {
       return {
         week: item.week,
         timePlan: {
+          id:item.timePlan.id,
           studyTime: item.timePlan.studyTime.split(',').map(i => Number(i)),
           sleepTime: item.timePlan.sleepTime.split(',').map(i => Number(i)),
           sportTime: item.timePlan.sportTime.split(',').map(i => Number(i)),
@@ -43,6 +44,13 @@ export const deletePlan = id => dispatch => {
 export const updatePlan = (id, title, content, timeRange, isImportant, week) => dispatch => {
   updatePlanAPI(id, title, content, timeRange, isImportant, week).then(result => {
     dispatch(setSnackText('修改计划成功：' + content))
+    refreshPlan(dispatch)
+  })
+}
+
+export const updateTimePlan = (id, week, studyTime, sleepTime, relaxTime, sportTime) => dispatch => {
+  updateTimePlanAPI(id, week, studyTime, sleepTime, relaxTime, sportTime).then(result => {
+    dispatch(setSnackText('修改时间成功'))
     refreshPlan(dispatch)
   })
 }

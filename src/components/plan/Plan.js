@@ -5,7 +5,7 @@ import PlanDetail from './PlanDetail'
 import PlanList from './PlanList'
 import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
-import { addPlan, deletePlan, refreshPlan, updatePlan } from '../../redux/actions/plan'
+import { addPlan, deletePlan, refreshPlan, updatePlan, updateTimePlan } from '../../redux/actions/plan'
 import PropTypes from 'prop-types'
 import { planType, timePlanType } from './propTypes'
 
@@ -29,6 +29,17 @@ class Plan extends React.Component {
     this.props.updatePlan(id, title, content, timeRange, isImportant, this.props.weeks[this.state.curWeekIndex].week)
   }
 
+  handleUpdateTimePlan = (id, timePlanList) => {
+    this.props.updateTimePlan(
+      id,
+      this.state.curWeekIndex,
+      timePlanList[0],
+      timePlanList[1],
+      timePlanList[2],
+      timePlanList[3]
+    )
+  }
+
   render() {
     const { classes, weeks, deletePlan } = this.props
     const { curWeekIndex } = this.state
@@ -48,7 +59,11 @@ class Plan extends React.Component {
             />
           </Grid>
           <Grid item lg={9} md={9} xs={12}>
-            <PlanDetail timePlan={planThisWeek.timePlan} plans={planThisWeek.items} />
+            <PlanDetail
+              timePlan={planThisWeek.timePlan}
+              plans={planThisWeek.items}
+              uploadTimePlan={this.handleUpdateTimePlan}
+            />
           </Grid>
         </Grid>
       </div>
@@ -82,7 +97,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(addPlan(title, content, timeRange, isImportant, week)),
   deletePlan: id => dispatch(deletePlan(id)),
   updatePlan: (id, title, content, timeRange, isImportant, week) =>
-    dispatch(updatePlan(id, title, content, timeRange, isImportant, week))
+    dispatch(updatePlan(id, title, content, timeRange, isImportant, week)),
+  updateTimePlan: (id, week, studyTime, sleepTime, relaxTime, sportTime) =>
+    dispatch(updateTimePlan(id, week, studyTime, sleepTime, relaxTime, sportTime))
 })
 
 export default connect(
