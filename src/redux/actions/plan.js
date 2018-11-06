@@ -3,26 +3,46 @@ import { setSnackText } from './app'
 
 export const refreshPlan = dispatch => {
   getPlanAPI().then(result => {
-    let data = result.data.map(item => {
-      return {
-        week: item.week,
-        timePlan: {
-          id:item.timePlan.id,
-          studyTime: item.timePlan.studyTime.split(',').map(i => Number(i)),
-          sleepTime: item.timePlan.sleepTime.split(',').map(i => Number(i)),
-          sportTime: item.timePlan.sportTime.split(',').map(i => Number(i)),
-          relaxTime: item.timePlan.relaxTime.split(',').map(i => Number(i))
-        },
-        items: item.items.map(i => {
-          return {
-            ...i,
-            id: i.id.toString(),
-            isImportant: i.isImportant === 'false',
-            timeRange: i.timeRange.split(',').map(time => new Date(Number(time)))
-          }
+    let data = []
+    if (result.hasOwnProperty('data')) {
+      data = result.data.map(item => {
+        return {
+          week: item.week,
+          timePlan: {
+            id: item.timePlan.id,
+            studyTime: item.timePlan.studyTime.split(',').map(Number),
+            sleepTime: item.timePlan.sleepTime.split(',').map(Number),
+            sportTime: item.timePlan.sportTime.split(',').map(Number),
+            relaxTime: item.timePlan.relaxTime.split(',').map(Number)
+          },
+          items: item.items.map(i => {
+            return {
+              ...i,
+              id: i.id.toString(),
+              isImportant: i.isImportant === 'false',
+              timeRange: i.timeRange.split(',').map(time => new Date(Number(time)))
+            }
+          })
+        }
+      })
+    }
+    //todo: 前端自动生成九周
+    let existWeek = data.map(i => i.week)
+    for (let i = 1; i <= 9; i++) {
+      if (existWeek.indexOf(i) === -1) {
+        data.push({
+          week: i,
+          timePlan: {
+            id: -1,
+            studyTime: [0, 0, 0, 0, 0, 0, 0],
+            sleepTime: [0, 0, 0, 0, 0, 0, 0],
+            sportTime: [0, 0, 0, 0, 0, 0, 0],
+            relaxTime: [0, 0, 0, 0, 0, 0, 0]
+          },
+          items: []
         })
       }
-    })
+    }
     dispatch(refreshPlanAction(data))
   })
 }

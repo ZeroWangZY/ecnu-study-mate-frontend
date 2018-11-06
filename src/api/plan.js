@@ -37,18 +37,32 @@ export const updatePlanAPI = (id, title, content, timeRange, isImportant, week) 
 }
 
 export const updateTimePlanAPI = (id, week, studyTime, sleepTime, relaxTime, sportTime) => {
-  //TODO: API太难用了叭~
-  return post('/timeplan/baseSqlHandle', {
-    update: {
-      id,
-      studentId: getStudentId(),
-      week,
-      studyTime,
-      sleepTime,
-      relaxTime,
-      sportTime
-    }
-  })
+  if (id === -1)
+    return post('/timeplan/baseSqlHandle', {
+      insert: [
+        {
+          studentId: getStudentId(),
+          week,
+          studyTime,
+          sleepTime,
+          relaxTime,
+          sportTime
+        }
+      ]
+    })
+    return post('/timeplan/baseSqlHandle', {
+      update: [
+        {
+          id,
+          studentId: getStudentId().toString(),
+          week,
+          studyTime,
+          sleepTime,
+          relaxTime,
+          sportTime
+        }
+      ]
+    })
 }
 
 export const deletePlanAPI = id => {
