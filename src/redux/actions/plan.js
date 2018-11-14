@@ -1,5 +1,8 @@
 import { getPlanAPI, addPlanAPI, deletePlanAPI, updatePlanAPI, updateTimePlanAPI } from '../../api/plan'
 import { setSnackText } from './app'
+import moment from 'moment'
+// 开学时间
+const semesterStart = moment('20180910', 'YYYYMMDD');
 
 export const refreshPlan = dispatch => {
   getPlanAPI().then(result => {
@@ -28,7 +31,9 @@ export const refreshPlan = dispatch => {
     }
     //todo: 前端自动生成九周
     let existWeek = data.map(i => i.week)
-    for (let i = 1; i <= 9; i++) {
+    let date = moment(new Date());
+    let maxWeekIndex = date.diff(semesterStart, 'weeks') + 1;
+    for (let i = 1; i <= maxWeekIndex; i++) {
       if (existWeek.indexOf(i) === -1) {
         data.push({
           week: i,
@@ -43,7 +48,7 @@ export const refreshPlan = dispatch => {
         })
       }
     }
-    dispatch(refreshPlanAction(data))
+    dispatch(refreshPlanAction(data.sort((a, b) => a.week - b.week)))
   })
 }
 
@@ -76,4 +81,3 @@ export const updateTimePlan = (id, week, studyTime, sleepTime, relaxTime, sportT
 }
 
 const refreshPlanAction = data => ({ type: 'REFRESH_PLAN_DATA', data: data })
-const addPlanAction = plan => ({ type: 'ADD_SINGLE_PLAN', plan })

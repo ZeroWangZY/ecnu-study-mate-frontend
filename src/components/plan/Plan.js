@@ -23,7 +23,10 @@ class Plan extends React.Component {
   }
 
   handleAddPlan = (title, content, timeRange, isImportant) => {
-    this.props.addPlan(title, content, timeRange, isImportant, this.props.weeks[this.state.curWeekIndex].week)
+    let curWeek = this.props.weeks[this.state.curWeekIndex]
+    if (curWeek.timePlan.id === -1) {
+      alert('请先设置timePlan，在没有timePlan的情况下否则会崩溃')
+    } else this.props.addPlan(title, content, timeRange, isImportant, curWeek.week)
   }
   handleUpdatePlan = (id, title, content, timeRange, isImportant) => {
     this.props.updatePlan(id, title, content, timeRange, isImportant, this.props.weeks[this.state.curWeekIndex].week)
@@ -32,7 +35,7 @@ class Plan extends React.Component {
   handleUpdateTimePlan = (id, timePlanList) => {
     this.props.updateTimePlan(
       id,
-      this.state.curWeekIndex,
+      this.props.weeks[this.state.curWeekIndex].week,
       timePlanList[0],
       timePlanList[1],
       timePlanList[2],
@@ -44,8 +47,9 @@ class Plan extends React.Component {
     const { classes, weeks, deletePlan } = this.props
     const { curWeekIndex } = this.state
     let weekIndexList = weeks.map(i => i.week)
-    let planThisWeek = weeks[curWeekIndex]
+    // 还没 fetch 数据时，return <div />
     if (weeks.length === 0) return <div />
+    let planThisWeek = weeks[curWeekIndex]
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
