@@ -24,9 +24,7 @@ class Plan extends React.Component {
 
   handleAddPlan = (title, content, timeRange, isImportant) => {
     let curWeek = this.props.weeks[this.state.curWeekIndex]
-    if (curWeek.timePlan.id === -1) {
-      alert('请先设置timePlan，在没有timePlan的情况下否则会崩溃')
-    } else this.props.addPlan(title, content, timeRange, isImportant, curWeek.week)
+    this.props.addPlan(title, content, timeRange, isImportant, curWeek.week)
   }
   handleUpdatePlan = (id, title, content, timeRange, isImportant) => {
     this.props.updatePlan(id, title, content, timeRange, isImportant, this.props.weeks[this.state.curWeekIndex].week)

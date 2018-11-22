@@ -2,7 +2,7 @@ import { getPlanAPI, addPlanAPI, deletePlanAPI, updatePlanAPI, updateTimePlanAPI
 import { setSnackText } from './app'
 import moment from 'moment'
 // 开学时间
-const semesterStart = moment('20180910', 'YYYYMMDD');
+const semesterStart = moment('20180910', 'YYYYMMDD')
 
 export const refreshPlan = dispatch => {
   getPlanAPI().then(result => {
@@ -11,13 +11,7 @@ export const refreshPlan = dispatch => {
       data = result.data.map(item => {
         return {
           week: item.week,
-          timePlan: {
-            id: item.timePlan.id,
-            studyTime: item.timePlan.studyTime.split(',').map(Number),
-            sleepTime: item.timePlan.sleepTime.split(',').map(Number),
-            sportTime: item.timePlan.sportTime.split(',').map(Number),
-            relaxTime: item.timePlan.relaxTime.split(',').map(Number)
-          },
+          timePlan: item.timePlan,
           items: item.items.map(i => {
             return {
               ...i,
@@ -29,25 +23,40 @@ export const refreshPlan = dispatch => {
         }
       })
     }
-    //todo: 前端自动生成九周
+    // 自动补全从开学到今天的全部周
     let existWeek = data.map(i => i.week)
-    let date = moment(new Date());
-    let maxWeekIndex = date.diff(semesterStart, 'weeks') + 1;
+    let date = moment(new Date())
+    let maxWeekIndex = date.diff(semesterStart, 'weeks') + 1
     for (let i = 1; i <= maxWeekIndex; i++) {
       if (existWeek.indexOf(i) === -1) {
         data.push({
           week: i,
-          timePlan: {
-            id: -1,
-            studyTime: [0, 0, 0, 0, 0, 0, 0],
-            sleepTime: [0, 0, 0, 0, 0, 0, 0],
-            sportTime: [0, 0, 0, 0, 0, 0, 0],
-            relaxTime: [0, 0, 0, 0, 0, 0, 0]
-          },
+          timePlan: {},
           items: []
         })
       }
     }
+
+    // 解析 fetch 得到的 timePlan
+    data.forEach(item => {
+      if (item.timePlan.hasOwnProperty('studyTime')) {
+        item.timePlan = {
+          id: item.timePlan.id,
+          studyTime: item.timePlan.studyTime.split(',').map(Number),
+          sleepTime: item.timePlan.sleepTime.split(',').map(Number),
+          sportTime: item.timePlan.sportTime.split(',').map(Number),
+          relaxTime: item.timePlan.relaxTime.split(',').map(Number)
+        }
+      } else {
+        item.timePlan = {
+          id: -1,
+          studyTime: [0, 0, 0, 0, 0, 0, 0],
+          sleepTime: [0, 0, 0, 0, 0, 0, 0],
+          sportTime: [0, 0, 0, 0, 0, 0, 0],
+          relaxTime: [0, 0, 0, 0, 0, 0, 0]
+        }
+      }
+    })
     dispatch(refreshPlanAction(data.sort((a, b) => a.week - b.week)))
   })
 }

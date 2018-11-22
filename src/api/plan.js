@@ -52,13 +52,6 @@ export const updatePlanAPI = (id, title, content, timeRange, isImportant, week) 
 
 export const updateTimePlanAPI = (id, week, studyTime, sleepTime, relaxTime, sportTime) => {
   if (id === -1) {
-    addPlanAPI(
-      '至少要有一个计划',
-      '你可以先新建一些计划，然后再把这个占位的计划删掉',
-      [new Date(), new Date()],
-      false,
-      week
-    )
     return post('/timeplan/baseSqlHandle', {
       insert: [
         {
