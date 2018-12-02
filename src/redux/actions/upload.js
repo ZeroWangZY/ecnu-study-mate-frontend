@@ -1,4 +1,4 @@
-import {downFilesAPI, uploadFilesAPI} from "../../api/api";
+import {downFilesAPI, uploadFilesAPI} from "../../api/upload";
 import {refreshHomework} from "./homework";
 import {setSnackText} from "./app";
 

@@ -7,33 +7,28 @@ import Typography from '@material-ui/core/Typography'
 import CardHeader from '@material-ui/core/CardHeader'
 import IconButton from '@material-ui/core/IconButton'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
-
+import { planType } from './propTypes'
+import moment from 'moment'
 
 /**
  * @author Yiyang Xu
  */
 class PlanListItem extends React.PureComponent {
-  static propTypes = {
-    content: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired
-  }
-
-
   render() {
-    const { classes, content, title, time, onClick, id } = this.props
+    const { content, title, timeRange, id } = this.props.plan
+    const { onClickMenu, classes } = this.props
+    let formattedTime = timeRange.map(item => moment(item).format('M月D日 HH:mm'))
+
     return (
       <Card className={classes.card}>
         <CardHeader
           action={
-            <IconButton onClick={onClick}>
-              <MoreVertIcon/>
+            <IconButton onClick={onClickMenu}>
+              <MoreVertIcon />
             </IconButton>
           }
           title={title}
-          subheader={time}
+          subheader={formattedTime.join(' ~ ')}
         />
         <CardContent>
           <Typography variant="body1">{content}</Typography>
@@ -41,6 +36,11 @@ class PlanListItem extends React.PureComponent {
       </Card>
     )
   }
+}
+
+PlanListItem.propTypes = {
+  plan: planType,
+  onClickMenu: PropTypes.func.isRequired
 }
 
 const styles = {

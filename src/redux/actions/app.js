@@ -1,6 +1,7 @@
-import {loginAPI, refreshTokenAPI, getUserInfoAPI} from '../../api/api'
+import {loginAPI, refreshTokenAPI, getUserInfoAPI} from '../../api/user'
 import {refreshScheduleAndReview} from './schedule';
 import {refreshHomework} from './homework';
+import {refreshPlan} from './plan';
 import {refreshHomeworkManage} from './homeworkManage';
 import {getStudentId} from '../store';
 
@@ -46,6 +47,7 @@ export const setApp = data => dispatch => {
     dispatch(refreshScheduleAndReview);
     dispatch(refreshHomework());
     dispatch(refreshHomeworkManage());
+    dispatch(refreshPlan)
   }).catch(json => {
     dispatch(setSnackText('登录过期，请重新登录'));
     dispatch(logoutAction);

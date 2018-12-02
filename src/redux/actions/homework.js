@@ -1,6 +1,6 @@
 import {
     getHomeworkDetailAPI
-} from "../../api/api";
+} from "../../api/homework";
 
 export const refreshHomework = () => {
     return dispatch => {
