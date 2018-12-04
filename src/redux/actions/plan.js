@@ -7,10 +7,10 @@ export const refreshPlan = dispatch => {
       return {
         week: item.week,
         timePlan: {
-          studyTime: item.timePlan.studyTime.split(',').map(i => Number(i)),
-          sleepTime: item.timePlan.sleepTime.split(',').map(i => Number(i)),
-          sportTime: item.timePlan.sportTime.split(',').map(i => Number(i)),
-          relaxTime: item.timePlan.relaxTime.split(',').map(i => Number(i))
+          studyTime: item.timePlan.studyTime === undefined ? [] : item.timePlan.studyTime.split(',').map(i => Number(i)),
+          sleepTime: item.timePlan.sleepTime === undefined ? [] : item.timePlan.sleepTime.split(',').map(i => Number(i)),
+          sportTime: item.timePlan.sportTime === undefined ? [] : item.timePlan.sportTime.split(',').map(i => Number(i)),
+          relaxTime: item.timePlan.relaxTime === undefined ? [] : item.timePlan.relaxTime.split(',').map(i => Number(i))
         },
         items: item.items.map(i => {
           return {
