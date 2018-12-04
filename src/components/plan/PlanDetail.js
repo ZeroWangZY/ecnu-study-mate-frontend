@@ -7,16 +7,25 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import EditIcon from '@material-ui/icons/Edit'
+import SaveIcon from '@material-ui/icons/Save'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
 import PropTypes from 'prop-types'
 import { planType, timePlanType } from './propTypes'
+
 /**
  * @author Yiyang Xu
  */
 const weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+
 class PlanDetail extends React.Component {
+  state = {
+    isEditingTable: false
+  }
+
   render() {
     return (
       <div>
@@ -29,6 +38,7 @@ class PlanDetail extends React.Component {
   renderTable = () => {
     let { classes, timePlan } = this.props
     let id = 0
+
     function createData(name, nums) {
       id += 1
       return { id, name, nums }
@@ -42,38 +52,30 @@ class PlanDetail extends React.Component {
     ]
     return (
       <div style={{ marginBottom: 24 }}>
-        <Typography variant="h5" color="primary">
-          计划详情
-        </Typography>
+        <div className={classes.titleContainer}>
+          <Typography variant="h5" color="primary">
+            计划详情
+          </Typography>
+          <IconButton aria-label="Delete" className={classes.button}>
+            {this.state.isEditingTable ? (
+              <SaveIcon onClick={this.toggleEditTable(true)} />
+            ) : (
+              <EditIcon onClick={this.toggleEditTable(false)} />
+            )}
+          </IconButton>
+        </div>
         <Paper className={classes.root}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell>时间类别</TableCell>
-                {weekdays.map(w => (
-                  <TableCell key={w.toString()} numeric>
-                    {w}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map(row => {
-                return (
-                  <TableRow key={row.id}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    {weekdays.map((w, index) => (
-                      <TableCell key={index.toString()} numeric>
-                        {row.nums[index]}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
+          {this.state.isEditingTable ? (
+            <EditPlanTable
+              classes={classes}
+              rows={rows}
+              ref={e => {
+                this.editTable = e
+              }}
+            />
+          ) : (
+            showPlanTable({ classes, rows })
+          )}
         </Paper>
       </div>
     )
@@ -104,6 +106,109 @@ class PlanDetail extends React.Component {
       </div>
     )
   }
+
+  toggleEditTable = edit => () => {
+    this.setState({ isEditingTable: !edit })
+    if (edit) {
+      this.props.uploadTimePlan(this.props.timePlan.id, this.editTable.state.rows.map(i => i.nums.join(',')))
+    }
+  }
+}
+
+const showPlanTable = props => {
+  let { classes, rows } = props
+  return (
+    <Table className={classes.table}>
+      <TableHead>
+        <TableRow>
+          <TableCell>时间类别</TableCell>
+          {weekdays.map(w => (
+            <TableCell key={w.toString()} numeric>
+              {w}
+            </TableCell>
+          ))}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map(row => {
+          return (
+            <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              {weekdays.map((w, index) => (
+                <TableCell key={index.toString()} numeric>
+                  {row.nums[index]}
+                </TableCell>
+              ))}
+            </TableRow>
+          )
+        })}
+      </TableBody>
+    </Table>
+  )
+}
+
+class EditPlanTable extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      rows: props.rows.map(i => ({ ...i, nums: [...i.nums] }))
+    }
+  }
+
+  onChangeTimePlanCell = (typeIndex, dayIndex) => evt => {
+    let value = evt.target.value
+    this.setState(({ rows }) =>
+      rows.map((row, rowIndex) => {
+        if (rowIndex === typeIndex) {
+          let newNums = row.nums
+          newNums[dayIndex] = value
+          return { ...row, nums: newNums }
+        }
+        return row
+      })
+    )
+  }
+
+  render() {
+    const { classes } = this.props
+    const { rows } = this.state
+    return (
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>时间类别</TableCell>
+            {weekdays.map(w => (
+              <TableCell key={w}>{w}</TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row, typeIndex) => {
+            return (
+              <TableRow key={row.id}>
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                {weekdays.map((w, index) => (
+                  <TableCell key={index.toString()} numeric>
+                    <input
+                      value={row.nums[index]}
+                      type={'number'}
+                      min="0"
+                      max="24"
+                      onChange={this.onChangeTimePlanCell(typeIndex, index)}
+                    />
+                  </TableCell>
+                ))}
+              </TableRow>
+            )
+          })}
+        </TableBody>
+      </Table>
+    )
+  }
 }
 
 const styles = theme => ({
@@ -113,12 +218,19 @@ const styles = theme => ({
     overflowX: 'auto'
   },
   table: {
-    minWidth: 700
+    minWidth: 880
+  },
+  titleContainer: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 })
 
 PlanDetail.propTypes = {
   plans: PropTypes.arrayOf(planType),
-  timePlan: timePlanType
+  timePlan: timePlanType,
+  uploadTimePlan: PropTypes.func
 }
 export default withStyles(styles)(PlanDetail)
