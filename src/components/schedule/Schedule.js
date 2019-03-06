@@ -12,7 +12,11 @@ import TextField from '@material-ui/core/TextField';
 import {connect} from 'react-redux'
 import {addSchedule, updateSchedule, deleteSchedule} from '../../redux/actions/schedule';
 import ScheduleReview from './ScheduleReview';
-import { jsDateToCalendarDate } from '../../util/date';
+import {jsDateToCalendarDate} from '../../util/date';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
 
 const styles = theme => ({
   button: {
@@ -23,6 +27,10 @@ const styles = theme => ({
   },
   extendedIcon: {
     marginRight: theme.spacing.unit
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120
   },
   container: {
     display: 'flex',
@@ -47,7 +55,9 @@ class Schedule extends Component {
     end: jsDateToCalendarDate(new Date()),
     desc: '',
     editing: false,
-    currentEvent: null
+    currentEvent: null,
+    progress: 0,
+    type: 'study'
   };
 
   initState = () => {
@@ -57,7 +67,9 @@ class Schedule extends Component {
       start: jsDateToCalendarDate(new Date()),
       end: jsDateToCalendarDate(new Date()),
       desc: '',
-      editing: false
+      editing: false,
+      progress: 0,
+      type: 'study'
     })
   }
 
@@ -70,14 +82,15 @@ class Schedule extends Component {
   };
 
   handleAddSchedule = () => {
-    if((new Date(this.state.end)>(new Date(this.state.start)))) 
-    {
-      this.props.addSchedule(this.state.title, this.state.desc, this.state.start, this.state.end);
+    if ((new Date(this.state.end) > (new Date(this.state.start)))) {
+      this
+        .props
+        .addSchedule(this.state.title, this.state.desc, this.state.start, this.state.end);
       this.handleClose();
+    } else 
+      alert("提示：时间填写错误");
     }
-    else alert("提示：时间填写错误");
-  }
-
+  
   handleDeleteSchedule = () => {
     this
       .props
@@ -86,14 +99,15 @@ class Schedule extends Component {
   }
 
   handleEditSchedule = () => {
-    if((new Date(this.state.end)>(new Date(this.state.start))))
-      {
-        this.props.updateSchedule(this.state.currentEvent.id, this.state.title, this.state.desc, this.state.start, this.state.end);
-        this.handleClose();
-      }
-     else alert("提示：时间填写错误");
-  }
-
+    if ((new Date(this.state.end) > (new Date(this.state.start)))) {
+      this
+        .props
+        .updateSchedule(this.state.currentEvent.id, this.state.title, this.state.desc, this.state.start, this.state.end);
+      this.handleClose();
+    } else 
+      alert("提示：时间填写错误");
+    }
+  
   openEditDialog = (event) => {
     this.setState({
       open: true,
@@ -109,6 +123,8 @@ class Schedule extends Component {
         .substring(0, 16)
         .replace(' ', 'T'),
       desc: event.resource.content,
+      type: event.resource.scheduleTag,
+      progress: event.resource.progress,
       editing: true,
       currentEvent: event.resource
     })
@@ -196,6 +212,38 @@ class Schedule extends Component {
                   InputLabelProps={{
                   shrink: true
                 }}/>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="age-simple">完成度</InputLabel>
+                  <Select
+                    value={this.state.progress}
+                    onChange={this.handleChange('progress')}
+                    inputProps={{
+                    name: 'progress',
+                    id: 'progress'
+                  }}>
+                    <MenuItem value={0}>0</MenuItem>
+                    <MenuItem value={20}>20%</MenuItem>
+                    <MenuItem value={40}>40%</MenuItem>
+                    <MenuItem value={60}>60%</MenuItem>
+                    <MenuItem value={80}>80%</MenuItem>
+                    <MenuItem value={100}>100%</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl className={classes.formControl}>
+                  <InputLabel htmlFor="age-simple">类型</InputLabel>
+                  <Select
+                    value={this.state.type}
+                    onChange={this.handleChange('type')}
+                    inputProps={{
+                    name: 'type',
+                    id: 'type'
+                  }}>
+                    <MenuItem value={'study'}>学习</MenuItem>
+                    <MenuItem value={'sleep'}>睡觉</MenuItem>
+                    <MenuItem value={'relax'}>自我调整</MenuItem>
+                    <MenuItem value={'sport'}>运动</MenuItem>
+                  </Select>
+                </FormControl>
               </form>
             </DialogContent>
             <DialogActions>
@@ -222,8 +270,8 @@ class Schedule extends Component {
 const mapStateToProps = state => ({role: state.app.role})
 
 const mapDispatchToProps = dispatch => ({
-  addSchedule: (title, desc, start, end) => dispatch(addSchedule(title, desc, start, end)),
-  updateSchedule: (id, title, desc, start, end) => dispatch(updateSchedule(id, title, desc, start, end)),
+  addSchedule: (title, desc, start, end, type, progress) => dispatch(addSchedule(title, desc, start, end, type, progress)),
+  updateSchedule: (id, title, desc, start, end, type, progress) => dispatch(updateSchedule(id, title, desc, start, end, type, progress)),
   deleteSchedule: id => dispatch(deleteSchedule(id))
 })
 

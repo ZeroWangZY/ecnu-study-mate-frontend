@@ -1,11 +1,14 @@
 import {post} from "./api";
 import {getStudentId} from "../redux/store";
 
-export const changePerInfoAPI = (password,newPassword,name,email) => {
-    return post('/user/baseSqlHandle',{
+export const changePerInfoAPI = (name,username,email,password,oldPwd,sex,phone) => {
+    return post('/user/modifyInfo',{
             'name': name,
+            'username': username,
+            'email':email,
             'password': password,
-            'newPassword': newPassword,
-            'email': email,
+            'oldPwd': oldPwd,
+            'sex': sex,
+            'phone': phone
     })
 }

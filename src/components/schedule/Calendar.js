@@ -63,7 +63,12 @@ class Calendar extends React.Component {
           this.props.openEditDialog(event);
         }}
         tooltipAccessor={(event) => event.resource.content}
-      />
+        eventPropGetter={(event, start, end, isSelected) => {
+          let progress = event.resource.progress;
+          if(progress === undefined) progress = '0';
+          return {className: 'event-progress-'+progress}
+        }}
+        />
     )
   }
 }

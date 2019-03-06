@@ -20,15 +20,15 @@ const refreshScheduleReview = dispatch => {
   })
 }
 
-export const addSchedule = (title, desc, start, end) => dispatch => {
-  addScheduleAPI(title, desc, start, end).then(res => {
+export const addSchedule = (title, desc, start, end, type, progress) => dispatch => {
+  addScheduleAPI(title, desc, start, end, type, progress).then(res => {
     dispatch(refreshSchedule);
     dispatch(setSnackText('添加成功'));
   })
 }
 
-export const updateSchedule = (id, title, desc, start, end) => dispatch => {
-  updateScheduleAPI(id, title, desc, start, end).then(res => {
+export const updateSchedule = (id, title, desc, start, end, type, progress) => dispatch => {
+  updateScheduleAPI(id, title, desc, start, end, type, progress).then(res => {
     dispatch(refreshSchedule);
     dispatch(setSnackText('更新成功'));
   })

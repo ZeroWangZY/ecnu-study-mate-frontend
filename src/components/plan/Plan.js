@@ -5,7 +5,7 @@ import PlanDetail from './PlanDetail'
 import PlanList from './PlanList'
 import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
-import { addPlan, deletePlan, refreshPlan, updatePlan } from '../../redux/actions/plan'
+import { addPlan, deletePlan, refreshPlan, updatePlan, updateTimePlan } from '../../redux/actions/plan'
 import PropTypes from 'prop-types'
 import { planType, timePlanType } from './propTypes'
 
@@ -23,18 +23,31 @@ class Plan extends React.Component {
   }
 
   handleAddPlan = (title, content, timeRange, isImportant) => {
-    this.props.addPlan(title, content, timeRange, isImportant, this.props.weeks[this.state.curWeekIndex].week)
+    let curWeek = this.props.weeks[this.state.curWeekIndex]
+    this.props.addPlan(title, content, timeRange, isImportant, curWeek.week)
   }
   handleUpdatePlan = (id, title, content, timeRange, isImportant) => {
     this.props.updatePlan(id, title, content, timeRange, isImportant, this.props.weeks[this.state.curWeekIndex].week)
+  }
+
+  handleUpdateTimePlan = (id, timePlanList) => {
+    this.props.updateTimePlan(
+      id,
+      this.props.weeks[this.state.curWeekIndex].week,
+      timePlanList[0],
+      timePlanList[1],
+      timePlanList[2],
+      timePlanList[3]
+    )
   }
 
   render() {
     const { classes, weeks, deletePlan } = this.props
     const { curWeekIndex } = this.state
     let weekIndexList = weeks.map(i => i.week)
-    let planThisWeek = weeks[curWeekIndex]
+    // 还没 fetch 数据时，return <div />
     if (weeks.length === 0) return <div />
+    let planThisWeek = weeks[curWeekIndex]
     return (
       <div className={classes.root}>
         <Grid container spacing={24}>
@@ -48,7 +61,11 @@ class Plan extends React.Component {
             />
           </Grid>
           <Grid item lg={9} md={9} xs={12}>
-            <PlanDetail timePlan={planThisWeek.timePlan} plans={planThisWeek.items} />
+            <PlanDetail
+              timePlan={planThisWeek.timePlan}
+              plans={planThisWeek.items}
+              uploadTimePlan={this.handleUpdateTimePlan}
+            />
           </Grid>
         </Grid>
       </div>
@@ -82,7 +99,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(addPlan(title, content, timeRange, isImportant, week)),
   deletePlan: id => dispatch(deletePlan(id)),
   updatePlan: (id, title, content, timeRange, isImportant, week) =>
-    dispatch(updatePlan(id, title, content, timeRange, isImportant, week))
+    dispatch(updatePlan(id, title, content, timeRange, isImportant, week)),
+  updateTimePlan: (id, week, studyTime, sleepTime, relaxTime, sportTime) =>
+    dispatch(updateTimePlan(id, week, studyTime, sleepTime, relaxTime, sportTime))
 })
 
 export default connect(
