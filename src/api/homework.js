@@ -1,7 +1,5 @@
-import {post} from "./api";
+import {post, urlPrefix} from "./api";
 import { getStudentId, getAccessToken, getUserInfo , getReceiverId} from "../redux/store";
-
-const urlPrefix = '/api'
 
 export const getHomeworkDetailAPI = () => {
     let data = {
