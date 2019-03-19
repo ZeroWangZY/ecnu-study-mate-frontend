@@ -4,6 +4,7 @@ import {refreshHomework} from './homework';
 import {refreshPlan} from './plan';
 import {refreshHomeworkManage} from './homeworkManage';
 import {getStudentId} from '../store';
+import { getInformation, getMyInformation } from './information';
 
 export const setDrawer = shouldShowDrawer => ({type: 'SET_DRAWER', val: shouldShowDrawer})
 
@@ -80,6 +81,8 @@ const getUserInfoAndScheduleAfterLogin = dispatch => {
     dispatch(refreshScheduleAndReview);
     dispatch(refreshHomework());
     dispatch(refreshHomeworkManage());
+    dispatch(getMyInformation());
+    dispatch(getInformation())
     dispatch(refreshPlan);
   })
 }

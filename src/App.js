@@ -11,7 +11,7 @@ import Snackbar from './common/Snackbar';
 import HomeworkManage from "./components/homeworkManage/HomeworkManage";
 import EmotionSurvey from './components/emotion/EmotionSurvey';
 import ChangePerInfo from './components/changePerInfo/ChangePerInfo';
-
+import Information from './components/information/Information';
 
 class App extends Component {
   render() {
@@ -28,6 +28,7 @@ class App extends Component {
           <Route path="/message" component={Message} />
           <Route path="/emotion" component={EmotionSurvey} />
           <Route path="/changePerInfo" component={ChangePerInfo} />
+          <Route path="/information" component={Information} />
         </Switch>
         <LeftMenu />
       </div>

@@ -77,6 +77,14 @@ class Leftmenu extends Component {
               </ListItemIcon>
               <ListItemText primary="学习资料"/>
             </ListItem>
+            <Link to="/information">
+              <ListItem button>
+                <ListItemIcon>
+                  <SendIcon/>
+                </ListItemIcon>
+                <ListItemText primary="学生档案"/>
+              </ListItem>
+            </Link>
           </div>
         </List>
         <Divider/>
