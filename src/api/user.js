@@ -34,8 +34,5 @@ export const refreshTokenAPI = () => {
 }
 
 
-export const getUserInfoAPI = (id) => {
-    return post('/user/getInfo', {
-        studentId: id
-    })
-}
+export const getUserInfoAPI = (id) => post('/user/getInfo', { studentId: id })
+

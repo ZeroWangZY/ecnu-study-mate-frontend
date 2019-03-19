@@ -4,10 +4,11 @@ import {refreshHomework} from './homework';
 import {refreshPlan} from './plan';
 import {refreshHomeworkManage} from './homeworkManage';
 import {getStudentId} from '../store';
-import { getInformation, getMyInformation } from './information';
+import { refreshInformation } from './information';
 
 export const setDrawer = shouldShowDrawer => ({type: 'SET_DRAWER', val: shouldShowDrawer})
 
+// 消息弹出
 export const setSnackText = text => ({type: 'SET_SNACK_TEXT', text: text})
 
 export const login = (id, password) => dispatch => {
@@ -21,7 +22,7 @@ export const login = (id, password) => dispatch => {
         studentId: id
       }
     })
-    dispatch(getUserInfoAndScheduleAfterLogin);
+    dispatch(getUserInfoAndScheduleAfterLogin); //登录成功后获取各种数据
     dispatch(setSnackText('登录成功'));
   }).catch(json => {
     dispatch(setSnackText('登录失败：' + json.error_description));
@@ -39,16 +40,13 @@ export const updateTokenAction = () => (dispatch, getState) => {
   }
 }
 
-export const setApp = data => dispatch => {
+export const refreshDataAfterAutoLogin = data => dispatch => {
   dispatch({type: 'SET_APP', data: data});
   refreshTokenAPI().then(json => {
     dispatch({type: 'SET_TOKEN', accessToken: json.access_token, refreshToken: json.refresh_token});
     return json;
   }).then(json => {
-    dispatch(refreshScheduleAndReview);
-    dispatch(refreshHomework());
-    dispatch(refreshHomeworkManage());
-    dispatch(refreshPlan);
+    refreshData(dispatch)
   }).catch(json => {
     dispatch(setSnackText('登录过期，请重新登录'));
     dispatch(logoutAction);
@@ -78,11 +76,14 @@ const getUserInfoAndScheduleAfterLogin = dispatch => {
         userInfo: res.data
       }
     })
-    dispatch(refreshScheduleAndReview);
+    refreshData(dispatch)
+  })
+}
+
+const refreshData = dispatch => {
+  dispatch(refreshScheduleAndReview);
     dispatch(refreshHomework());
     dispatch(refreshHomeworkManage());
-    dispatch(getMyInformation());
-    dispatch(getInformation())
     dispatch(refreshPlan);
-  })
+    dispatch(refreshInformation);
 }

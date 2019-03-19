@@ -1,0 +1,56 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const styles = theme => ({
+  root: {
+    width: '100%',
+    marginTop: theme.spacing.unit,
+    overflowX: 'auto',
+  },
+  table: {
+    // minWidth: 100,
+  },
+});
+
+function CourseTable(props) {
+  const { classes, data } = props;
+
+  return (
+    <Paper className={classes.root}>
+      <Table className={classes.table}>
+        <TableHead>
+          <TableRow>
+            <TableCell>不及格的课程</TableCell>
+            <TableCell>课程分类</TableCell>
+            <TableCell>课程学分</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+            {data.map((item, index) => {
+                return <TableRow key={data.id}>
+                <TableCell component="th" scope="row">
+                    {item.courseName}
+                </TableCell>
+                <TableCell>暂无类别</TableCell>
+                <TableCell>暂无学分</TableCell>
+            </TableRow>
+            })}
+            
+        </TableBody>
+      </Table>
+    </Paper>
+  );
+}
+
+CourseTable.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(CourseTable);

@@ -8,7 +8,7 @@ import moment from 'moment';
 import {Provider} from 'react-redux';
 import {store, getDispatch} from './redux/store';
 import {BrowserRouter} from 'react-router-dom';
-import {updateTokenAction, setApp} from './redux/actions/app';
+import {updateTokenAction, refreshDataAfterAutoLogin} from './redux/actions/app';
 import localForage from "localforage";
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
@@ -27,7 +27,7 @@ localStore
   .getItem('app')
   .then(data => {
     if (data !== null && data.isLoginned) {
-      getDispatch()(setApp(data));
+      getDispatch()(refreshDataAfterAutoLogin(data));
     }
   })
 
