@@ -7,6 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -23,30 +24,36 @@ function InformationTable(props) {
   const { classes, data } = props;
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table}>
-        <TableHead>
-          <TableRow>
-            <TableCell>姓名</TableCell>
-            <TableCell numeric>学号</TableCell>
-            <TableCell numeric>年级</TableCell>
-            <TableCell numeric>绩点</TableCell>
-            <TableCell numeric>学分</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow key={data.studentID}>
-                <TableCell component="th" scope="row">
-                    {data.studentName}
-                </TableCell>
-                <TableCell numeric>{data.studentID}</TableCell>
-                <TableCell numeric>{data.grade}</TableCell>
-                <TableCell numeric>{data.gpa}</TableCell>
-                <TableCell numeric>{data.credit}</TableCell>
+    <div>
+      <Typography variant="h6">
+        基本信息
+      </Typography>
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <TableCell>姓名</TableCell>
+              <TableCell numeric>学号</TableCell>
+              <TableCell numeric>年级</TableCell>
+              <TableCell numeric>绩点</TableCell>
+              <TableCell numeric>学分</TableCell>
             </TableRow>
-        </TableBody>
-      </Table>
-    </Paper>
+          </TableHead>
+          <TableBody>
+              <TableRow key={data.studentID}>
+                  <TableCell component="th" scope="row">
+                      {data.studentName}
+                  </TableCell>
+                  <TableCell numeric>{data.studentID}</TableCell>
+                  <TableCell numeric>{data.grade}</TableCell>
+                  <TableCell numeric>{data.gpa}</TableCell>
+                  <TableCell numeric>{data.credit}</TableCell>
+              </TableRow>
+          </TableBody>
+        </Table>
+      </Paper>
+    </div>
+    
   );
 }
 

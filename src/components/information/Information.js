@@ -8,6 +8,10 @@ import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from '@material-ui/core/styles';
 import InformationTable from './InformationTable';
 import CourseTable from './CourseTable';
+import Review from './Review';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import ReviewEditingWindow from './ReviewEditingWindow';
 
 function TabContainer({ children, dir }) {
   return (
@@ -18,6 +22,12 @@ function TabContainer({ children, dir }) {
 }
 
 const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+    position: 'fixed',
+    right: 6,
+    bottom: 6
+  },
   root: {
     backgroundColor: theme.palette.background.paper,
     width: 500,
@@ -27,6 +37,16 @@ const styles = theme => ({
 class Information extends Component {
   state = {
     value: 0,
+    open: false,
+
+  };
+
+  handleClickOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
   };
 
   handleChange = (event, value) => {
@@ -60,19 +80,26 @@ class Information extends Component {
             onChangeIndex={this.handleChangeIndex}
           >
             <TabContainer dir={theme.direction}>
-              <Typography variant="h6">
-                基本信息
-              </Typography>
               <InformationTable data={data.studentInfo} />
-              <Typography variant="h6" gutterBottom>
-                不及格的课程
-              </Typography>
               <CourseTable data={data.failedCourses} />
+              <Review data={data.reviews} />
             </TabContainer>
             <TabContainer dir={theme.direction}>
               <InformationTable data={data.partnerInfo} />
             </TabContainer>
           </SwipeableViews>
+
+          <Button
+            variant="extendedFab"
+            aria-label="add"
+            className={classes.button}
+            color="primary"
+            onClick={this.handleClickOpen}>
+            <AddIcon className={classes.extendedIcon}/>
+            新增评价
+          </Button>
+
+          <ReviewEditingWindow open={this.state.open} handleClose={this.handleClose}/>
       </div>
     );
 
@@ -80,7 +107,8 @@ class Information extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.information
+  data: state.information,
+  role: state.app.role
 })
 const mapDispatchToProps = dispatch => ({
 })
