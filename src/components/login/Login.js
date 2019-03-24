@@ -21,8 +21,10 @@ class Login extends React.Component {
         // this.props.login(this.state.id, this.state.password);
         
         // this.props.login(10140510305, 10140510305); // 辅导者
-        this.props.login(123456789, 10165101000); // 学生
-        // this.props.login(20130034, 20130034); // 心理咨询师
+        // this.props.login(101405103051, 10140510305); // 辅导者
+
+        // this.props.login(123456789, 10165101000); // 学生
+        this.props.login(20130034, 20130034); // 心理咨询师
         // this.props.login(20130053, 20130053); 
         
     }

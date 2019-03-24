@@ -32,7 +32,18 @@ class ReviewEditingWindow extends Component {
 
 	handleChange = name => event => {
     this.setState({[name]: event.target.value});
-	};
+  };
+  
+  confirm = () => {
+    this.props.addReview(this.state.overview, this.state.reason)
+
+    this.setState({
+      overview: '',
+      reason: ''
+    })
+
+    this.props.handleClose()
+  }
 	
 	state = {
 		overview: '',
@@ -81,6 +92,7 @@ class ReviewEditingWindow extends Component {
             </Button>
             <Button
               color="secondary"
+              onClick={this.confirm}
               autoFocus>
               确定
             </Button>

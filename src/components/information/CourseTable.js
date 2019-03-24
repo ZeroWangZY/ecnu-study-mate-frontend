@@ -39,7 +39,7 @@ function CourseTable(props) {
           </TableHead>
           <TableBody>
               {data.map((item, index) => {
-                  return <TableRow key={data.id}>
+                  return <TableRow key={'' + data.id + index}>
                   <TableCell component="th" scope="row">
                       {item.courseName}
                   </TableCell>

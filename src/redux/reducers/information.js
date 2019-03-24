@@ -51,6 +51,14 @@ const information = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_INFORMATION':
       return Object.assign({}, state, action.data);
+    case 'SET_STUDENT_ID_LIST':
+      let data = {
+        studentIdList: action.data
+      };
+      if (state.currentStudentId === null) {
+        data.currentStudentId = action.data[0]
+      }
+      return Object.assign({}, state, data);
     default:
       return state;
   }

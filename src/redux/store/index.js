@@ -28,6 +28,9 @@ const getUserInfo = () => store.getState().app.userInfo
 const getAdviserId = () => store.getState().app.userInfo.advisorId//小老师的id
 const getReceiverId = () =>store.getState().app.userInfo.studentId//被辅导学生的id
 const getStudentInfo = () => store.getState().app.studentInfo
+const getCurrentStudentId = () => store.getState().information.currentStudentId
 const getDispatch = () => store.dispatch
 
-export { store, getAccessToken, getStudentId, getRefreshToken, getDispatch, getRole, getUserInfo, getStudentInfo,getAdviserId,getReceiverId}
+export { store, getAccessToken, getStudentId, getRefreshToken,
+    getDispatch, getRole, getUserInfo, getStudentInfo, getAdviserId,
+    getReceiverId, getCurrentStudentId }

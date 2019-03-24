@@ -29,7 +29,6 @@ function ReviewItem(props) {
   const { classes, data } = props;
   const overview = data.answerList[0]
   const reason = data.answerList[1]
-  console.log(overview);
   
   return (
     <Paper className={classes.root}>

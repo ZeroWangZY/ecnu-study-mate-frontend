@@ -1,5 +1,7 @@
-import { getInformationAPI, getMyInformationAPI, getMyFailedCourses } from "../../api/information";
-import { getRole } from "../store/index";
+import { getInformationAPI, getMyInformationAPI, getMyFailedCoursesAPI, getFailedCoursesAPI, getReviewAPI, addReviewAPI, getAllStudentAPI } from "../../api/information";
+import { getRole, getReceiverId, getAdviserId, getCurrentStudentId } from "../store/index";
+import { setSnackText } from "./app";
+import { getUserInfoAPI } from "../../api/user";
 
 
 
@@ -17,7 +19,7 @@ const refreshWhenUserIsStudent = dispatch => {
             data: {studentInfo: res.data}
         })
     })
-    getMyFailedCourses()
+    getMyFailedCoursesAPI()
     .then(res => {
         dispatch({
             type: 'SET_INFORMATION',
@@ -26,9 +28,98 @@ const refreshWhenUserIsStudent = dispatch => {
     })
 }
 
+const refreshWhenUserIsAdvisor = dispatch => {
+    const studentId = getReceiverId();
+    const advisorId = getAdviserId();
+    getInformationAPI(studentId)
+    .then(res => {
+        dispatch({
+            type: 'SET_INFORMATION',
+            data: {studentInfo: res.data}
+        })
+    })
+    getFailedCoursesAPI(studentId)
+    .then(res => {
+        dispatch({
+            type: 'SET_INFORMATION',
+            data: {failedCourses: res.data}
+        })
+    })
+    getReviewAPI(studentId)
+    .then(res => {
+        dispatch({
+            type: 'SET_INFORMATION',
+            data: {reviews: res.data}
+        })
+    })
+    getInformationAPI(advisorId)
+    .then(res => {
+        dispatch({
+            type: 'SET_INFORMATION',
+            data: {partnerInfo: res.data}
+        })
+    })
+}
+
+const refreshWhenUserIsAdminOrTeacher = dispatch => {
+    getAllStudentAPI()
+    .then(res => {
+        if (res.flag === 'T') {
+            dispatch({
+                type: 'SET_STUDENT_ID_LIST',
+                data: res.data
+            })
+        } else {
+            dispatch(setSnackText('获取学生列表失败'))
+        }
+    })
+    .then(res => {
+        let currentStudentId = getCurrentStudentId()
+        getInformationAPI(currentStudentId)
+        .then(res => {
+            dispatch({
+                type: 'SET_INFORMATION',
+                data: {studentInfo: res.data}
+            })
+        })
+        getFailedCoursesAPI(currentStudentId)
+        .then(res => {
+            dispatch({
+                type: 'SET_INFORMATION',
+                data: {failedCourses: res.data}
+            })
+        })
+        getReviewAPI(currentStudentId)
+        .then(res => {
+            dispatch({
+                type: 'SET_INFORMATION',
+                data: {reviews: res.data}
+            })
+        })
+        getUserInfoAPI(currentStudentId)
+    })
+    
+}
+
 export const refreshInformation = dispatch => {
     let role = getRole();
     if (role === 'ROLE_USER') {
         dispatch(refreshWhenUserIsStudent)
+    } else if (role === 'ROLE_ADVISOR') {
+        dispatch(refreshWhenUserIsAdvisor)
+    } else if (role === 'ROLE_PSYCHOLOGY' || role === 'ROLE_ADMIN') {
+        dispatch(refreshWhenUserIsAdminOrTeacher)
     }
+}
+
+export const addReview = (id, overview, reason) => dispatch => {
+    addReviewAPI(id, overview, reason)
+    .then(res => {
+        if(res.flag === 'T') {
+            dispatch(setSnackText('添加成功'))
+        } else {
+            dispatch(setSnackText('添加失败'))
+        }
+        dispatch(refreshInformation)
+    })
 }
