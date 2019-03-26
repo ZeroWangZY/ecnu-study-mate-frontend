@@ -1,95 +1,90 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
-import { login } from '../../redux/actions/app';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import withMobileDialog from '@material-ui/core/withMobileDialog'
+import { login } from '../../redux/actions/app'
 import { connect } from 'react-redux'
 
 class Login extends React.Component {
-    state = {
-        id: "",
-        password: ""
-    };
+  state = {
+    id: '',
+    password: ''
+  }
 
-    handleLogin = () => {
-       // this.props.login(10165101228, 10165101228);
-        // this.props.login(10142510261, 10142510261);
-        // this.props.login(this.state.id, this.state.password);
-        
-        // this.props.login(10140510305, 10140510305); // 辅导者
-        // this.props.login(101405103051, 10140510305); // 辅导者
+  handleLogin = () => {
+    // this.props.login(10165101228, 10165101228);
+    // this.props.login(10142510261, 10142510261);
+    this.props.login(this.state.id, this.state.password);
 
-        // this.props.login(123456789, 10165101000); // 学生
-        this.props.login(20130034, 20130034); // 心理咨询师
-        // this.props.login(20130053, 20130053); 
-        
-    }
+    // this.props.login(10140510305, 10140510305); // 辅导者
+    // this.props.login(101405103051, 10140510305); // 辅导者
 
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
+    // this.props.login(123456789, 10165101000); // 学生
+    // this.props.login(20130034, 20130034); // 心理咨询师
+    // this.props.login(20130053, 20130053) //辅导员
+  }
 
-    render() {
-        const { fullScreen } = this.props;
-        let open = true;
-        open = !this.props.app.isLoginned;
-        return (
-            <div>
-                <Dialog
-                    open={open}
-                    fullScreen={fullScreen}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogTitle id="form-dialog-title">请先登录</DialogTitle>
-                    <DialogContent>
-                        <TextField
-                            required
-                            autoFocus
-                            margin="dense"
-                            id="id"
-                            label="账号"
-                            type="id"
-                            value={this.state.id}
-                            onChange={this.handleChange('id')}
-                            fullWidth
-                        />
-                        <TextField
-                            required
-                            margin="dense"
-                            id="password"
-                            label="密码"
-                            type="password"
-                            value={this.state.password}
-                            onChange={this.handleChange('password')}
-                            fullWidth
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleLogin} color="primary">
-                            登录
-                        </Button>
-                    </DialogActions>
-                </Dialog>
-            </div>
-        );
-    }
+  handleChange = name => event => {
+    this.setState({
+      [name]: event.target.value
+    })
+  }
+
+  render() {
+    const { fullScreen } = this.props
+    let open = true
+    open = !this.props.app.isLoginned
+    return (
+      <div>
+        <Dialog open={open} fullScreen={fullScreen} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">请先登录</DialogTitle>
+          <DialogContent>
+            <TextField
+              required
+              autoFocus
+              margin="dense"
+              id="id"
+              label="账号"
+              type="id"
+              value={this.state.id}
+              onChange={this.handleChange('id')}
+              fullWidth
+            />
+            <TextField
+              required
+              margin="dense"
+              id="password"
+              label="密码"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange('password')}
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleLogin} color="primary">
+              登录
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = state => ({
-    app: state.app,
+  app: state.app
 })
 
 const mapDispatchToProps = dispatch => ({
-    login: (id, password) => dispatch(login(id, password)),
+  login: (id, password) => dispatch(login(id, password))
 })
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withMobileDialog()(Login));
+  mapStateToProps,
+  mapDispatchToProps
+)(withMobileDialog()(Login))
