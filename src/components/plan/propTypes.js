@@ -1,4 +1,4 @@
-import { shape, string, arrayOf, number, func, instanceOf, bool } from 'prop-types'
+import { shape, string, arrayOf, number, instanceOf, bool } from 'prop-types'
 
 export const planType = shape({
   content: string,

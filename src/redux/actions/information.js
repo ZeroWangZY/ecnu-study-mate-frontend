@@ -12,10 +12,6 @@ import { setSnackText } from './app'
 import { getUserInfoAPI } from '../../api/user'
 import { isNotNullAndUndefined } from '../../util/object'
 
-const getInformation = id => dispatch => {
-  getInformationAPI(id).then(res => console.log(res))
-}
-
 // 当身份为学生时使用该函数
 const refreshWhenUserIsStudent = dispatch => {
   getMyInformationAPI().then(res => {

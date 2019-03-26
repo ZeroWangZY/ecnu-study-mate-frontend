@@ -43,7 +43,7 @@ class ReviewEditingWindow extends Component {
     reason: ''
   }
   render() {
-    const { classes, review } = this.props
+    const { classes } = this.props
 
     return (
       <div className={classes.root}>

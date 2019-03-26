@@ -16,7 +16,7 @@ const styles = theme => ({
 })
 
 function Review(props) {
-  const { classes, data } = props
+  const { data } = props
 
   return (
     <div>

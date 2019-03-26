@@ -15,7 +15,7 @@ import moment from 'moment'
  */
 class PlanListItem extends React.PureComponent {
   render() {
-    const { content, title, timeRange, id } = this.props.plan
+    const { content, title, timeRange } = this.props.plan
     const { onClickMenu, classes } = this.props
     let formattedTime = timeRange.map(item => moment(item).format('M月D日 HH:mm'))
 
