@@ -24,7 +24,7 @@ function Review(props) {
         学生评价
       </Typography>
       {data !== null && data !== undefined
-        ? data.map((item, index) => <ReviewItem data={item} key={'aw' + index} />)
+        ? data.slice().reverse().map((item, index) => <ReviewItem data={item} key={'aw' + index} />)
         : null}
     </div>
   )

@@ -95,7 +95,7 @@ class Information extends Component {
             centered
           >
             <Tab label="学生档案" />
-            <Tab label="学习伙伴档案" disabled={role === 'ROLE_USER'} />
+            {/* <Tab label="学习伙伴档案" disabled={role === 'ROLE_USER'} /> */}
           </Tabs>
         </Paper>
         <SwipeableViews
