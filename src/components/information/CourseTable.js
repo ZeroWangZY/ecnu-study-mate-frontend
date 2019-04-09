@@ -43,8 +43,8 @@ function CourseTable(props) {
                   <TableCell component="th" scope="row">
                       {item.courseName}
                   </TableCell>
-                  <TableCell>暂无类别</TableCell>
-                  <TableCell>暂无学分</TableCell>
+                  <TableCell>{item.type}</TableCell>
+                  <TableCell>{item.credit}</TableCell>
               </TableRow>
               })}
               
