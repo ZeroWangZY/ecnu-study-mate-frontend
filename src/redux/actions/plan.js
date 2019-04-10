@@ -2,7 +2,7 @@ import { getPlanAPI, addPlanAPI, deletePlanAPI, updatePlanAPI, updateTimePlanAPI
 import { setSnackText } from './app'
 import moment from 'moment'
 // 开学时间
-const semesterStart = moment('20180910', 'YYYYMMDD')
+const semesterStart = moment('20190218', 'YYYYMMDD')
 
 export const refreshPlan = dispatch => {
   getPlanAPI().then(result => {
