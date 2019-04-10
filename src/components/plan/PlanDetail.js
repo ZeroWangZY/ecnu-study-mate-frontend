@@ -15,11 +15,14 @@ import moment from 'moment'
 import 'moment/locale/zh-cn'
 import PropTypes from 'prop-types'
 import { planType, timePlanType } from './propTypes'
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
+import { isNotNullAndUndefined } from '../../util/object';
 
 /**
  * @author Yiyang Xu
  */
 const weekdays = ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
 class PlanDetail extends React.Component {
   state = {
@@ -87,6 +90,7 @@ class PlanDetail extends React.Component {
     let formats = {
       timeGutterFormat: 'a HH:mm'
     }
+    let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
     let events = plans.map(item => ({ title: item.content, start: item.timeRange[0], end: item.timeRange[1] }))
     return (
       <div>
@@ -95,12 +99,18 @@ class PlanDetail extends React.Component {
         </Typography>
         <Paper className={classes.root}>
           <BigCalendar
-            formats={formats}
+            selectable
+            views={allViews}
+            showMultiDayTimes
+            // formats={formats}
             localizer={localizer}
             events={events}
             defaultView={'week'}
             toolbar={false}
-            step={50}
+            step={60}
+            date={isNotNullAndUndefined(events)?(isNotNullAndUndefined(events[0])? events[0].start:null):null}
+            defaultDate={new Date()}
+            resizable
           />
         </Paper>
       </div>
