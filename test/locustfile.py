@@ -3,17 +3,18 @@ import json
 
 class UserBehavior(TaskSet):
     
-    id = "10165101228"
+    id = 10000001
 
     def on_start(self):
         """ on_start is called when a Locust start before any task is scheduled """
-        self.id = UserBehavior.id
+        self.id = str(UserBehavior.id)
+        UserBehavior.id = UserBehavior.id + 1
         self.accessToken = ""
         self.login()
 
     def on_stop(self):
         """ on_stop is called when the TaskSet is stopping """
-        print('stop')
+        print(self.id + 'stop')
 
     def getHeader(self):
         return {
@@ -27,7 +28,7 @@ class UserBehavior(TaskSet):
         response = self.client.post(url, headers=headers)
         token = json.loads(response.content)["access_token"]
         self.accessToken = token
-        print('login success, token = '+ token)
+        print(self.id + ' login success, token = '+ token)
 
     @task(1)
     def index(self):
@@ -36,7 +37,7 @@ class UserBehavior(TaskSet):
     @task(1)
     def getInfo(self):
         response = self.client.post("/api/user/getInfo", json = {"studentId": self.id}, headers = self.getHeader())
-        print(response.content)
+        print(self.id + " getInfo" + response.content)
 
     # @task(1)
     # def profile(self):
