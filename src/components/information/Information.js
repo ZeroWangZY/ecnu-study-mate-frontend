@@ -14,6 +14,10 @@ import AddIcon from '@material-ui/icons/Add'
 import ReviewEditingWindow from './ReviewEditingWindow'
 import { addReview, changeCurrentStudentId } from '../../redux/actions/information'
 import IdSelector from './IdSelector'
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 function TabContainer({ children, dir }) {
   return (
@@ -33,6 +37,10 @@ const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     width: 500
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular
   }
 })
 
@@ -104,9 +112,32 @@ class Information extends Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-            <InformationTable data={data.studentInfo} />
-            <CourseTable data={data.failedCourses} />
-            {role === 'ROLE_USER' ? null : <Review data={data.reviews} />}
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography className={classes.heading}>基本信息</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <InformationTable data={data.studentInfo} />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography className={classes.heading}>不及格的课程</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <CourseTable data={data.failedCourses} />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            {role !== 'ROLE_USER' && (
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography className={classes.heading}>学生评价</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <Review data={data.reviews} />
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
+            )}
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <InformationTable data={data.partnerInfo} />

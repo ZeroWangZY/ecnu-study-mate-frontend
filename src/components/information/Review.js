@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import ReviewItem from './ReviewItem'
 
 const styles = theme => ({
@@ -20,9 +19,6 @@ function Review(props) {
 
   return (
     <div>
-      <Typography variant="h6" gutterBottom>
-        学生评价
-      </Typography>
       {data !== null && data !== undefined
         ? data.slice().reverse().map((item, index) => <ReviewItem data={item} key={'aw' + index} />)
         : null}

@@ -7,7 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -25,9 +24,6 @@ function CourseTable(props) {
 
   return (
     <div>
-      <Typography variant="h6" gutterBottom>
-        不及格的课程
-      </Typography>
       <Paper className={classes.root}>
         <Table className={classes.table}>
           <TableHead>
