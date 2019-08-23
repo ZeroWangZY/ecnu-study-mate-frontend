@@ -32,7 +32,7 @@ class ReviewEditingWindow extends Component {
 
     this.setState({
       overview: '',
-      reason: ''
+      reason: '',
     })
 
     this.props.handleClose()

@@ -1,11 +1,16 @@
 import {
-  getInformationAPI,
-  getMyInformationAPI,
-  getMyFailedCoursesAPI,
-  getFailedCoursesAPI,
-  getReviewAPI,
-  addReviewAPI,
-  getAllStudentAPI
+    getInformationAPI,
+    getMyInformationAPI,
+    getMyFailedCoursesAPI,
+    getFailedCoursesAPI,
+    getReviewAPI,
+    addReviewAPI,
+    addStudentAPI,
+    getAllStudentAPI,
+    deleteCourseTableAPI,
+    updateCourseTableAPI,
+    addCourseTableAPI,
+    updateInfoTabAPI
 } from '../../api/information'
 import { getRole, getReceiverId, getAdviserId, getCurrentStudentId } from '../store/index'
 import { setSnackText } from './app'
@@ -130,8 +135,73 @@ export const addReview = (id, overview, reason) => dispatch => {
     if (res.flag === 'T') {
       dispatch(setSnackText('添加成功'))
     } else {
-      dispatch(setSnackText('添加失败'))
+      dispatch(setSnackText('添加失败1'))
     }
     dispatch(refreshInformation)
   })
+}
+
+export const addStudent = (student_id) => dispatch => {
+    addStudentAPI(student_id).then(res => {
+        if (res.flag === 'T') {
+            console.log(res)
+            dispatch(setSnackText('添加成功'))
+        } else {
+            dispatch(setSnackText('添加失败2'))
+        }
+        dispatch(refreshInformation)
+    })
+}
+
+export const updateCourseTable = (id, student_id, course_id, course_name, credit, type) => dispatch => {
+    updateCourseTableAPI(id, student_id, course_id, course_name, credit, type).then(res => {
+        if (res.flag === 'T') {
+            console.log(res)
+            dispatch(setSnackText('updateCourseTable添加成功'))
+        } else {
+            console.log(res)
+            dispatch(setSnackText('updateCourseTable添加失败'))
+        }
+        dispatch(refreshInformation)
+    })
+}
+export const deleteCourseTable = (id, student_id, course_id, course_name, credit, type) => dispatch => {
+    deleteCourseTableAPI(id, student_id, course_id, course_name, credit, type).then(res => {
+        if (res.flag === 'T') {
+            dispatch(setSnackText('deleteCourseTable添加成功'))
+        } else {
+            dispatch(setSnackText('deleteCourseTable添加失败'))
+        }
+        dispatch(refreshInformation)
+    })
+}
+export const addCourseTable = (student_id, course_id, course_name, credit, type) => dispatch => {
+    addCourseTableAPI(student_id, course_id, course_name, credit, type).then(res => {
+        if (res.flag === 'T') {
+            console.log(res)
+            dispatch(setSnackText('deleteCourseTable添加成功'))
+        } else {
+            console.log(res)
+            dispatch(setSnackText('deleteCourseTable添加失败'))
+        }
+        dispatch(refreshInformation)
+    })
+}
+
+export const setActioningFailCourse = (data) => ({
+    type:'SET_INFORMATION',
+    data: { actioningFailCourse: data }
+})
+
+export const updateInfoTab = (studentID) => dispatch =>{
+    updateInfoTabAPI(studentID).then(res =>{
+        if (res.flag === 'T') {
+            console.log(res)
+            dispatch(setSnackText('updateInfoTab更新成功'))
+        } else {
+            console.log(res)
+            dispatch(setSnackText('updateInfoTab更新失败'))
+        }
+        dispatch(refreshInformation)
+    })
 }

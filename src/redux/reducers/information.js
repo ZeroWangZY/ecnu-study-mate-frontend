@@ -1,5 +1,14 @@
 const initialState = {
   studentIdList: [],
+  actioningFailCourse:{
+    action:'none',
+    courseID:'0',
+    courseName:'none',
+    credit:0,
+    id:0,
+    studentID:0,
+    type:""
+  },
   currentStudentId: null, // used for select which student to show if the user is admin or teacher
   studentInfo: {
     studentID: 0,
